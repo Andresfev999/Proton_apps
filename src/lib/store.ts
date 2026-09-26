@@ -33,9 +33,16 @@ export async function getApps(): Promise<App[]> {
 
             const totalDownloads = (allRels || []).reduce((acc, r) => acc + (Number(r.download_count) || 0), 0);
 
+            const { data: screens } = await supabase!
+              .from('app_screenshots')
+              .select('*')
+              .eq('app_id', app.id)
+              .order('display_order', { ascending: true });
+
             return {
               ...app,
               latest_release: rels?.[0] || undefined,
+              screenshots: (screens && screens.length > 0) ? screens : (memoryScreenshots[app.id] || []),
               total_downloads: totalDownloads
             } as App;
           })
@@ -56,6 +63,7 @@ export async function getApps(): Promise<App[]> {
     return {
       ...app,
       latest_release: sortedReleases[0] || undefined,
+      screenshots: memoryScreenshots[app.id] || [],
       total_downloads: totalDownloads
     };
   });

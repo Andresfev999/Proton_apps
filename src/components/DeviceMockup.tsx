@@ -93,14 +93,14 @@ export function DeviceMockup({ appName, screenshots }: DeviceMockupProps) {
                 <>
                   <button
                     onClick={prevSlide}
-                    className="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center backdrop-blur-md transition-opacity opacity-0 group-hover:opacity-100 duration-150 border border-white/10 active:scale-95 cursor-pointer"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-black/75 hover:bg-black text-white flex items-center justify-center backdrop-blur-md transition-all border border-white/20 active:scale-90 cursor-pointer shadow-lg shadow-black/80"
                     aria-label="Captura anterior"
                   >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
                   <button
                     onClick={nextSlide}
-                    className="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center backdrop-blur-md transition-opacity opacity-0 group-hover:opacity-100 duration-150 border border-white/10 active:scale-95 cursor-pointer"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-black/75 hover:bg-black text-white flex items-center justify-center backdrop-blur-md transition-all border border-white/20 active:scale-90 cursor-pointer shadow-lg shadow-black/80"
                     aria-label="Siguiente captura"
                   >
                     <ChevronRight className="w-4 h-4" />
@@ -117,25 +117,31 @@ export function DeviceMockup({ appName, screenshots }: DeviceMockupProps) {
         </div>
       </div>
 
-      {/* Caption & Concentric Pagination Dots */}
+      {/* Caption & Screen Counter */}
       {hasScreenshots && (
-        <div className="mt-5 flex flex-col items-center gap-2.5 max-w-xs text-center">
+        <div className="mt-4 flex flex-col items-center gap-2 max-w-sm text-center">
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-cyan-400 bg-cyan-950/70 border border-cyan-500/30 px-2.5 py-0.5 rounded-full font-bold">
+              Pantalla {currentIndex + 1} de {screenshots.length}
+            </span>
+          </div>
+
           {currentScreenshot?.caption && (
-            <p className="text-xs text-slate-300 font-medium line-clamp-2 px-2">
+            <p className="text-xs text-slate-200 font-medium leading-relaxed px-3 min-h-[36px]">
               {currentScreenshot.caption}
             </p>
           )}
 
           {screenshots.length > 1 && (
-            <div className="flex items-center gap-2 p-1 rounded-full bg-white/5 border border-white/10">
+            <div className="flex items-center gap-1.5 p-1 rounded-full bg-white/5 border border-white/10 max-w-full overflow-x-auto">
               {screenshots.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
+                  className={`h-2 rounded-full transition-all duration-200 cursor-pointer ${
                     idx === currentIndex
-                      ? 'w-6 bg-indigo-500'
-                      : 'w-2 bg-slate-700 hover:bg-slate-600'
+                      ? 'w-6 bg-cyan-400'
+                      : 'w-2 bg-slate-700 hover:bg-slate-500'
                   }`}
                   aria-label={`Ver captura ${idx + 1}`}
                 />

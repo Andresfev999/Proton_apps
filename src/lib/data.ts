@@ -183,23 +183,65 @@ export const INITIAL_SCREENSHOTS: Record<string, AppScreenshot[]> = {
     {
       id: 'sc-fu-1',
       app_id: 'app-finup',
-      image_url: '/apps/finup/finup_splash_screen.png',
-      caption: 'FinUp DeepFi: Pantalla de inicio con estética Deep Blue y Neon',
+      image_url: '/apps/finup/screenshots/02_dashboard_principal.png',
+      caption: 'Dashboard Principal: Visión panorámica de tus ingresos, gastos del mes y balance neto en tiempo real',
       display_order: 1
     },
     {
       id: 'sc-fu-2',
       app_id: 'app-finup',
-      image_url: '/apps/finup/finup_feature_graphic.svg',
-      caption: 'Identidad Visual Oficial FinUp: Gestión Financiera Inteligente',
+      image_url: '/apps/finup/screenshots/03_movimientos.png',
+      caption: 'Registro Rápido de Movimientos: Historial categorizado y filtros por fecha en 2 toques',
       display_order: 2
     },
     {
       id: 'sc-fu-3',
       app_id: 'app-finup',
-      image_url: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=600&auto=format&fit=crop&q=80',
-      caption: 'Dashboard analítico con balance financiero, ingresos y gastos',
+      image_url: '/apps/finup/screenshots/05_presupuestos.png',
+      caption: 'Presupuestos Mensuales: Control inteligente de límites de gasto para no quedarte en cero',
       display_order: 3
+    },
+    {
+      id: 'sc-fu-4',
+      app_id: 'app-finup',
+      image_url: '/apps/finup/screenshots/07_metas_ahorro.png',
+      caption: 'Metas de Ahorro: Visualiza tu progreso hacia tus sueños con motivación diaria',
+      display_order: 4
+    },
+    {
+      id: 'sc-fu-5',
+      app_id: 'app-finup',
+      image_url: '/apps/finup/screenshots/06_deudas_pasivos.png',
+      caption: 'Plan Anti-Deudas: Control de pasivos, cuotas y plan de amortización progresiva',
+      display_order: 5
+    },
+    {
+      id: 'sc-fu-6',
+      app_id: 'app-finup',
+      image_url: '/apps/finup/screenshots/04_cuentas_billeteras.png',
+      caption: 'Cuentas y Billeteras: Centraliza tus bancos, efectivo y cuentas en un solo lugar seguro',
+      display_order: 6
+    },
+    {
+      id: 'sc-fu-7',
+      app_id: 'app-finup',
+      image_url: '/apps/finup/screenshots/08_resumen_pro.png',
+      caption: 'Análisis Financiero Avanzado: Consejos y reportes inteligentes para optimizar tu dinero',
+      display_order: 7
+    },
+    {
+      id: 'sc-fu-8',
+      app_id: 'app-finup',
+      image_url: '/apps/finup/screenshots/01_login_bienvenida.png',
+      caption: 'Bienvenida DeepFi: Interfaz oscura AMOLED de alta gama diseñada para cuidar tus ojos',
+      display_order: 8
+    },
+    {
+      id: 'sc-fu-9',
+      app_id: 'app-finup',
+      image_url: '/apps/finup/screenshots/09_terminos_privacidad.png',
+      caption: 'Privacidad y Seguridad: Tus datos financieros nunca se venden ni salen de tu control',
+      display_order: 9
     }
   ]
 };

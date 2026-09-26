@@ -41,7 +41,9 @@ import {
   Users,
   Check,
   Terminal,
-  Code2
+  Code2,
+  X,
+  Maximize2
 } from 'lucide-react';
 
 export default function AppDetailPage() {
@@ -53,6 +55,7 @@ export default function AppDetailPage() {
   const [isQrOpen, setIsQrOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [showTechDetails, setShowTechDetails] = useState(false);
+  const [selectedImageModal, setSelectedImageModal] = useState<{ url: string; caption?: string } | null>(null);
 
   useEffect(() => {
     if (!slug) return;
@@ -404,7 +407,62 @@ export default function AppDetailPage() {
           </div>
         </section>
 
-        {/* 4. ¿CÓMO TE AYUDA EN TU DÍA A DÍA? (3 Pasos Fáciles) */}
+        {/* 4. GALERÍA VISUAL: PANTALLAS REALES DE LA APLICACIÓN */}
+        {app.screenshots && app.screenshots.length > 0 && (
+          <section className="space-y-8">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-cyan-400 font-bold bg-cyan-950/60 border border-cyan-500/30 px-3 py-1 rounded-full inline-block mb-2">
+                  Capturas Nativas Oficiales ({app.screenshots.length} Pantallas)
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                  Explora la Interfaz Real de {app.name}
+                </h2>
+              </div>
+              <p className="text-xs font-mono text-slate-400">
+                Toca cualquier captura para ampliarla en alta definición
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
+              {app.screenshots.map((screen, idx) => (
+                <div
+                  key={screen.id || idx}
+                  onClick={() => setSelectedImageModal({ url: screen.image_url, caption: screen.caption })}
+                  className="double-bezel-outer group cursor-pointer hover:border-cyan-500/40 transition-all duration-300"
+                >
+                  <div className="double-bezel-inner p-3 sm:p-4 flex flex-col justify-between h-full space-y-3">
+                    <div className="relative aspect-[9/19] w-full rounded-2xl overflow-hidden bg-black border border-white/10 group-hover:border-cyan-400/40 transition-all shadow-lg shadow-black/80">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={screen.image_url}
+                        alt={screen.caption || `${app.name} captura ${idx + 1}`}
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-cyan-950/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                        <div className="w-10 h-10 rounded-full bg-black/80 border border-cyan-400/50 flex items-center justify-center text-cyan-300 shadow-xl">
+                          <Maximize2 className="w-4 h-4" />
+                        </div>
+                      </div>
+                      <div className="absolute top-2 left-2 z-10 px-2 py-0.5 rounded-md bg-black/80 text-[10px] font-mono text-slate-200 border border-white/10">
+                        #{idx + 1}
+                      </div>
+                    </div>
+
+                    {screen.caption && (
+                      <p className="text-[11px] text-slate-300 font-medium line-clamp-2 leading-tight">
+                        {screen.caption}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 5. ¿CÓMO TE AYUDA EN TU DÍA A DÍA? (3 Pasos Fáciles) */}
         <section className="space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-cyan-400 font-bold">
@@ -637,6 +695,44 @@ export default function AppDetailPage() {
         app={app}
         release={latestRelease}
       />
+
+      {/* Screenshot Lightbox Modal */}
+      {selectedImageModal && (
+        <div
+          onClick={() => setSelectedImageModal(null)}
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative max-w-sm sm:max-w-md w-full flex flex-col items-center gap-4"
+          >
+            <button
+              onClick={() => setSelectedImageModal(null)}
+              className="absolute -top-12 right-0 sm:-right-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center border border-white/20 transition-all cursor-pointer"
+              aria-label="Cerrar vista"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="w-full max-h-[75vh] aspect-[9/19] rounded-3xl overflow-hidden border-2 border-white/20 shadow-2xl bg-black">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={selectedImageModal.url}
+                alt={selectedImageModal.caption || 'Captura de pantalla'}
+                className="w-full h-full object-contain"
+              />
+            </div>
+
+            {selectedImageModal.caption && (
+              <div className="p-3 rounded-2xl bg-[#0a0e17] border border-white/10 text-center max-w-md shadow-xl">
+                <p className="text-xs text-slate-200 font-medium">
+                  {selectedImageModal.caption}
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
