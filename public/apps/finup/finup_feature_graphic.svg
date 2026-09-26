@@ -1,0 +1,91 @@
+<svg width="1024" height="500" viewBox="0 0 1024 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="featBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="50%" stop-color="#111C30"/>
+      <stop offset="100%" stop-color="#090D17"/>
+    </linearGradient>
+
+    <!-- Ambient Glows -->
+    <radialGradient id="glowTeal" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2DD4BF" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#2DD4BF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowSky" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Bar Gradients -->
+    <linearGradient id="fgBar1" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#00B686"/>
+      <stop offset="60%" stop-color="#00E5A3"/>
+      <stop offset="100%" stop-color="#2DD4BF"/>
+    </linearGradient>
+    <linearGradient id="fgBar2" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#00C9A7"/>
+      <stop offset="50%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="fgLeftFace" x1="0%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="25%" stop-color="#00C9A7"/>
+      <stop offset="65%" stop-color="#22D3EE"/>
+      <stop offset="88%" stop-color="#BAE6FD"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <linearGradient id="fgRightFace" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+
+    <!-- Flare Radial Glow -->
+    <radialGradient id="fgFlareGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1"/>
+      <stop offset="25%" stop-color="#BAE6FD" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#38BDF8" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1024" height="500" fill="url(#featBg)"/>
+
+  <!-- Ambient Glows -->
+  <circle cx="280" cy="250" r="220" fill="url(#glowTeal)"/>
+  <circle cx="750" cy="250" r="260" fill="url(#glowSky)"/>
+
+  <!-- Background Subtle Growth Lines -->
+  <path d="M0 420 Q 250 400 450 330 T 800 180 T 1024 120" fill="none" stroke="#2DD4BF" stroke-width="1.5" stroke-opacity="0.2" stroke-dasharray="6 6"/>
+  <path d="M0 460 Q 300 430 550 380 T 900 240 T 1024 180" fill="none" stroke="#38BDF8" stroke-width="1.5" stroke-opacity="0.12"/>
+
+  <!-- Left: Big Logo Icon -->
+  <g transform="translate(180, 250) scale(0.85) translate(-256, -256)">
+    <!-- Squircle base -->
+    <rect width="512" height="512" rx="112" fill="#0B1120" stroke="#38BDF8" stroke-width="1.5" stroke-opacity="0.2"/>
+    <!-- Bar 1 -->
+    <rect x="118" y="298.5" width="45" height="84" rx="3" fill="url(#fgBar1)" stroke="#5EEAD4" stroke-width="1.2" stroke-opacity="0.8"/>
+    <!-- Bar 2 -->
+    <rect x="181.5" y="233" width="45.5" height="149.5" rx="3" fill="url(#fgBar2)" stroke="#7DD3FC" stroke-width="1.2" stroke-opacity="0.8"/>
+    <!-- Bar 3 Right Face -->
+    <path d="M268 126 L290.5 187.5 H393 L378 222.5 H290.5 V259 H363 L347 296 H290.5 V382.5 H268 Z" fill="url(#fgRightFace)" stroke="#7DD3FC" stroke-width="1.2" stroke-opacity="0.8"/>
+    <!-- Bar 3 Left Face -->
+    <path d="M268 126 L218.5 202.5 H245.5 V382.5 H268 Z" fill="url(#fgLeftFace)" stroke="#5EEAD4" stroke-width="1.2" stroke-opacity="0.8"/>
+    <!-- Center Ridge -->
+    <line x1="268" y1="126" x2="268" y2="382.5" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.6"/>
+    <!-- Flare Streak -->
+    <polygon points="268,126 210,50 205,53 268,127" fill="#FFFFFF" opacity="0.85"/>
+    <polygon points="268,126 185,15 178,20 268,127" fill="#7DD3FC" opacity="0.4"/>
+    <circle cx="268" cy="126" r="26" fill="url(#fgFlareGlow)"/>
+    <circle cx="268" cy="126" r="5" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Right: Branding Texts -->
+  <g transform="translate(480, 230)">
+    <text x="0" y="0" font-family="'Outfit', -apple-system, sans-serif" font-weight="900" font-size="82" fill="#FFFFFF" letter-spacing="2">FinUp</text>
+    <text x="0" y="46" font-family="'Outfit', -apple-system, sans-serif" font-weight="600" font-size="24" fill="#2DD4BF" letter-spacing="3">CONTROL FINANCIERO INTELIGENTE</text>
+    <text x="0" y="86" font-family="'Outfit', -apple-system, sans-serif" font-weight="400" font-size="16" fill="#94A3B8" letter-spacing="1">Presupuestos • Inversiones • Crecimiento</text>
+  </g>
+</svg>
