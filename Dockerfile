@@ -10,7 +10,7 @@ FROM base AS deps
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci || npm install
+RUN npm install --include=dev
 
 # --- Stage 2: Builder ---
 FROM base AS builder
