@@ -23,6 +23,7 @@ export interface Release {
   min_os_version: string;
   is_critical: boolean;
   download_count: number;
+  sha256_hash?: string;
   published_at: string;
   created_at?: string;
 }

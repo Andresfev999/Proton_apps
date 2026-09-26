@@ -11,8 +11,10 @@ import { Footer } from '@/components/Footer';
 import { AppCard } from '@/components/AppCard';
 import { ApiTester } from '@/components/ApiTester';
 import { QrCodeModal } from '@/components/QrCodeModal';
+import { InstallGuideModal } from '@/components/InstallGuideModal';
 import { App, AppCategory } from '@/types/database';
 import { formatBytes } from '@/lib/data';
+import { useDeviceType } from '@/lib/use-device';
 import confetti from 'canvas-confetti';
 import {
   Search,
@@ -41,11 +43,13 @@ const CATEGORIES: ('Todas' | AppCategory)[] = [
 ];
 
 export default function HomePage() {
+  const { isAndroid } = useDeviceType();
   const [apps, setApps] = useState<App[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<'Todas' | AppCategory>('Todas');
   const [selectedQrApp, setSelectedQrApp] = useState<App | null>(null);
+  const [installGuideApp, setInstallGuideApp] = useState<App | null>(null);
 
   const fetchApps = async () => {
     try {
@@ -252,12 +256,17 @@ export default function HomePage() {
                       {flagshipApp.latest_release && (
                         <a
                           href={`/api/v1/download/${flagshipApp.latest_release.id}`}
-                          onClick={triggerDownloadConfetti}
-                          className="pl-5 pr-2 py-2 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center gap-3 shadow-xl shadow-indigo-600/30 hover:shadow-indigo-600/50 transition-all duration-200 active:scale-[0.98] group/btn cursor-pointer"
+                          onClick={() => {
+                            triggerDownloadConfetti();
+                            setTimeout(() => setInstallGuideApp(flagshipApp), 700);
+                          }}
+                          className="pl-5 pr-2 py-2 rounded-full bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white text-xs font-semibold flex items-center gap-3 shadow-xl shadow-indigo-600/30 hover:shadow-cyan-600/40 transition-all duration-200 active:scale-[0.98] group/btn cursor-pointer"
                         >
-                          <span>Descargar APK ({formatBytes(flagshipApp.latest_release.apk_size_bytes)})</span>
+                          <span>
+                            {isAndroid ? 'Instalar APK en este Android' : 'Descargar APK'} ({formatBytes(flagshipApp.latest_release.apk_size_bytes)})
+                          </span>
                           <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center btn-nested-icon">
-                            <Download className="w-4 h-4" />
+                            {isAndroid ? <Smartphone className="w-4 h-4" /> : <Download className="w-4 h-4" />}
                           </div>
                         </a>
                       )}
@@ -452,6 +461,18 @@ export default function HomePage() {
           onClose={() => setSelectedQrApp(null)}
           app={selectedQrApp}
           release={selectedQrApp.latest_release}
+        />
+      )}
+
+      {/* Floating Install Guide Modal if triggered */}
+      {installGuideApp && (
+        <InstallGuideModal
+          isOpen={Boolean(installGuideApp)}
+          onClose={() => setInstallGuideApp(null)}
+          appName={installGuideApp.name}
+          apkSize={installGuideApp.latest_release ? formatBytes(installGuideApp.latest_release.apk_size_bytes) : undefined}
+          sha256Hash={installGuideApp.latest_release?.sha256_hash}
+          downloadUrl={installGuideApp.latest_release ? `/api/v1/download/${installGuideApp.latest_release.id}` : undefined}
         />
       )}
     </div>

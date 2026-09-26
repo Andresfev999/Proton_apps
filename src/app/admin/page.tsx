@@ -11,6 +11,7 @@ import { AdminAppForm } from '@/components/AdminAppForm';
 import { AdminReleaseForm } from '@/components/AdminReleaseForm';
 import { App } from '@/types/database';
 import { isSupabaseConfigured, supabase } from '@/lib/supabase';
+import { formatBytes } from '@/lib/data';
 import {
   Shield,
   Layers,
@@ -26,7 +27,10 @@ import {
   CheckCircle2,
   Copy,
   Check,
-  ArrowUpRight
+  ArrowUpRight,
+  TrendingUp,
+  BarChart3,
+  Activity
 } from 'lucide-react';
 
 export default function AdminPage() {
@@ -107,6 +111,10 @@ export default function AdminPage() {
 
   const totalDownloads = apps.reduce((acc, a) => acc + (a.total_downloads || 0), 0);
   const criticalUpdatesCount = apps.filter((a) => a.latest_release?.is_critical).length;
+  const totalBandwidthBytes = apps.reduce((acc, a) => {
+    const size = a.latest_release?.apk_size_bytes || 26000000;
+    return acc + (a.total_downloads || 0) * size;
+  }, 0);
 
   return (
     <div className="min-h-screen bg-[#04060a] text-slate-100 flex flex-col selection:bg-indigo-500 selection:text-white">
@@ -302,7 +310,56 @@ export default function AdminPage() {
 
             {/* Tab 1: Apps Overview */}
             {activeTab === 'overview' && (
-              <div className="space-y-4">
+              <div className="space-y-6">
+                {/* Analytics Distribution Card */}
+                <div className="double-bezel-outer">
+                  <div className="double-bezel-inner p-6 sm:p-8 space-y-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/5">
+                      <div className="flex items-center gap-2.5">
+                        <BarChart3 className="w-5 h-5 text-cyan-400" />
+                        <div>
+                          <h3 className="font-bold text-white text-base">Distribución y Analítica de Descargas</h3>
+                          <p className="text-xs text-slate-400 font-mono">Volumen transferido y cuota de demanda por aplicación</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-4 text-xs font-mono">
+                        <span className="text-slate-400">Tráfico total servido:</span>
+                        <span className="text-emerald-400 font-bold bg-emerald-950/60 border border-emerald-500/30 px-3 py-1 rounded-full">
+                          {formatBytes(totalBandwidthBytes)}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      {apps.map((app) => {
+                        const count = app.total_downloads || 0;
+                        const pct = totalDownloads > 0 ? Math.round((count / totalDownloads) * 100) : 0;
+
+                        return (
+                          <div key={app.id} className="space-y-1.5">
+                            <div className="flex items-center justify-between text-xs font-mono">
+                              <span className="text-slate-200 font-semibold flex items-center gap-2">
+                                <span>{app.name}</span>
+                                <span className="text-slate-500 font-normal">({app.category})</span>
+                              </span>
+                              <div className="flex items-center gap-3">
+                                <span className="text-slate-400">{count.toLocaleString()} descargas</span>
+                                <span className="text-cyan-300 font-bold">{pct}%</span>
+                              </div>
+                            </div>
+                            <div className="w-full h-2 rounded-full bg-white/5 overflow-hidden">
+                              <div
+                                className="h-full bg-gradient-to-r from-indigo-500 to-cyan-400 rounded-full transition-all duration-500"
+                                style={{ width: `${Math.max(pct, 2)}%` }}
+                              />
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {apps.map((app) => (
                     <div key={app.id} className="double-bezel-outer p-1">

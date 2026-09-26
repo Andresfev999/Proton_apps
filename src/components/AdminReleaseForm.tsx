@@ -26,6 +26,8 @@ export function AdminReleaseForm({ apps, onSuccess }: AdminReleaseFormProps) {
   const [apkFileName, setApkFileName] = useState('app-v1.3.1.apk');
   const [apkSizeBytes, setApkSizeBytes] = useState(26214400); // 25 MB
   const [apkUrl, setApkUrl] = useState('https://storage.proton.local/apks/app-v1.3.1.apk');
+  const [sha256Hash, setSha256Hash] = useState('');
+  const [isHashing, setIsHashing] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(100);
   const [isUploading, setIsUploading] = useState(false);
 
@@ -40,6 +42,25 @@ export function AdminReleaseForm({ apps, onSuccess }: AdminReleaseFormProps) {
     setApkSizeBytes(file.size);
     setIsUploading(true);
     setUploadProgress(0);
+
+    // Calcular SHA-256 automáticamente usando Web Crypto API
+    setIsHashing(true);
+    const reader = new FileReader();
+    reader.onload = async () => {
+      if (reader.result instanceof ArrayBuffer) {
+        try {
+          const hashBuffer = await crypto.subtle.digest('SHA-256', reader.result);
+          const hashArray = Array.from(new Uint8Array(hashBuffer));
+          const hashHex = hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
+          setSha256Hash(hashHex);
+        } catch (err) {
+          console.warn('Error calculando hash SHA-256:', err);
+        } finally {
+          setIsHashing(false);
+        }
+      }
+    };
+    reader.readAsArrayBuffer(file);
 
     // Simular subida con progreso suave a Storage
     let current = 0;
@@ -79,7 +100,8 @@ export function AdminReleaseForm({ apps, onSuccess }: AdminReleaseFormProps) {
           apk_file_url: apkUrl,
           apk_size_bytes: apkSizeBytes,
           min_os_version: minOsVersion,
-          is_critical: isCritical
+          is_critical: isCritical,
+          sha256_hash: sha256Hash || undefined
         })
       });
 
@@ -215,6 +237,25 @@ export function AdminReleaseForm({ apps, onSuccess }: AdminReleaseFormProps) {
               className="h-full bg-gradient-to-r from-indigo-500 to-cyan-400 rounded-full transition-all duration-300"
               style={{ width: `${uploadProgress}%` }}
             />
+          </div>
+
+          {/* Real-time calculated SHA-256 hash */}
+          <div className="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-mono">
+            <span className="text-slate-400 flex items-center gap-1.5">
+              <span>SHA-256:</span>
+              {isHashing ? (
+                <span className="text-cyan-400 animate-pulse">Calculando hash criptográfico...</span>
+              ) : sha256Hash ? (
+                <span className="text-emerald-300 truncate max-w-xs">{sha256Hash}</span>
+              ) : (
+                <span className="text-slate-500">Pendiente de selección</span>
+              )}
+            </span>
+            {sha256Hash && (
+              <span className="text-[9px] font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded-full">
+                ✓ Web Crypto SHA-256
+              </span>
+            )}
           </div>
         </div>
       </div>

@@ -3,10 +3,11 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Download, QrCode, ArrowUpRight, ShieldCheck, HardDrive, Sparkles } from 'lucide-react';
+import { Download, QrCode, ArrowUpRight, ShieldCheck, HardDrive, Sparkles, Smartphone } from 'lucide-react';
 import { App } from '@/types/database';
 import { formatBytes } from '@/lib/data';
 import { QrCodeModal } from './QrCodeModal';
+import { useDeviceType } from '@/lib/use-device';
 import confetti from 'canvas-confetti';
 
 interface AppCardProps {
@@ -15,6 +16,7 @@ interface AppCardProps {
 }
 
 export function AppCard({ app, isFeatured = false }: AppCardProps) {
+  const { isAndroid } = useDeviceType();
   const [isQrOpen, setIsQrOpen] = useState(false);
   const release = app.latest_release;
 
@@ -128,9 +130,11 @@ export function AppCard({ app, isFeatured = false }: AppCardProps) {
                 onClick={triggerDownloadConfetti}
                 className="flex-1 pl-4 pr-1.5 py-1.5 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center justify-between shadow-lg shadow-indigo-600/25 transition-all duration-200 active:scale-[0.98] group/btn cursor-pointer"
               >
-                <span className="font-medium tracking-tight">Descargar APK</span>
+                <span className="font-medium tracking-tight">
+                  {isAndroid ? 'Instalar APK' : 'Descargar APK'}
+                </span>
                 <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center btn-nested-icon">
-                  <Download className="w-3.5 h-3.5" />
+                  {isAndroid ? <Smartphone className="w-3.5 h-3.5" /> : <Download className="w-3.5 h-3.5" />}
                 </div>
               </a>
             ) : (
