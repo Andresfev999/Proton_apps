@@ -37,7 +37,8 @@ export async function GET(
     let targetUrl = release.apk_file_url;
     if (!targetUrl.startsWith('http://') && !targetUrl.startsWith('https://')) {
       const host = request.headers.get('x-forwarded-host') || request.headers.get('host') || 'app.protondev.space';
-      const proto = request.headers.get('x-forwarded-proto') || (host.includes('localhost') ? 'http' : 'https');
+      const isLocal = host.includes('localhost') || host.includes('127.0.0.1') || host.includes('192.168.');
+      const proto = isLocal ? 'http' : (request.headers.get('x-forwarded-proto') || 'https');
       const origin = `${proto}://${host}`;
       targetUrl = new URL(release.apk_file_url, origin).toString();
     }
