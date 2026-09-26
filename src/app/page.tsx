@@ -185,7 +185,7 @@ export default function HomePage() {
                 </h2>
               </div>
               <span className="text-[11px] font-mono text-cyan-400 bg-cyan-950/60 border border-cyan-500/30 px-2.5 py-0.5 rounded-full">
-                Flutter • Gemini AI • DeepFi
+                Salud Financiera • Asesor con IA • Cero Deudas
               </span>
             </div>
 
@@ -218,7 +218,7 @@ export default function HomePage() {
                             </span>
                           </div>
                           <p className="text-xs text-slate-400 font-mono mt-1">
-                            {flagshipApp.package_name} • Build v{flagshipApp.latest_release?.version_name || '1.0.0'}
+                            Control de gastos y metas personales
                           </p>
                         </div>
                       </div>
@@ -234,14 +234,14 @@ export default function HomePage() {
 
                     {/* Features list pills */}
                     <div className="flex flex-wrap items-center gap-2 pt-1 text-xs text-slate-300 font-mono">
-                      <span className="px-3 py-1 rounded-full bg-white/5 border border-white/5">
-                        🤖 Google Gemini 2.5 Flash
+                      <span className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-cyan-300">
+                        ✨ Asesor Financiero Personal con IA
                       </span>
-                      <span className="px-3 py-1 rounded-full bg-white/5 border border-white/5">
-                        📊 Dashboard DeepFi AMOLED
+                      <span className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-emerald-300">
+                        💰 Plan Anti-Deudas Paso a Paso
                       </span>
-                      <span className="px-3 py-1 rounded-full bg-white/5 border border-white/5">
-                        ☁️ Sincronización Supabase
+                      <span className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-indigo-300">
+                        🔒 100% Privado en tu Teléfono
                       </span>
                     </div>
                   </div>
@@ -273,9 +273,9 @@ export default function HomePage() {
 
                     <Link
                       href={`/apps/${flagshipApp.slug}`}
-                      className="inline-flex items-center gap-2 text-xs font-medium text-slate-400 hover:text-white transition-colors group/link"
+                      className="inline-flex items-center gap-2 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors group/link"
                     >
-                      <span>Ver Ficha Completa & Changelogs</span>
+                      <span>Ver cómo te ayuda y todos sus beneficios</span>
                       <ArrowUpRight className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
                     </Link>
                   </div>

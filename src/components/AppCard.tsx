@@ -90,6 +90,16 @@ export function AppCard({ app, isFeatured = false }: AppCardProps) {
               {app.tagline}
             </p>
 
+            <div className="mt-2.5">
+              <Link
+                href={`/apps/${app.slug}`}
+                className="inline-flex items-center gap-1 text-[11px] font-mono text-cyan-400 hover:text-cyan-300 transition-colors font-semibold"
+              >
+                <span>Ver cómo te ayuda</span>
+                <ArrowUpRight className="w-3 h-3" />
+              </Link>
+            </div>
+
             {/* Micro Specs Bar */}
             <div className="mt-5 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono">
               <div className="flex items-center gap-2">
