@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   output: "standalone",
   basePath: "/apps",
   assetPrefix: "/apps",
+  skipTrailingSlashRedirect: true,
   images: {
     remotePatterns: [
       {
@@ -17,6 +18,7 @@ const nextConfig: NextConfig = {
     ],
   },
 };
+
 
 
 export default nextConfig;
