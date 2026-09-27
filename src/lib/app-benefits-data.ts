@@ -46,6 +46,126 @@ export interface AppBenefitsProfile {
 }
 
 export const APP_BENEFITS_CATALOG: Record<string, AppBenefitsProfile> = {
+  flowpdf: {
+    slug: 'flowpdf',
+    heroBadge: 'Lectura Fluida & eReader Personal',
+    heroTitle: 'Lee tus libros y documentos PDF cómodamente en tu teléfono sin zoom constante',
+    heroSubtitle: 'FlowPDF transforma PDFs complejos de dos columnas en texto líquido y adaptable. Personaliza tipografía, márgenes y temas oscuros para leer a tu ritmo sin cansancio visual.',
+    trustPills: ['100% Libre de Distracciones', 'Lectura 100% Offline', 'Sin Cuentas Obligatorias', 'Modo Flow Líquido'],
+    problemTitle: '¿Por qué leer PDFs en el móvil es tan incómodo y cansado?',
+    problemDescription: 'Los documentos PDF fueron inventados para imprimirse en hojas de papel rígidas, no para leerse en smartphones. Hacer zoom continuamente para seguir renglones, lidiar con dos columnas desordenadas y sufrir el brillo blanco en la noche arruinan cualquier hábito de lectura.',
+    beforeVsAfter: {
+      beforeTitle: 'Leyendo PDFs tradicionalmente',
+      beforeItems: [
+        'Zoom horizontal constante de izquierda a derecha en cada renglón.',
+        'Textos a dos columnas que se mezclan y confunden la lectura.',
+        'Fondos blancos cegadores sin soporte real para modo oscuro o sepia.',
+        'Lectores pesados llenos de barras de herramientas que tapan el contenido.'
+      ],
+      afterTitle: 'Leyendo con FlowPDF en tu celular',
+      afterItems: [
+        'Modo FLOW: el texto se adapta al ancho de tu pantalla como un libro digital.',
+        'Controles que desaparecen al leer y botones Anterior/Siguiente ergonómicos.',
+        '4 temas de lectura: Claro, Papel/Sepia, Oscuro y AMOLED de alto contraste.',
+        'Extracción automática de portadas reales desde la primera página del documento.'
+      ]
+    },
+    keyBenefits: [
+      {
+        title: 'Modo Flow Adaptativo ⭐',
+        description: 'Convierte páginas rígidas a dos columnas en un flujo continuo de texto líquido optimizado para tu smartphone.',
+        result: 'Cero zoom horizontal',
+        icon: 'Zap'
+      },
+      {
+        title: 'Portadas Reales Automáticas',
+        description: 'Generación instantánea de portadas desde la primera página del PDF para que tu biblioteca luzca impecable.',
+        result: 'Estilo eReader moderno',
+        icon: 'Sparkles'
+      },
+      {
+        title: 'Panel Tipográfico "Aa" en Vivo',
+        description: 'Modifica el tamaño de letra, márgenes, interlineado y tipografías (Literata editorial / Inter) en tiempo real.',
+        result: 'Lectura 100% personalizada',
+        icon: 'Sparkles'
+      },
+      {
+        title: 'Comodidad Visual Nocturna',
+        description: 'Elige entre tema Sepia relajante o fondo negro AMOLED puro para no desgastar tus ojos ni tu batería.',
+        result: 'Sin fatiga visual',
+        icon: 'HeartHandshake'
+      },
+      {
+        title: 'Continuidad en < 3 Segundos',
+        description: 'Abre la app y retoma exactamente el libro, página y configuración donde lo dejaste sin esperas.',
+        result: 'Inicio instantáneo',
+        icon: 'Clock'
+      },
+      {
+        title: 'Privacidad y Modo Offline Total',
+        description: 'Tus libros y lecturas nunca se suben a la nube. Funcionamiento 100% local sin requerir registros ni suscripciones.',
+        result: '100% Privado y Local',
+        icon: 'ShieldCheck'
+      }
+    ],
+    dailyWorkflow: [
+      {
+        stepNumber: '01',
+        title: 'Importa cualquier PDF',
+        description: 'Selecciona tus libros o apuntes desde el almacenamiento de tu teléfono en 1 toque.',
+        timeCommitment: '5 segundos'
+      },
+      {
+        stepNumber: '02',
+        title: 'Activa el Modo FLOW ⭐',
+        description: 'Pasa del documento rígido a un texto adaptativo cómodo con el tamaño y fuente que prefieras.',
+        timeCommitment: 'Instantáneo'
+      },
+      {
+        stepNumber: '03',
+        title: 'Disfruta la lectura sin fricción',
+        description: 'Navega con los botones inferiores ergonómicos o deslizando suavemente la pantalla.',
+        timeCommitment: 'A tu propio ritmo'
+      }
+    ],
+    targetAudience: [
+      {
+        title: 'Lectores Apasionados & Estudiantes',
+        description: 'Para quienes devoran libros en PDF o leen apuntes extensos en el transporte y la cama.',
+        highlight: 'Lectura cómoda sin zoom'
+      },
+      {
+        title: 'Profesionales & Desarrolladores',
+        description: 'Para consultar documentación técnica, manuales y libros de programación con nitidez.',
+        highlight: 'Modo oscuro AMOLED'
+      },
+      {
+        title: 'Cualquiera que cuide su vista',
+        description: 'Para personas que sufren de fatiga visual por el brillo blanco excesivo de los lectores PDF convencionales.',
+        highlight: 'Tema Papel/Sepia de descanso'
+      }
+    ],
+    faqs: [
+      {
+        question: '¿Qué diferencia a FlowPDF de Adobe Acrobat u otros visores?',
+        answer: 'Los visores tradicionales muestran el documento rígido forzándote a hacer zoom continuo. FlowPDF extrae y reorganiza el texto (Modo FLOW) para que se adapte al ancho de tu pantalla como un Kindle o eReader.'
+      },
+      {
+        question: '¿Puedo seguir viendo el documento PDF original?',
+        answer: 'Sí. Con solo tocar el botón superior puedes alternar en cualquier segundo entre el Modo FLOW y el Modo PDF original.'
+      },
+      {
+        question: '¿Funciona sin conexión a internet?',
+        answer: 'Totalmente. FlowPDF es 100% offline-first. Tus libros, marcadores, portadas y avances se almacenan en tu dispositivo.'
+      },
+      {
+        question: '¿Tiene publicidad o requiere crear una cuenta?',
+        answer: 'No. FlowPDF no tiene publicidad invasiva, ni rastreadores, ni requiere registros obligatorios.'
+      }
+    ],
+    ctaHeadline: 'Transforma tus PDFs en una verdadera experiencia de lectura',
+    ctaSubtext: 'Descarga FlowPDF gratis para Android y lee a tu propio ritmo sin fatiga visual.'
+  },
   finup: {
     slug: 'finup',
     heroBadge: 'Salud Financiera & Ahorro Inteligente',

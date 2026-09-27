@@ -2,6 +2,28 @@ import { App, Release, AppScreenshot } from '@/types/database';
 
 export const INITIAL_RELEASES: Release[] = [
   {
+    id: 'rel-flowpdf-100',
+    app_id: 'app-flowpdf',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.0 (Lanzamiento Oficial)
+- **Modo FLOW ⭐:** Lectura fluida y adaptativa que elimina el zoom horizontal en PDFs a múltiples columnas.
+- **Portadas Reales con PdfRenderer:** Extracción automática de portadas de libros desde la primera página en alta resolución.
+- **Controles de Lectura Permanentes:** Botones Anterior y Siguiente siempre visibles y ergonómicos en la parte inferior.
+- **Panel "Aa" Instantáneo:** Personalización en vivo de tipografía (Literata/Inter), tamaño de fuente, interlineado y márgenes.
+- **4 Temas de Lectura:** Claro, Papel/Sepia, Oscuro y AMOLED de alto contraste.
+- **100% Offline-First:** Persistencia completa de libros, progreso, notas y marcadores sin conexión a internet.`,
+    apk_file_url: '/downloads/flowpdf-v1.0.0.apk',
+    apk_size_bytes: 65828831, // 62.8 MB
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 1420,
+    sha256_hash: 'b1e84a29a008fa47c7c34b6b69b3df3c9bb29d911b51e04a91fbc5e5927ad9a1',
+    published_at: '2026-09-27T16:35:00Z',
+    created_at: '2026-09-27T16:35:00Z'
+  },
+  {
     id: 'rel-finup-100',
     app_id: 'app-finup',
     version_name: '1.0.0',
@@ -244,10 +266,62 @@ export const INITIAL_SCREENSHOTS: Record<string, AppScreenshot[]> = {
       caption: 'Privacidad y Seguridad: Tus datos financieros nunca se venden ni salen de tu control',
       display_order: 9
     }
+  ],
+  'app-flowpdf': [
+    {
+      id: 'sc-fp-1',
+      app_id: 'app-flowpdf',
+      image_url: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80',
+      caption: 'Modo FLOW: Lectura adaptada al ancho del móvil con tipografía editorial Literata',
+      display_order: 1
+    },
+    {
+      id: 'sc-fp-2',
+      app_id: 'app-flowpdf',
+      image_url: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&auto=format&fit=crop&q=80',
+      caption: 'Biblioteca Personal: Lista vertical con portadas reales y progreso de lectura en tiempo real',
+      display_order: 2
+    },
+    {
+      id: 'sc-fp-3',
+      app_id: 'app-flowpdf',
+      image_url: 'https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?w=600&auto=format&fit=crop&q=80',
+      caption: 'Ajustes de Lectura "Aa": Control instantáneo de márgenes, temas Sepia/Oscuro y tamaño',
+      display_order: 3
+    }
   ]
 };
 
 export const INITIAL_APPS: App[] = [
+  {
+    id: 'app-flowpdf',
+    slug: 'flowpdf',
+    name: 'FlowPDF',
+    tagline: 'Tus PDFs. Tu ritmo. Tu biblioteca personal tipo eReader',
+    description: `### FlowPDF - Tu Biblioteca Personal para Leer Cómodamente 📖✨
+**FlowPDF** transforma cualquier documento PDF en una experiencia de lectura cómoda, limpia y personalizable inspirada en los mejores eReaders del mundo.
+
+Adiós al incómodo zoom horizontal constante y a los textos diminutos en pantallas de smartphone: con el **Modo Flow ⭐**, el texto de tus libros y artículos se extrae, limpia y reorganiza adaptándose fluidamente al ancho de tu teléfono.
+
+#### 🌟 Características Principales:
+- **⭐ Modo FLOW Adaptativo:** Reorganiza documentos PDF a múltiples columnas en un flujo continuo de texto tipo libro electrónico, respetando saltos de párrafo y eliminando cortes de línea molestos.
+- **📄 Modo PDF Original:** Conmuta al instante entre el formato de lectura adaptado y el documento original con zoom fluido y doble toque.
+- **🖼️ Portadas Reales Automáticas:** Motor nativo de renderizado que extrae la portada real de tu libro desde la página 1 para una biblioteca visualmente atractiva.
+- **🔘 Botones Siempre a Mano:** Controles de navegación *Anterior* y *Siguiente* siempre visibles en la parte inferior para pasar de página cómodamente con tus pulgares.
+- **🎨 Panel de Lectura "Aa" en Vivo:** Ajusta tamaño de fuente, interlineado, márgenes y tipografías (*Literata* editorial e *Inter* moderna) con cambios inmediatos en pantalla.
+- **🌙 4 Temas de Descanso Visual:** Modos *Claro*, *Papel/Sepia*, *Oscuro* y *AMOLED* puro para no forzar la vista de día ni de noche.
+- **🔖 Marcadores y Continuidad en < 3s:** Guarda tus páginas favoritas y retoma cualquier libro exactamente donde lo dejaste en menos de 3 segundos.
+- **🔒 100% Privado y Offline:** Todos tus libros, notas y estadísticas se guardan en tu dispositivo local sin subir nada a la nube ni requerir cuentas.`,
+    icon_url: '/apps/flowpdf/flowpdf_icon.png',
+    cover_image_url: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1200&auto=format&fit=crop&q=80',
+    category: 'Productividad',
+    package_name: 'com.flowpdf.app.flowpdf',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/FlowPDF.git',
+    status: 'published',
+    created_at: '2026-09-27T16:00:00Z',
+    updated_at: '2026-09-27T16:45:00Z'
+  },
   {
     id: 'app-finup',
     slug: 'finup',
