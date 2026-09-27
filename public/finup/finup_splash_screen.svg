@@ -1,0 +1,98 @@
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="splashBg" cx="50%" cy="42%" r="55%">
+      <stop offset="0%" stop-color="#141F33"/>
+      <stop offset="60%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#080C14"/>
+    </radialGradient>
+
+    <!-- Bar 1 Gradient -->
+    <linearGradient id="sBar1" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#00B686"/>
+      <stop offset="60%" stop-color="#00E5A3"/>
+      <stop offset="100%" stop-color="#2DD4BF"/>
+    </linearGradient>
+
+    <!-- Bar 2 Gradient -->
+    <linearGradient id="sBar2" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#00C9A7"/>
+      <stop offset="50%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+
+    <!-- Left Face Lit -->
+    <linearGradient id="sLeftFace" x1="0%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="25%" stop-color="#00C9A7"/>
+      <stop offset="65%" stop-color="#22D3EE"/>
+      <stop offset="88%" stop-color="#BAE6FD"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+
+    <!-- Right Face Shaded -->
+    <linearGradient id="sRightFace" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+
+    <!-- Flare Radial Glow -->
+    <radialGradient id="sFlareGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1"/>
+      <stop offset="25%" stop-color="#BAE6FD" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#38BDF8" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Ambient Glow behind symbol -->
+    <filter id="sAmbientGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="25" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1920" fill="url(#splashBg)"/>
+
+  <!-- Center Group -->
+  <g transform="translate(540, 850) scale(2.0) translate(-256, -256)">
+    <!-- Ambient Glow -->
+    <g opacity="0.45" filter="url(#sAmbientGlow)">
+      <rect x="118" y="298.5" width="45" height="84" rx="4" fill="#00E5A3"/>
+      <rect x="181.5" y="233" width="45.5" height="149.5" rx="4" fill="#22D3EE"/>
+      <polygon points="268,126 218.5,202.5 245.5,202.5 245.5,382.5 290.5,382.5 290.5,296 347,296 363,259 290.5,259 290.5,222.5 378,222.5 393,187.5 290.5,187.5" fill="#38BDF8"/>
+    </g>
+
+    <!-- Bar 1 (Left) -->
+    <rect x="118" y="298.5" width="45" height="84" rx="3" fill="url(#sBar1)" stroke="#5EEAD4" stroke-width="1.2" stroke-opacity="0.8"/>
+
+    <!-- Bar 2 (Middle) -->
+    <rect x="181.5" y="233" width="45.5" height="149.5" rx="3" fill="url(#sBar2)" stroke="#7DD3FC" stroke-width="1.2" stroke-opacity="0.8"/>
+
+    <!-- Bar 3 & F: Right Face -->
+    <path d="M268 126 L290.5 187.5 H393 L378 222.5 H290.5 V259 H363 L347 296 H290.5 V382.5 H268 Z" 
+          fill="url(#sRightFace)" 
+          stroke="#7DD3FC" stroke-width="1.2" stroke-opacity="0.8"/>
+
+    <!-- Bar 3 & F: Left Face -->
+    <path d="M268 126 L218.5 202.5 H245.5 V382.5 H268 Z" 
+          fill="url(#sLeftFace)" 
+          stroke="#5EEAD4" stroke-width="1.2" stroke-opacity="0.8"/>
+
+    <!-- 3D Center Ridge -->
+    <line x1="268" y1="126" x2="268" y2="382.5" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.6"/>
+
+    <!-- Lens Flare Diagonal Streak (-40 deg) -->
+    <polygon points="268,126 210,50 205,53 268,127" fill="#FFFFFF" opacity="0.85"/>
+    <polygon points="268,126 185,15 178,20 268,127" fill="#7DD3FC" opacity="0.4"/>
+    
+    <!-- Apex Circular Glow -->
+    <circle cx="268" cy="126" r="26" fill="url(#sFlareGlow)"/>
+    <circle cx="268" cy="126" r="5" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="540" y="1280" font-family="'Outfit', -apple-system, sans-serif" font-weight="800" font-size="108" fill="#FFFFFF" text-anchor="middle" letter-spacing="4">FinUp</text>
+  <text x="540" y="1340" font-family="'Outfit', -apple-system, sans-serif" font-weight="600" font-size="24" fill="#2DD4BF" text-anchor="middle" letter-spacing="5">FINANZAS INTELIGENTES</text>
+</svg>
