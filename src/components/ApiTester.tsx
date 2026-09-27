@@ -17,7 +17,7 @@ export function ApiTester({ initialSlug = 'task-pulse' }: ApiTesterProps) {
   const [status, setStatus] = useState<number | null>(null);
   const [copied, setCopied] = useState(false);
 
-  const requestUrl = `/api/v1/apps/${slug}/updates?version_code=${versionCode}&platform=${platform}`;
+  const requestUrl = `/apps/api/v1/apps/${slug}/updates?version_code=${versionCode}&platform=${platform}`;
 
   const handleTest = async () => {
     setLoading(true);

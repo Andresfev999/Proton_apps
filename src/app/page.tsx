@@ -54,7 +54,7 @@ export default function HomePage() {
   const fetchApps = async () => {
     try {
       setLoading(true);
-      const res = await fetch('/api/v1/apps');
+      const res = await fetch('/apps/api/v1/apps');
       if (res.ok) {
         const data = await res.json();
         setApps(data.apps || []);

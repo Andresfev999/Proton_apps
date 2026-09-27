@@ -69,7 +69,7 @@ export default function AppDetailPage() {
     const loadApp = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`/api/v1/apps`);
+        const res = await fetch(`/apps/api/v1/apps`);
         if (res.ok) {
           const data = await res.json();
           const found = (data.apps as App[]).find((a) => a.slug === slug);

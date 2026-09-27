@@ -88,7 +88,7 @@ export function AdminReleaseForm({ apps, onSuccess }: AdminReleaseFormProps) {
     setMessage(null);
 
     try {
-      const res = await fetch('/api/v1/releases', {
+      const res = await fetch('/apps/api/v1/releases', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

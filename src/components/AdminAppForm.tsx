@@ -35,7 +35,7 @@ export function AdminAppForm({ onSuccess }: AdminAppFormProps) {
     setMessage(null);
 
     try {
-      const res = await fetch('/api/v1/apps', {
+      const res = await fetch('/apps/api/v1/apps', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
