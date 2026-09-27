@@ -16,14 +16,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  async rewrites() {
-    return [
-      {
-        source: "/apps/:slug",
-        destination: "/apps/:slug",
-      },
-    ];
-  },
 };
+
 
 export default nextConfig;
