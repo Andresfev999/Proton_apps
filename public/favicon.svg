@@ -1,0 +1,120 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="bgGrad" cx="50%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#0e172a" />
+      <stop offset="60%" stop-color="#070c18" />
+      <stop offset="100%" stop-color="#03060d" />
+    </radialGradient>
+
+    <!-- Core Proton Nucleus 3D Gradient -->
+    <radialGradient id="favCoreGrad" cx="36%" cy="34%" r="65%" fx="30%" fy="28%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="20%" stop-color="#c7d2fe" />
+      <stop offset="42%" stop-color="#818cf8" />
+      <stop offset="70%" stop-color="#6366f1" />
+      <stop offset="90%" stop-color="#4338ca" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </radialGradient>
+
+    <!-- Halo Glow Gradient -->
+    <radialGradient id="favHaloGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#00f2fe" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#03060d" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Orbits Gradients -->
+    <!-- Orbit 1: Indigo to Violet -->
+    <linearGradient id="orbitIndigo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+
+    <!-- Orbit 2: Cyber Cyan to Electric Blue -->
+    <linearGradient id="orbitCyan" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="55%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+
+    <!-- Orbit 3: Android Emerald to Neon Mint -->
+    <linearGradient id="orbitEmerald" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ff87" />
+      <stop offset="60%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Container Squircle with subtle border -->
+  <rect width="128" height="128" rx="28" fill="url(#bgGrad)" />
+  <rect x="0.75" y="0.75" width="126.5" height="126.5" rx="27.25" stroke="#38bdf8" stroke-opacity="0.18" stroke-width="1.5" />
+
+  <!-- Shift to center (64, 64) with scale 1.05 -->
+  <g transform="translate(64, 64) scale(0.95) translate(-60, -60)">
+    <!-- Orbits -->
+    <!-- Orbit 1: Vertical (Indigo/Violet) -->
+    <ellipse cx="60" cy="60" rx="22" ry="53" stroke="url(#orbitIndigo)" stroke-width="3" fill="none" filter="url(#neonGlow)" />
+    
+    <!-- Orbit 2: +60 deg (Cyber Cyan) -->
+    <ellipse cx="60" cy="60" rx="22" ry="53" transform="rotate(60 60 60)" stroke="url(#orbitCyan)" stroke-width="3" fill="none" filter="url(#neonGlow)" />
+    
+    <!-- Orbit 3: -60 deg (Android Emerald) -->
+    <ellipse cx="60" cy="60" rx="22" ry="53" transform="rotate(-60 60 60)" stroke="url(#orbitEmerald)" stroke-width="3" fill="none" filter="url(#neonGlow)" />
+
+    <!-- Core Nucleus -->
+    <g>
+      <!-- Halo -->
+      <circle cx="60" cy="60" r="23" fill="url(#favHaloGrad)" filter="url(#neonGlow)" />
+      <!-- Solid 3D Nucleus -->
+      <circle cx="60" cy="60" r="17.5" fill="url(#favCoreGrad)" stroke="rgba(255, 255, 255, 0.45)" stroke-width="1" />
+      <!-- Specular Highlight -->
+      <ellipse cx="53.8" cy="52.8" rx="5.5" ry="3.2" transform="rotate(-30 53.8 52.8)" fill="#ffffff" opacity="0.9" />
+      <circle cx="51" cy="51" r="2" fill="#ffffff" opacity="0.96" />
+    </g>
+
+    <!-- BADGES -->
+    <!-- 1. Mobile Device (Top-Left) -->
+    <g transform="translate(9, 21)" filter="url(#neonGlow)">
+      <rect x="0" y="0" width="30" height="20" rx="10" fill="#070d1d" stroke="#00f2fe" stroke-width="1.6" />
+      <!-- Miniature Smartphone outline & screen -->
+      <rect x="10" y="4" width="10" height="12" rx="2" fill="none" stroke="#00f2fe" stroke-width="1.2" />
+      <line x1="13" y1="5.5" x2="17" y2="5.5" stroke="#00f2fe" stroke-width="0.8" stroke-linecap="round" />
+      <circle cx="15" cy="14" r="0.8" fill="#00f2fe" />
+    </g>
+
+    <!-- 2. APK Badge (Top-Right) -->
+    <g transform="translate(81, 21)" filter="url(#neonGlow)">
+      <rect x="0" y="0" width="30" height="20" rx="10" fill="#070d1d" stroke="#00ff87" stroke-width="1.6" />
+      <text x="15" y="12.5" fill="#00ff87" font-size="10" font-weight="900" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', monospace" text-anchor="middle" dominant-baseline="central">APK</text>
+    </g>
+
+    <!-- 3. OTA Badge (Bottom-Right) -->
+    <g transform="translate(76, 75)" filter="url(#neonGlow)">
+      <rect x="0" y="0" width="30" height="20" rx="10" fill="#070d1d" stroke="#818cf8" stroke-width="1.6" />
+      <text x="15" y="12.5" fill="#818cf8" font-size="10" font-weight="900" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', monospace" text-anchor="middle" dominant-baseline="central">OTA</text>
+    </g>
+
+    <!-- Active Orbital Glowing Nodes -->
+    <g filter="url(#neonGlow)">
+      <circle cx="60" cy="113" r="4.5" fill="#00ff87" />
+      <circle cx="60" cy="113" r="2" fill="#ffffff" />
+
+      <circle cx="17" cy="80" r="4" fill="#00f2fe" />
+      <circle cx="17" cy="80" r="1.8" fill="#ffffff" />
+
+      <circle cx="96" cy="42" r="4" fill="#818cf8" />
+      <circle cx="96" cy="42" r="1.8" fill="#ffffff" />
+    </g>
+  </g>
+</svg>

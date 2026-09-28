@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Smartphone, Shield, Zap, GitBranch, Terminal } from 'lucide-react';
+import ProtonAppsLogo from './ProtonAppsLogo';
 
 export function Footer() {
   return (
@@ -10,11 +11,8 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-                <Smartphone className="w-4 h-4 text-indigo-400" />
-              </div>
-              <span className="font-extrabold text-white text-base tracking-tight">Proton Apps Hub</span>
-              <span className="text-[9px] font-mono font-bold tracking-widest text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded-full">
+              <ProtonAppsLogo size={34} showText={true} animated={false} />
+              <span className="text-[9px] font-mono font-bold tracking-widest text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded-full ml-1">
                 SYSTEM ONLINE
               </span>
             </div>

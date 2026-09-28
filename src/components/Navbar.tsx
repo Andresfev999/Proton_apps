@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { Smartphone, Layers, Terminal, Shield, ArrowUpRight, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+import ProtonAppsLogo from './ProtonAppsLogo';
+
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -12,23 +14,10 @@ export function Navbar() {
     <>
       {/* Floating Island Navigation (Detached, Centered Pill) */}
       <header className="sticky top-4 z-40 w-full px-4 sm:px-6 pointer-events-none">
-        <div className="max-w-4xl mx-auto flex items-center justify-between pointer-events-auto floating-island rounded-full px-4 sm:px-5 py-2.5">
+        <div className="max-w-4xl mx-auto flex items-center justify-between pointer-events-auto floating-island rounded-full px-4 sm:px-5 py-2">
           {/* Brand Logo & Name */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 p-[1.5px] shadow-lg shadow-indigo-500/25 group-hover:scale-105 transition-transform duration-300">
-              <div className="w-full h-full bg-[#05070D] rounded-full flex items-center justify-center">
-                <Smartphone className="w-4 h-4 text-indigo-300 group-hover:text-cyan-300 transition-colors" />
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <span className="font-bold text-sm tracking-tight text-white group-hover:text-indigo-200 transition-colors">
-                Proton Apps
-              </span>
-              <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold tracking-widest text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 rounded-full">
-                HUB
-              </span>
-            </div>
+          <Link href="/" className="flex items-center gap-2 group">
+            <ProtonAppsLogo size={36} showText={true} animated={true} />
           </Link>
 
           {/* Desktop Nav Items */}
