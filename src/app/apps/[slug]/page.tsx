@@ -261,7 +261,7 @@ export default function AppDetailPage() {
               <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
                 {latestRelease && (
                   <a
-                    href={`/api/v1/download/${latestRelease.id}`}
+                    href={`/apps/api/v1/download/${latestRelease.id}`}
                     onClick={handleDownload}
                     className="pl-6 pr-2 py-2.5 rounded-full bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-semibold text-xs sm:text-sm flex items-center justify-between gap-4 shadow-xl shadow-indigo-600/35 hover:shadow-cyan-500/50 transition-all duration-200 active:scale-[0.98] group/btn cursor-pointer"
                   >

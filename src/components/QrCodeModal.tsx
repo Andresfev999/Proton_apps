@@ -21,7 +21,7 @@ export function QrCodeModal({ isOpen, onClose, app, release }: QrCodeModalProps)
 
   useEffect(() => {
     if (typeof window !== 'undefined' && release) {
-      const url = `${window.location.origin}/api/v1/download/${release.id}`;
+      const url = `${window.location.origin}/apps/api/v1/download/${release.id}`;
       setDownloadUrl(url);
 
       QRCode.toDataURL(url, {
@@ -169,7 +169,7 @@ export function QrCodeModal({ isOpen, onClose, app, release }: QrCodeModalProps)
 
                 {release && (
                   <a
-                    href={`/api/v1/download/${release.id}`}
+                    href={`/apps/api/v1/download/${release.id}`}
                     className="pl-5 pr-2 py-2 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center justify-between gap-3 shadow-md shadow-indigo-600/30 transition-all duration-150 cursor-pointer active:scale-95 group/btn"
                   >
                     <span>Descargar en PC</span>

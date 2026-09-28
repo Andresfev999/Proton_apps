@@ -36,11 +36,14 @@ export async function GET(
     // Determinar URL absoluta para la redirección (compatible con CDN externa o archivo local en public/)
     let targetUrl = release.apk_file_url;
     if (!targetUrl.startsWith('http://') && !targetUrl.startsWith('https://')) {
-      const host = request.headers.get('x-forwarded-host') || request.headers.get('host') || 'app.protondev.space';
+      const host = request.headers.get('x-forwarded-host') || request.headers.get('host') || 'protondev.space';
       const isLocal = host.includes('localhost') || host.includes('127.0.0.1') || host.includes('192.168.');
       const proto = isLocal ? 'http' : 'https';
       const origin = `${proto}://${host}`;
-      targetUrl = new URL(release.apk_file_url, origin).toString();
+      const pathWithBase = targetUrl.startsWith('/apps') 
+        ? targetUrl 
+        : `/apps${targetUrl.startsWith('/') ? '' : '/'}${targetUrl}`;
+      targetUrl = `${origin}${pathWithBase}`;
     }
 
     // Redirección HTTP 307 al archivo APK

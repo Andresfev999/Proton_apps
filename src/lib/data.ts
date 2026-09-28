@@ -14,12 +14,12 @@ export const INITIAL_RELEASES: Release[] = [
 - **Panel "Aa" Instantáneo:** Personalización en vivo de tipografía (Literata/Inter), tamaño de fuente, interlineado y márgenes.
 - **4 Temas de Lectura:** Claro, Papel/Sepia, Oscuro y AMOLED de alto contraste.
 - **100% Offline-First:** Persistencia completa de libros, progreso, notas y marcadores sin conexión a internet.`,
-    apk_file_url: '/downloads/flowpdf-v1.0.0.apk',
-    apk_size_bytes: 65828831, // 62.8 MB
+    apk_file_url: '/apps/downloads/flowpdf-v1.0.0.apk',
+    apk_size_bytes: 91782803, // 87.5 MB
     min_os_version: 'Android 8.0 (API 26)',
     is_critical: false,
     download_count: 1420,
-    sha256_hash: 'b1e84a29a008fa47c7c34b6b69b3df3c9bb29d911b51e04a91fbc5e5927ad9a1',
+    sha256_hash: '2b56154a17460483d4fee99caddaaf7cc9d7a57462a2a06154ea4debdd0dc6ce',
     published_at: '2026-09-27T16:35:00Z',
     created_at: '2026-09-27T16:35:00Z'
   },
@@ -35,7 +35,7 @@ export const INITIAL_RELEASES: Release[] = [
 - **Gestión Avanzada de Deudas:** Control detallado de cuotas pendientes y amortizaciones.
 - **Modo Oscuro DeepFi:** Paleta de alto contraste optimizada para pantallas móviles AMOLED.
 - **Sincronización Cloud Supabase:** Seguridad criptográfica para tus movimientos y respaldos.`,
-    apk_file_url: '/downloads/finup-v1.0.0.apk',
+    apk_file_url: '/apps/downloads/finup-v1.0.0.apk',
     apk_size_bytes: 61984395, // 59.1 MB
     min_os_version: 'Android 8.0 (API 26)',
     is_critical: false,

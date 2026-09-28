@@ -132,7 +132,7 @@ export function AppCard({ app, isFeatured = false }: AppCardProps) {
           <div className="mt-6 pt-2 flex items-center gap-2 relative z-10">
             {release ? (
               <a
-                href={`/api/v1/download/${release.id}`}
+                href={`/apps/api/v1/download/${release.id}`}
                 onClick={triggerDownloadConfetti}
                 className="flex-1 pl-4 pr-1.5 py-1.5 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center justify-between shadow-lg shadow-indigo-600/25 transition-all duration-200 active:scale-[0.98] group/btn cursor-pointer"
               >
