@@ -19,7 +19,7 @@ export const INITIAL_RELEASES: Release[] = [
     min_os_version: 'Android 8.0 (API 26)',
     is_critical: false,
     download_count: 1420,
-    sha256_hash: 'e8aaf32b9a4a80f8873588f548b49bcccb83ff0a8760b3037ddd43e935898d38',
+    sha256_hash: '933a5a3c3758cb2b6fbe1fa2dd452bdb5c9c6ace5216c46ef6988e2897953eb9',
     published_at: '2026-09-27T16:35:00Z',
     created_at: '2026-09-27T16:35:00Z'
   },
