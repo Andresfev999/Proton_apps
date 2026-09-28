@@ -36,6 +36,7 @@ import {
 const CATEGORIES: ('Todas' | AppCategory)[] = [
   'Todas',
   'Finanzas',
+  'Negocios',
   'Productividad',
   'Seguridad',
   'Comunicación',

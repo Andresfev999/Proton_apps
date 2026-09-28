@@ -8,6 +8,20 @@ let memoryReleases: Release[] = [...INITIAL_RELEASES];
 let memoryScreenshots: Record<string, AppScreenshot[]> = { ...INITIAL_SCREENSHOTS };
 
 export async function getApps(): Promise<App[]> {
+  // Mapa de apps base en memoria con sus releases y capturas
+  const memoryMap = new Map<string, App>();
+  for (const app of memoryApps) {
+    const appReleases = memoryReleases.filter((r) => r.app_id === app.id);
+    const sortedReleases = [...appReleases].sort((a, b) => b.version_code - a.version_code);
+    const totalDownloads = appReleases.reduce((sum, r) => sum + (r.download_count || 0), 0);
+    memoryMap.set(app.slug, {
+      ...app,
+      latest_release: sortedReleases[0] || undefined,
+      screenshots: memoryScreenshots[app.id] || [],
+      total_downloads: totalDownloads
+    });
+  }
+
   if (isSupabaseConfigured && supabase) {
     try {
       const { data: appsData, error } = await supabase
@@ -16,57 +30,43 @@ export async function getApps(): Promise<App[]> {
         .order('created_at', { ascending: false });
 
       if (!error && appsData) {
-        // Enriquecer cada app con su latest release
-        const enriched = await Promise.all(
-          appsData.map(async (app) => {
-            const { data: rels } = await supabase!
-              .from('releases')
-              .select('*')
-              .eq('app_id', app.id)
-              .order('version_code', { ascending: false })
-              .limit(1);
+        // Enriquecer cada app de Supabase
+        for (const app of appsData) {
+          const { data: rels } = await supabase!
+            .from('releases')
+            .select('*')
+            .eq('app_id', app.id)
+            .order('version_code', { ascending: false })
+            .limit(1);
 
-            const { data: allRels } = await supabase!
-              .from('releases')
-              .select('download_count')
-              .eq('app_id', app.id);
+          const { data: allRels } = await supabase!
+            .from('releases')
+            .select('download_count')
+            .eq('app_id', app.id);
 
-            const totalDownloads = (allRels || []).reduce((acc, r) => acc + (Number(r.download_count) || 0), 0);
+          const totalDownloads = (allRels || []).reduce((acc, r) => acc + (Number(r.download_count) || 0), 0);
 
-            const { data: screens } = await supabase!
-              .from('app_screenshots')
-              .select('*')
-              .eq('app_id', app.id)
-              .order('display_order', { ascending: true });
+          const { data: screens } = await supabase!
+            .from('app_screenshots')
+            .select('*')
+            .eq('app_id', app.id)
+            .order('display_order', { ascending: true });
 
-            return {
-              ...app,
-              latest_release: rels?.[0] || undefined,
-              screenshots: (screens && screens.length > 0) ? screens : (memoryScreenshots[app.id] || []),
-              total_downloads: totalDownloads
-            } as App;
-          })
-        );
-        return enriched;
+          // Supabase sobreescribe o complementa
+          memoryMap.set(app.slug, {
+            ...app,
+            latest_release: rels?.[0] || memoryMap.get(app.slug)?.latest_release,
+            screenshots: (screens && screens.length > 0) ? screens : (memoryScreenshots[app.id] || []),
+            total_downloads: totalDownloads > 0 ? totalDownloads : (memoryMap.get(app.slug)?.total_downloads || 0)
+          } as App);
+        }
       }
     } catch (err) {
       console.warn('Fallback a almacenamiento en memoria para getApps:', err);
     }
   }
 
-  // Fallback en memoria
-  return memoryApps.map((app) => {
-    const appReleases = memoryReleases.filter((r) => r.app_id === app.id);
-    const sortedReleases = [...appReleases].sort((a, b) => b.version_code - a.version_code);
-    const totalDownloads = appReleases.reduce((sum, r) => sum + (r.download_count || 0), 0);
-
-    return {
-      ...app,
-      latest_release: sortedReleases[0] || undefined,
-      screenshots: memoryScreenshots[app.id] || [],
-      total_downloads: totalDownloads
-    };
-  });
+  return Array.from(memoryMap.values());
 }
 
 export async function getAppBySlug(slug: string): Promise<App | null> {
