@@ -53,6 +53,12 @@ export function AppCard({ app, isFeatured = false }: AppCardProps) {
                     src={app.icon_url}
                     alt={app.name}
                     className="w-full h-full rounded-[1rem] object-cover"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (!target.src.includes('/apps/apps/')) {
+                        target.src = target.src.replace('/apps/', '/apps/apps/');
+                      }
+                    }}
                   />
                 </div>
                 {app.status === 'published' && (

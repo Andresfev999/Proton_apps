@@ -312,7 +312,7 @@ Adiós al incómodo zoom horizontal constante y a los textos diminutos en pantal
 - **🌙 4 Temas de Descanso Visual:** Modos *Claro*, *Papel/Sepia*, *Oscuro* y *AMOLED* puro para no forzar la vista de día ni de noche.
 - **🔖 Marcadores y Continuidad en < 3s:** Guarda tus páginas favoritas y retoma cualquier libro exactamente donde lo dejaste en menos de 3 segundos.
 - **🔒 100% Privado y Offline:** Todos tus libros, notas y estadísticas se guardan en tu dispositivo local sin subir nada a la nube ni requerir cuentas.`,
-    icon_url: '/apps/flowpdf/flowpdf_icon.png',
+    icon_url: '/apps/apps/flowpdf/flowpdf_icon.png',
     cover_image_url: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1200&auto=format&fit=crop&q=80',
     category: 'Productividad',
     package_name: 'com.flowpdf.app.flowpdf',
