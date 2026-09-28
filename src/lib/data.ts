@@ -15,11 +15,11 @@ export const INITIAL_RELEASES: Release[] = [
 - **4 Temas de Lectura:** Claro, Papel/Sepia, Oscuro y AMOLED de alto contraste.
 - **100% Offline-First:** Persistencia completa de libros, progreso, notas y marcadores sin conexión a internet.`,
     apk_file_url: '/apps/downloads/flowpdf-v1.0.0.apk',
-    apk_size_bytes: 91782803, // 87.5 MB
+    apk_size_bytes: 91864771, // 87.6 MB
     min_os_version: 'Android 8.0 (API 26)',
     is_critical: false,
     download_count: 1420,
-    sha256_hash: '2b56154a17460483d4fee99caddaaf7cc9d7a57462a2a06154ea4debdd0dc6ce',
+    sha256_hash: 'e8aaf32b9a4a80f8873588f548b49bcccb83ff0a8760b3037ddd43e935898d38',
     published_at: '2026-09-27T16:35:00Z',
     created_at: '2026-09-27T16:35:00Z'
   },
