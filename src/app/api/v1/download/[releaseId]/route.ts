@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getReleaseById, incrementDownload } from '@/lib/store';
+import fs from 'fs';
+import path from 'path';
 
 export async function GET(
   request: NextRequest,
@@ -33,23 +35,53 @@ export async function GET(
       });
     }
 
-    // Determinar URL absoluta para la redirección (compatible con CDN externa o archivo local en public/)
-    let targetUrl = release.apk_file_url;
-    if (!targetUrl.startsWith('http://') && !targetUrl.startsWith('https://')) {
-      const host = request.headers.get('x-forwarded-host') || request.headers.get('host') || 'protondev.space';
-      const isLocal = host.includes('localhost') || host.includes('127.0.0.1') || host.includes('192.168.');
-      const proto = isLocal ? 'http' : 'https';
-      const origin = `${proto}://${host}`;
-      const pathWithBase = targetUrl.startsWith('/apps') 
-        ? targetUrl 
-        : `/apps${targetUrl.startsWith('/') ? '' : '/'}${targetUrl}`;
-      targetUrl = `${origin}${pathWithBase}`;
+    // Si es una URL externa completa (https://...)
+    if (release.apk_file_url.startsWith('http://') || release.apk_file_url.startsWith('https://')) {
+      return NextResponse.redirect(release.apk_file_url, { status: 307 });
     }
 
-    // Redirección HTTP 307 al archivo APK
-    return NextResponse.redirect(targetUrl, {
-      status: 307
-    });
+    // Si es un archivo APK local (ej. /apps/downloads/cotipro-v1.0.0.apk o /downloads/cotipro-v1.0.0.apk)
+    const cleanRelativePath = release.apk_file_url.replace(/^\/apps/, '').replace(/^\//, '');
+    const filePath = path.join(process.cwd(), 'public', cleanRelativePath.replace(/^public\//, ''));
+
+    if (fs.existsSync(filePath)) {
+      const stats = fs.statSync(filePath);
+      const filename = path.basename(filePath);
+      const fileStream = fs.createReadStream(filePath);
+
+      // Conversión a ReadableStream Web estándar
+      const webStream = new ReadableStream({
+        start(controller) {
+          fileStream.on('data', (chunk) => controller.enqueue(chunk));
+          fileStream.on('end', () => controller.close());
+          fileStream.on('error', (err) => controller.error(err));
+        },
+        cancel() {
+          fileStream.destroy();
+        }
+      });
+
+      return new NextResponse(webStream, {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/vnd.android.package-archive',
+          'Content-Length': stats.size.toString(),
+          'Content-Disposition': `attachment; filename="${filename}"`,
+          'Cache-Control': 'public, max-age=31536000, immutable',
+        },
+      });
+    }
+
+    // Fallback: Redirección estándar
+    const host = request.headers.get('x-forwarded-host') || request.headers.get('host') || 'protondev.space';
+    const isLocal = host.includes('localhost') || host.includes('127.0.0.1') || host.includes('192.168.');
+    const proto = isLocal ? 'http' : 'https';
+    const origin = `${proto}://${host}`;
+    const pathWithBase = release.apk_file_url.startsWith('/apps')
+      ? release.apk_file_url
+      : `/apps${release.apk_file_url.startsWith('/') ? '' : '/'}${release.apk_file_url}`;
+    
+    return NextResponse.redirect(`${origin}${pathWithBase}`, { status: 307 });
 
   } catch (error) {
     console.error('Error procesando descarga:', error);
