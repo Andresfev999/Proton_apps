@@ -541,7 +541,7 @@ export const INITIAL_APPS: App[] = [
 - **Lector de Código de Barras Integrado:** Apunta con la cámara y accede al producto al instante.
 - **Alertas de Stock Mínimo:** Distintivos de advertencia cuando un producto está por agotarse.
 - **100% Offline-First:** Base de datos SQLite local para operar sin internet.`,
-    icon_url: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=160&auto=format&fit=crop&q=80',
+    icon_url: '/apps/icons/stockmini.png',
     cover_image_url: 'https://images.unsplash.com/photo-1553413077-190dd305871c?w=1200&auto=format&fit=crop&q=80',
     category: 'Negocios',
     package_name: 'space.protondev.stockmini',
@@ -564,7 +564,7 @@ export const INITIAL_APPS: App[] = [
 - **Exportación en Formato PDF A4:** Diseño ejecutivo con logo, términos y datos fiscales.
 - **Envío Inmediato a WhatsApp:** Abre el chat del cliente con el resumen listo para enviar.
 - **Directorio de Clientes:** Guarda clientes frecuentes para cotizar en menos de 1 minuto.`,
-    icon_url: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=160&auto=format&fit=crop&q=80',
+    icon_url: '/apps/icons/cotipro.png',
     cover_image_url: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=1200&auto=format&fit=crop&q=80',
     category: 'Negocios',
     package_name: 'space.protondev.cotipro',
@@ -587,7 +587,7 @@ export const INITIAL_APPS: App[] = [
 - **Generador de QR Integrado:** Crea códigos para tus propias redes, enlaces o notas.
 - **Bóveda de Favoritos:** Consulta tus códigos guardados sin conexión en cualquier momento.
 - **Privacidad Absoluta:** Cero anuncios intrusivos y cero telemetría externa.`,
-    icon_url: 'https://images.unsplash.com/photo-1595079672139-545c602058b8?w=160&auto=format&fit=crop&q=80',
+    icon_url: '/apps/icons/qrvault.png',
     cover_image_url: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&auto=format&fit=crop&q=80',
     category: 'Utilidades',
     package_name: 'space.protondev.qrvault',
@@ -609,7 +609,7 @@ export const INITIAL_APPS: App[] = [
 - **Filtros de Procesamiento:** Blanco/negro de alto contraste, escala de grises y color mejorado.
 - **OCR en el Dispositivo:** Reconoce texto impreso sin subir tus fotos a servidores externos.
 - **Compilador PDF Multipágina:** Organiza páginas y compila en un documento ligero listo para compartir.`,
-    icon_url: 'https://images.unsplash.com/photo-1568667256549-094345857637?w=160&auto=format&fit=crop&q=80',
+    icon_url: '/apps/icons/scandoc.png',
     cover_image_url: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1200&auto=format&fit=crop&q=80',
     category: 'Productividad',
     package_name: 'space.protondev.scandoc',
@@ -632,7 +632,7 @@ export const INITIAL_APPS: App[] = [
 - **Ficha 360° del Contacto:** Datos de contacto, valor proyectado y notas de seguimiento.
 - **Acciones Rápidas Directas:** Llamada o chat de WhatsApp a un solo toque.
 - **Base de Datos Local Segura:** Tus clientes y montos nunca salen de tu dispositivo.`,
-    icon_url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=160&auto=format&fit=crop&q=80',
+    icon_url: '/apps/icons/pocketcrm.png',
     cover_image_url: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&auto=format&fit=crop&q=80',
     category: 'Negocios',
     package_name: 'space.protondev.pocketcrm',
@@ -655,7 +655,7 @@ export const INITIAL_APPS: App[] = [
 - **Progreso Semanal Inteligente:** Monitorea tu cumplimiento con barras visuales intuitivas.
 - **Check-in Instantáneo:** Registra tus actividades diarias en menos de 2 segundos.
 - **100% Offline y Privado:** Sin registros, sin cuentas y sin fuga de información personal.`,
-    icon_url: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=160&auto=format&fit=crop&q=80',
+    icon_url: '/apps/icons/habitflow.png',
     cover_image_url: 'https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=1200&auto=format&fit=crop&q=80',
     category: 'Productividad',
     package_name: 'space.protondev.habitflow',
@@ -678,7 +678,7 @@ export const INITIAL_APPS: App[] = [
 - **Autenticación Biométrica Nativa:** Desbloqueo rápido por huella o rostro.
 - **Generador de Alta Entropía:** Crea contraseñas aleatorias e invulnerables al instante.
 - **Protección de Portapapeles:** Copia credenciales con borrado automático de memoria.`,
-    icon_url: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=160&auto=format&fit=crop&q=80',
+    icon_url: '/apps/icons/passwordbox.png',
     cover_image_url: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&auto=format&fit=crop&q=80',
     category: 'Seguridad',
     package_name: 'space.protondev.passwordbox',
@@ -701,7 +701,7 @@ export const INITIAL_APPS: App[] = [
 - **Checklist de Subtareas:** Desglosa grandes metas en pasos accionables con barra de avance.
 - **Insignias de Prioridad:** Identifica rápidamente lo urgente y lo importante.
 - **Filtros por Estado:** Encuentra cualquier tarea en milisegundos.`,
-    icon_url: 'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=160&auto=format&fit=crop&q=80',
+    icon_url: '/apps/icons/taskboard.png',
     cover_image_url: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=1200&auto=format&fit=crop&q=80',
     category: 'Productividad',
     package_name: 'space.protondev.taskboard',
@@ -724,7 +724,7 @@ export const INITIAL_APPS: App[] = [
 - **Dashboard Estadístico con Gráficos:** Curvas de eficiencia impulsadas por fl_chart.
 - **Historial Completo de Repostajes:** Bitácora detallada con montos, fechas y notas de servicio.
 - **Operación Local:** No requiere datos móviles ni crear cuenta en gasolineras.`,
-    icon_url: 'https://images.unsplash.com/photo-1527018607160-5a33a38a3952?w=160&auto=format&fit=crop&q=80',
+    icon_url: '/apps/icons/fueltrack.png',
     cover_image_url: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200&auto=format&fit=crop&q=80',
     category: 'Utilidades',
     package_name: 'space.protondev.fueltrack',
@@ -747,7 +747,7 @@ export const INITIAL_APPS: App[] = [
 - **Algoritmo Anti-Solapamiento:** Detecta conflictos de horario antes de guardar.
 - **Recordatorios por WhatsApp:** Plantilla de mensaje con hora y servicio lista para enviar.
 - **Gestión de Tarifas:** Configura catálogo de servicios con precio y duración.`,
-    icon_url: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=160&auto=format&fit=crop&q=80',
+    icon_url: '/apps/icons/turnoapp.png',
     cover_image_url: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1200&auto=format&fit=crop&q=80',
     category: 'Negocios',
     package_name: 'space.protondev.turnoapp',
@@ -770,7 +770,7 @@ export const INITIAL_APPS: App[] = [
 - **Carrito de Compras Reactivo:** Cantidades, precios unitarios y cálculo de total en vivo.
 - **Generador de Mensaje WhatsApp:** Pedido limpio con desglose, datos de envío y total.
 - **Funcionamiento 100% Offline:** Funciona incluso en zonas con poca cobertura.`,
-    icon_url: 'https://images.unsplash.com/photo-1534723452862-4c874018d66d?w=160&auto=format&fit=crop&q=80',
+    icon_url: '/apps/icons/localmarket.png',
     cover_image_url: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&auto=format&fit=crop&q=80',
     category: 'Negocios',
     package_name: 'space.protondev.localmarket',
@@ -793,7 +793,7 @@ export const INITIAL_APPS: App[] = [
 - **Sistema de Etiquetas (#Tags):** Organiza tus notas por temas con filtros dinámicos.
 - **Fijado de Notas Clave:** Mantén tus prioridades siempre arriba en la lista.
 - **Buscador Rápido:** Encuentra cualquier nota por título o fragmento de contenido.`,
-    icon_url: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=160&auto=format&fit=crop&q=80',
+    icon_url: '/apps/icons/offlinenotes.png',
     cover_image_url: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1200&auto=format&fit=crop&q=80',
     category: 'Productividad',
     package_name: 'space.protondev.offlinenotes',
@@ -816,7 +816,7 @@ export const INITIAL_APPS: App[] = [
 - **Categorías Automáticas:** Acceso directo a Documentos, Imágenes, Audio y Video.
 - **Explorador de Carpetas Jerárquico:** Navegación tradicional con apertura nativa de archivos.
 - **Ligero y Respetuoso:** Consume menos de 25MB y protege tu información local.`,
-    icon_url: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=160&auto=format&fit=crop&q=80',
+    icon_url: '/apps/icons/myfiles.png',
     cover_image_url: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&auto=format&fit=crop&q=80',
     category: 'Utilidades',
     package_name: 'space.protondev.myfiles',
