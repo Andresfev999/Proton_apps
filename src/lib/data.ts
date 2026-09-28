@@ -12,7 +12,7 @@ export const INITIAL_RELEASES: Release[] = [
 - **Lector de Código de Barras:** Escaneo integrado con cámara para búsqueda instantánea.
 - **Alertas de Stock Bajo:** Indicadores visuales de reposición urgente.
 - **100% Offline-First:** Base de datos SQLite local sin conexión requerida.`,
-    apk_file_url: 'https://github.com/Andresfev999/StockMini/releases/download/v1.0.0/stockmini-v1.0.0.apk',
+    apk_file_url: '/apps/downloads/stockmini-v1.0.0.apk',
     apk_size_bytes: 28400000,
     min_os_version: 'Android 8.0 (API 26)',
     is_critical: false,
@@ -30,7 +30,7 @@ export const INITIAL_RELEASES: Release[] = [
 - **Generador de Presupuestos:** Cotizaciones en segundos con ítems y cálculo de IVA.
 - **Exportación PDF A4:** Diseño formal con encabezado empresarial y notas.
 - **Compartir por WhatsApp:** Envío directo al cliente con un solo toque.`,
-    apk_file_url: 'https://github.com/Andresfev999/CotiPro/releases/download/v1.0.0/cotipro-v1.0.0.apk',
+    apk_file_url: '/apps/downloads/cotipro-v1.0.0.apk',
     apk_size_bytes: 31200000,
     min_os_version: 'Android 8.0 (API 26)',
     is_critical: false,
@@ -48,7 +48,7 @@ export const INITIAL_RELEASES: Release[] = [
 - **Detector Inteligente:** Reconoce Wi-Fi, URL, Contacto vCard y Texto plano.
 - **Generador de Códigos:** Crea y exporta códigos QR personalizados.
 - **Bóveda Favoritos:** Guarda tus accesos frecuentes sin internet.`,
-    apk_file_url: 'https://github.com/Andresfev999/QRVault/releases/download/v1.0.0/qrvault-v1.0.0.apk',
+    apk_file_url: '/apps/downloads/qrvault-v1.0.0.apk',
     apk_size_bytes: 24500000,
     min_os_version: 'Android 8.0 (API 26)',
     is_critical: false,
@@ -66,7 +66,7 @@ export const INITIAL_RELEASES: Release[] = [
 - **Escáner con Filtro B/N:** Limpieza de sombras y contraste de documento.
 - **OCR en Dispositivo:** Reconocimiento de texto en español sin enviar a la nube.
 - **Compilador PDF Multipágina:** Exporta y comparte en formato digital.`,
-    apk_file_url: 'https://github.com/Andresfev999/ScanDoc/releases/download/v1.0.0/scandoc-v1.0.0.apk',
+    apk_file_url: '/apps/downloads/scandoc-v1.0.0.apk',
     apk_size_bytes: 39800000,
     min_os_version: 'Android 8.0 (API 26)',
     is_critical: false,
@@ -84,7 +84,7 @@ export const INITIAL_RELEASES: Release[] = [
 - **Pipeline de Ventas:** Prospecto, Conversación, Propuesta, Ganado y Perdido.
 - **Acciones Rápidas:** Llamada y WhatsApp directo desde la ficha.
 - **Historial de Interacciones:** Bitácora de acuerdos por cliente.`,
-    apk_file_url: 'https://github.com/Andresfev999/PocketCRM/releases/download/v1.0.0/pocketcrm-v1.0.0.apk',
+    apk_file_url: '/apps/downloads/pocketcrm-v1.0.0.apk',
     apk_size_bytes: 26100000,
     min_os_version: 'Android 8.0 (API 26)',
     is_critical: false,
@@ -102,7 +102,7 @@ export const INITIAL_RELEASES: Release[] = [
 - **Visualizador de Rachas:** Contador de días consecutivos y mejor récord.
 - **Barra de Progreso Semanal:** Vista compacta del cumplimiento de metas.
 - **Registro Rápido:** Conmuta hábitos completados con un toque.`,
-    apk_file_url: 'https://github.com/Andresfev999/HabitFlow/releases/download/v1.0.0/habitflow-v1.0.0.apk',
+    apk_file_url: '/apps/downloads/habitflow-v1.0.0.apk',
     apk_size_bytes: 23400000,
     min_os_version: 'Android 8.0 (API 26)',
     is_critical: false,
@@ -120,7 +120,7 @@ export const INITIAL_RELEASES: Release[] = [
 - **Cifrado AES-256:** Protección criptográfica completa de credenciales.
 - **Bloqueo Biométrico:** Huella dactilar y reconocimiento facial nativo.
 - **Medidor de Entropía:** Generador aleatorio de contraseñas de alta seguridad.`,
-    apk_file_url: 'https://github.com/Andresfev999/PasswordBox/releases/download/v1.0.0/passwordbox-v1.0.0.apk',
+    apk_file_url: '/apps/downloads/passwordbox-v1.0.0.apk',
     apk_size_bytes: 25100000,
     min_os_version: 'Android 8.0 (API 26)',
     is_critical: false,
@@ -138,7 +138,7 @@ export const INITIAL_RELEASES: Release[] = [
 - **Tablero Kanban Móvil:** Columnas Pendiente, En Proceso y Terminado.
 - **Checklist de Subtareas:** Desglose operativo con porcentaje de avance.
 - **Filtro por Prioridad:** Insignias de urgencia alta, media y baja.`,
-    apk_file_url: 'https://github.com/Andresfev999/TaskBoard/releases/download/v1.0.0/taskboard-v1.0.0.apk',
+    apk_file_url: '/apps/downloads/taskboard-v1.0.0.apk',
     apk_size_bytes: 24800000,
     min_os_version: 'Android 8.0 (API 26)',
     is_critical: false,
@@ -156,7 +156,7 @@ export const INITIAL_RELEASES: Release[] = [
 - **Rendimiento Automático:** Cálculo automático de km/L entre recargas de tanque.
 - **Gráficos de Consumo:** Curva de eficiencia con librería fl_chart.
 - **Control de Gastos:** Total de inversión mensual y odómetro acumulado.`,
-    apk_file_url: 'https://github.com/Andresfev999/FuelTrack/releases/download/v1.0.0/fueltrack-v1.0.0.apk',
+    apk_file_url: '/apps/downloads/fueltrack-v1.0.0.apk',
     apk_size_bytes: 27900000,
     min_os_version: 'Android 8.0 (API 26)',
     is_critical: false,
@@ -174,7 +174,7 @@ export const INITIAL_RELEASES: Release[] = [
 - **Calendario Semanal Interactivo:** Navegación por fechas y turnos del día.
 - **Prevención de Solapamiento:** Validación estricta que impide doble reserva.
 - **Recordatorios por WhatsApp:** Plantilla de mensaje lista para enviar al cliente.`,
-    apk_file_url: 'https://github.com/Andresfev999/TurnoApp/releases/download/v1.0.0/turnoapp-v1.0.0.apk',
+    apk_file_url: '/apps/downloads/turnoapp-v1.0.0.apk',
     apk_size_bytes: 28100000,
     min_os_version: 'Android 8.0 (API 26)',
     is_critical: false,
@@ -192,7 +192,7 @@ export const INITIAL_RELEASES: Release[] = [
 - **Catálogo y Carrito:** Selección rápida de artículos y filtros por categoría.
 - **Checkout Formateado WhatsApp:** Mensaje con items, subtotal y dirección.
 - **Gestión Offline:** Operación sin dependencia de servidores externos.`,
-    apk_file_url: 'https://github.com/Andresfev999/LocalMarket/releases/download/v1.0.0/localmarket-v1.0.0.apk',
+    apk_file_url: '/apps/downloads/localmarket-v1.0.0.apk',
     apk_size_bytes: 25400000,
     min_os_version: 'Android 8.0 (API 26)',
     is_critical: false,
@@ -210,7 +210,7 @@ export const INITIAL_RELEASES: Release[] = [
 - **Soporte Markdown Completo:** Previsualización limpia de títulos, listas y citas.
 - **Filtro por Tags:** Clasificación dinámica de notas por etiquetas temáticas.
 - **Búsqueda Instantánea:** Indexación local en tiempo real sin nube ni trackers.`,
-    apk_file_url: 'https://github.com/Andresfev999/OfflineNotes/releases/download/v1.0.0/offlinenotes-v1.0.0.apk',
+    apk_file_url: '/apps/downloads/offlinenotes-v1.0.0.apk',
     apk_size_bytes: 26800000,
     min_os_version: 'Android 8.0 (API 26)',
     is_critical: false,
@@ -228,7 +228,7 @@ export const INITIAL_RELEASES: Release[] = [
 - **Categorización Automática:** Documentos, fotos, audios y videos agrupados.
 - **Explorador de Carpetas:** Navegación jerárquica fluida de directorios locales.
 - **Apertura Nativa:** Apertura segura de archivos con aplicaciones del sistema.`,
-    apk_file_url: 'https://github.com/Andresfev999/MyFiles/releases/download/v1.0.0/myfiles-v1.0.0.apk',
+    apk_file_url: '/apps/downloads/myfiles-v1.0.0.apk',
     apk_size_bytes: 23900000,
     min_os_version: 'Android 8.0 (API 26)',
     is_critical: false,
