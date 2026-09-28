@@ -1,6 +1,6 @@
 export type AppStatus = 'published' | 'beta' | 'archived';
 export type AppPlatform = 'android' | 'ios' | 'web';
-export type AppCategory = 'Productividad' | 'Seguridad' | 'Utilidades' | 'Finanzas' | 'Comunicación' | 'Desarrollo';
+export type AppCategory = 'Productividad' | 'Seguridad' | 'Utilidades' | 'Finanzas' | 'Comunicación' | 'Desarrollo' | 'Negocios';
 
 export interface AppScreenshot {
   id: string;

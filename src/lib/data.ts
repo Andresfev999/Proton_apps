@@ -2,6 +2,241 @@ import { App, Release, AppScreenshot } from '@/types/database';
 
 export const INITIAL_RELEASES: Release[] = [
   {
+    id: 'rel-stockmini-100',
+    app_id: 'app-stockmini',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.0
+- **Kardex Automático:** Registro atómico de entradas, salidas y ventas.
+- **Lector de Código de Barras:** Escaneo integrado con cámara para búsqueda instantánea.
+- **Alertas de Stock Bajo:** Indicadores visuales de reposición urgente.
+- **100% Offline-First:** Base de datos SQLite local sin conexión requerida.`,
+    apk_file_url: 'https://github.com/Andresfev999/StockMini/releases/download/v1.0.0/stockmini-v1.0.0.apk',
+    apk_size_bytes: 28400000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 520,
+    published_at: '2026-09-28T02:00:00Z',
+    created_at: '2026-09-28T02:00:00Z'
+  },
+  {
+    id: 'rel-cotipro-100',
+    app_id: 'app-cotipro',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.0
+- **Generador de Presupuestos:** Cotizaciones en segundos con ítems y cálculo de IVA.
+- **Exportación PDF A4:** Diseño formal con encabezado empresarial y notas.
+- **Compartir por WhatsApp:** Envío directo al cliente con un solo toque.`,
+    apk_file_url: 'https://github.com/Andresfev999/CotiPro/releases/download/v1.0.0/cotipro-v1.0.0.apk',
+    apk_size_bytes: 31200000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 480,
+    published_at: '2026-09-28T02:15:00Z',
+    created_at: '2026-09-28T02:15:00Z'
+  },
+  {
+    id: 'rel-qrvault-100',
+    app_id: 'app-qrvault',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.0
+- **Detector Inteligente:** Reconoce Wi-Fi, URL, Contacto vCard y Texto plano.
+- **Generador de Códigos:** Crea y exporta códigos QR personalizados.
+- **Bóveda Favoritos:** Guarda tus accesos frecuentes sin internet.`,
+    apk_file_url: 'https://github.com/Andresfev999/QRVault/releases/download/v1.0.0/qrvault-v1.0.0.apk',
+    apk_size_bytes: 24500000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 810,
+    published_at: '2026-09-28T02:30:00Z',
+    created_at: '2026-09-28T02:30:00Z'
+  },
+  {
+    id: 'rel-scandoc-100',
+    app_id: 'app-scandoc',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.0
+- **Escáner con Filtro B/N:** Limpieza de sombras y contraste de documento.
+- **OCR en Dispositivo:** Reconocimiento de texto en español sin enviar a la nube.
+- **Compilador PDF Multipágina:** Exporta y comparte en formato digital.`,
+    apk_file_url: 'https://github.com/Andresfev999/ScanDoc/releases/download/v1.0.0/scandoc-v1.0.0.apk',
+    apk_size_bytes: 39800000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 670,
+    published_at: '2026-09-28T02:45:00Z',
+    created_at: '2026-09-28T02:45:00Z'
+  },
+  {
+    id: 'rel-pocketcrm-100',
+    app_id: 'app-pocketcrm',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.0
+- **Pipeline de Ventas:** Prospecto, Conversación, Propuesta, Ganado y Perdido.
+- **Acciones Rápidas:** Llamada y WhatsApp directo desde la ficha.
+- **Historial de Interacciones:** Bitácora de acuerdos por cliente.`,
+    apk_file_url: 'https://github.com/Andresfev999/PocketCRM/releases/download/v1.0.0/pocketcrm-v1.0.0.apk',
+    apk_size_bytes: 26100000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 410,
+    published_at: '2026-09-28T03:00:00Z',
+    created_at: '2026-09-28T03:00:00Z'
+  },
+  {
+    id: 'rel-habitflow-100',
+    app_id: 'app-habitflow',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.0
+- **Visualizador de Rachas:** Contador de días consecutivos y mejor récord.
+- **Barra de Progreso Semanal:** Vista compacta del cumplimiento de metas.
+- **Registro Rápido:** Conmuta hábitos completados con un toque.`,
+    apk_file_url: 'https://github.com/Andresfev999/HabitFlow/releases/download/v1.0.0/habitflow-v1.0.0.apk',
+    apk_size_bytes: 23400000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 940,
+    published_at: '2026-09-28T03:15:00Z',
+    created_at: '2026-09-28T03:15:00Z'
+  },
+  {
+    id: 'rel-passwordbox-100',
+    app_id: 'app-passwordbox',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.0
+- **Cifrado AES-256:** Protección criptográfica completa de credenciales.
+- **Bloqueo Biométrico:** Huella dactilar y reconocimiento facial nativo.
+- **Medidor de Entropía:** Generador aleatorio de contraseñas de alta seguridad.`,
+    apk_file_url: 'https://github.com/Andresfev999/PasswordBox/releases/download/v1.0.0/passwordbox-v1.0.0.apk',
+    apk_size_bytes: 25100000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 1120,
+    published_at: '2026-09-28T03:30:00Z',
+    created_at: '2026-09-28T03:30:00Z'
+  },
+  {
+    id: 'rel-taskboard-100',
+    app_id: 'app-taskboard',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.0
+- **Tablero Kanban Móvil:** Columnas Pendiente, En Proceso y Terminado.
+- **Checklist de Subtareas:** Desglose operativo con porcentaje de avance.
+- **Filtro por Prioridad:** Insignias de urgencia alta, media y baja.`,
+    apk_file_url: 'https://github.com/Andresfev999/TaskBoard/releases/download/v1.0.0/taskboard-v1.0.0.apk',
+    apk_size_bytes: 24800000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 730,
+    published_at: '2026-09-28T03:45:00Z',
+    created_at: '2026-09-28T03:45:00Z'
+  },
+  {
+    id: 'rel-fueltrack-100',
+    app_id: 'app-fueltrack',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.0
+- **Rendimiento Automático:** Cálculo automático de km/L entre recargas de tanque.
+- **Gráficos de Consumo:** Curva de eficiencia con librería fl_chart.
+- **Control de Gastos:** Total de inversión mensual y odómetro acumulado.`,
+    apk_file_url: 'https://github.com/Andresfev999/FuelTrack/releases/download/v1.0.0/fueltrack-v1.0.0.apk',
+    apk_size_bytes: 27900000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 590,
+    published_at: '2026-09-28T04:00:00Z',
+    created_at: '2026-09-28T04:00:00Z'
+  },
+  {
+    id: 'rel-turnoapp-100',
+    app_id: 'app-turnoapp',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.0
+- **Calendario Semanal Interactivo:** Navegación por fechas y turnos del día.
+- **Prevención de Solapamiento:** Validación estricta que impide doble reserva.
+- **Recordatorios por WhatsApp:** Plantilla de mensaje lista para enviar al cliente.`,
+    apk_file_url: 'https://github.com/Andresfev999/TurnoApp/releases/download/v1.0.0/turnoapp-v1.0.0.apk',
+    apk_size_bytes: 28100000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 460,
+    published_at: '2026-09-28T04:15:00Z',
+    created_at: '2026-09-28T04:15:00Z'
+  },
+  {
+    id: 'rel-localmarket-100',
+    app_id: 'app-localmarket',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.0
+- **Catálogo y Carrito:** Selección rápida de artículos y filtros por categoría.
+- **Checkout Formateado WhatsApp:** Mensaje con items, subtotal y dirección.
+- **Gestión Offline:** Operación sin dependencia de servidores externos.`,
+    apk_file_url: 'https://github.com/Andresfev999/LocalMarket/releases/download/v1.0.0/localmarket-v1.0.0.apk',
+    apk_size_bytes: 25400000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 510,
+    published_at: '2026-09-28T04:30:00Z',
+    created_at: '2026-09-28T04:30:00Z'
+  },
+  {
+    id: 'rel-offlinenotes-100',
+    app_id: 'app-offlinenotes',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.0
+- **Soporte Markdown Completo:** Previsualización limpia de títulos, listas y citas.
+- **Filtro por Tags:** Clasificación dinámica de notas por etiquetas temáticas.
+- **Búsqueda Instantánea:** Indexación local en tiempo real sin nube ni trackers.`,
+    apk_file_url: 'https://github.com/Andresfev999/OfflineNotes/releases/download/v1.0.0/offlinenotes-v1.0.0.apk',
+    apk_size_bytes: 26800000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 890,
+    published_at: '2026-09-28T04:45:00Z',
+    created_at: '2026-09-28T04:45:00Z'
+  },
+  {
+    id: 'rel-myfiles-100',
+    app_id: 'app-myfiles',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.0
+- **Categorización Automática:** Documentos, fotos, audios y videos agrupados.
+- **Explorador de Carpetas:** Navegación jerárquica fluida de directorios locales.
+- **Apertura Nativa:** Apertura segura de archivos con aplicaciones del sistema.`,
+    apk_file_url: 'https://github.com/Andresfev999/MyFiles/releases/download/v1.0.0/myfiles-v1.0.0.apk',
+    apk_size_bytes: 23900000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 620,
+    published_at: '2026-09-28T05:00:00Z',
+    created_at: '2026-09-28T05:00:00Z'
+  },
+  {
     id: 'rel-flowpdf-100',
     app_id: 'app-flowpdf',
     version_name: '1.0.0',
@@ -293,6 +528,304 @@ export const INITIAL_SCREENSHOTS: Record<string, AppScreenshot[]> = {
 };
 
 export const INITIAL_APPS: App[] = [
+  {
+    id: 'app-stockmini',
+    slug: 'stockmini',
+    name: 'StockMini',
+    tagline: 'Mini control de inventario, kardex y ventas para pequeños comercios',
+    description: `### Control de Inventario Sin Complicaciones
+**StockMini** está diseñada para pequeños negocios, abarrotes, tiendas y talleres que necesitan llevar el control de sus existencias, registrar entradas/salidas y saber exactamente cuándo reponer mercancía.
+
+#### Características Clave:
+- **Kardex Automático:** Cada ajuste o venta crea un movimiento con fecha, tipo y motivo.
+- **Lector de Código de Barras Integrado:** Apunta con la cámara y accede al producto al instante.
+- **Alertas de Stock Mínimo:** Distintivos de advertencia cuando un producto está por agotarse.
+- **100% Offline-First:** Base de datos SQLite local para operar sin internet.`,
+    icon_url: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=160&auto=format&fit=crop&q=80',
+    cover_image_url: 'https://images.unsplash.com/photo-1553413077-190dd305871c?w=1200&auto=format&fit=crop&q=80',
+    category: 'Negocios',
+    package_name: 'space.protondev.stockmini',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/StockMini',
+    status: 'published',
+    created_at: '2026-09-28T02:00:00Z',
+    updated_at: '2026-09-28T02:00:00Z'
+  },
+  {
+    id: 'app-cotipro',
+    slug: 'cotipro',
+    name: 'CotiPro',
+    tagline: 'Generador de cotizaciones y presupuestos en PDF con envío a WhatsApp',
+    description: `### Presupuestos Profesionales en Segundos
+**CotiPro** permite a contratistas, técnicos e independientes armar cotizaciones completas en el lugar de trabajo y compartirlas como documentos PDF formales por WhatsApp antes de que se enfríe el cliente.
+
+#### Características Clave:
+- **Cálculo Automático:** Subtotal, IVA o impuestos configurables y descuento comercial.
+- **Exportación en Formato PDF A4:** Diseño ejecutivo con logo, términos y datos fiscales.
+- **Envío Inmediato a WhatsApp:** Abre el chat del cliente con el resumen listo para enviar.
+- **Directorio de Clientes:** Guarda clientes frecuentes para cotizar en menos de 1 minuto.`,
+    icon_url: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=160&auto=format&fit=crop&q=80',
+    cover_image_url: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=1200&auto=format&fit=crop&q=80',
+    category: 'Negocios',
+    package_name: 'space.protondev.cotipro',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/CotiPro',
+    status: 'published',
+    created_at: '2026-09-28T02:15:00Z',
+    updated_at: '2026-09-28T02:15:00Z'
+  },
+  {
+    id: 'app-qrvault',
+    slug: 'qrvault',
+    name: 'QR Vault',
+    tagline: 'Escáner, organizador y generador privado de códigos QR y WiFi',
+    description: `### Tu Bóveda Personal de Códigos QR
+**QR Vault** no es solo un lector: es un organizador inteligente que detecta si el código es una red Wi-Fi, un link web, una tarjeta vCard o texto plano, permitiéndote guardarlo en tus favoritos offline.
+
+#### Características Clave:
+- **Reconocimiento Inteligente:** Conexión a Wi-Fi, apertura de links y llamadas en un toque.
+- **Generador de QR Integrado:** Crea códigos para tus propias redes, enlaces o notas.
+- **Bóveda de Favoritos:** Consulta tus códigos guardados sin conexión en cualquier momento.
+- **Privacidad Absoluta:** Cero anuncios intrusivos y cero telemetría externa.`,
+    icon_url: 'https://images.unsplash.com/photo-1595079672139-545c602058b8?w=160&auto=format&fit=crop&q=80',
+    cover_image_url: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&auto=format&fit=crop&q=80',
+    category: 'Utilidades',
+    package_name: 'space.protondev.qrvault',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/QRVault',
+    status: 'published',
+    created_at: '2026-09-28T02:30:00Z',
+    updated_at: '2026-09-28T02:30:00Z'
+  },
+  {
+    id: 'app-scandoc',
+    slug: 'scandoc',
+    name: 'ScanDoc',
+    tagline: 'Escáner de documentos a PDF con OCR local y filtros de contraste',
+    description: `### Digitalizador de Documentos con OCR en tu Celular
+**ScanDoc** convierte la cámara de tu móvil en un escáner de alta fidelidad con filtros de realce de texto en blanco y negro, reconocimiento OCR local y ensamblador de PDF multipágina.
+
+#### Características Clave:
+- **Filtros de Procesamiento:** Blanco/negro de alto contraste, escala de grises y color mejorado.
+- **OCR en el Dispositivo:** Reconoce texto impreso sin subir tus fotos a servidores externos.
+- **Compilador PDF Multipágina:** Organiza páginas y compila en un documento ligero listo para compartir.`,
+    icon_url: 'https://images.unsplash.com/photo-1568667256549-094345857637?w=160&auto=format&fit=crop&q=80',
+    cover_image_url: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1200&auto=format&fit=crop&q=80',
+    category: 'Productividad',
+    package_name: 'space.protondev.scandoc',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/ScanDoc',
+    status: 'published',
+    created_at: '2026-09-28T02:45:00Z',
+    updated_at: '2026-09-28T02:45:00Z'
+  },
+  {
+    id: 'app-pocketcrm',
+    slug: 'pocketcrm',
+    name: 'PocketCRM',
+    tagline: 'CRM de bolsillo para gestionar clientes, embudos de ventas y notas',
+    description: `### Administra tus Prospectos y Cierra Más Tratos
+**PocketCRM** es el embudo de ventas que cabe en tu bolsillo. Diseñado para emprendedores que atienden clientes por llamada o WhatsApp y necesitan no olvidar ningún seguimiento comercial.
+
+#### Características Clave:
+- **Etapas de Pipeline Visual:** Prospecto, Conversación, Propuesta, Ganado o Perdido.
+- **Ficha 360° del Contacto:** Datos de contacto, valor proyectado y notas de seguimiento.
+- **Acciones Rápidas Directas:** Llamada o chat de WhatsApp a un solo toque.
+- **Base de Datos Local Segura:** Tus clientes y montos nunca salen de tu dispositivo.`,
+    icon_url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=160&auto=format&fit=crop&q=80',
+    cover_image_url: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&auto=format&fit=crop&q=80',
+    category: 'Negocios',
+    package_name: 'space.protondev.pocketcrm',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/PocketCRM',
+    status: 'published',
+    created_at: '2026-09-28T03:00:00Z',
+    updated_at: '2026-09-28T03:00:00Z'
+  },
+  {
+    id: 'app-habitflow',
+    slug: 'habitflow',
+    name: 'HabitFlow',
+    tagline: 'Rastreador minimalista de hábitos diarios, rachas y constancia semanal',
+    description: `### Construye Hábitos Duraderos con Cero Fricción
+**HabitFlow** te ayuda a mantener la disciplina diaria mediante un tablero de rachas visual y progreso semanal que premia tu constancia sin abrumarte con notificaciones invasivas.
+
+#### Características Clave:
+- **Contador de Rachas:** Visualiza tus días continuos y tu récord histórico.
+- **Progreso Semanal Inteligente:** Monitorea tu cumplimiento con barras visuales intuitivas.
+- **Check-in Instantáneo:** Registra tus actividades diarias en menos de 2 segundos.
+- **100% Offline y Privado:** Sin registros, sin cuentas y sin fuga de información personal.`,
+    icon_url: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=160&auto=format&fit=crop&q=80',
+    cover_image_url: 'https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=1200&auto=format&fit=crop&q=80',
+    category: 'Productividad',
+    package_name: 'space.protondev.habitflow',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/HabitFlow',
+    status: 'published',
+    created_at: '2026-09-28T03:15:00Z',
+    updated_at: '2026-09-28T03:15:00Z'
+  },
+  {
+    id: 'app-passwordbox',
+    slug: 'passwordbox',
+    name: 'PasswordBox',
+    tagline: 'Bóveda de contraseñas con cifrado AES-256 local y biometría',
+    description: `### Tus Claves Cifradas Fuera de la Nube
+**PasswordBox** es la alternativa soberana a los gestores en la nube. Todas tus contraseñas se almacenan cifradas con **AES-256 CBC** en tu teléfono, desbloqueables únicamente con tu huella digital.
+
+#### Características Clave:
+- **Cifrado AES-256 Militar:** Base de datos blindada criptográficamente.
+- **Autenticación Biométrica Nativa:** Desbloqueo rápido por huella o rostro.
+- **Generador de Alta Entropía:** Crea contraseñas aleatorias e invulnerables al instante.
+- **Protección de Portapapeles:** Copia credenciales con borrado automático de memoria.`,
+    icon_url: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=160&auto=format&fit=crop&q=80',
+    cover_image_url: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&auto=format&fit=crop&q=80',
+    category: 'Seguridad',
+    package_name: 'space.protondev.passwordbox',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/PasswordBox',
+    status: 'published',
+    created_at: '2026-09-28T03:30:00Z',
+    updated_at: '2026-09-28T03:30:00Z'
+  },
+  {
+    id: 'app-taskboard',
+    slug: 'taskboard',
+    name: 'TaskBoard',
+    tagline: 'Tablero Kanban ágil para organizar tareas y proyectos sin conexión',
+    description: `### El Método Kanban Directo en tu Bolsillo
+**TaskBoard** traslada la claridad y agilidad de un tablero visual estilo Trello al móvil de manera rápida, ligera y 100% offline para gestionar proyectos personales y tareas cotidianas.
+
+#### Características Clave:
+- **Columnas de Flujo:** Pendiente, En Proceso y Terminado para seguimiento visual.
+- **Checklist de Subtareas:** Desglosa grandes metas en pasos accionables con barra de avance.
+- **Insignias de Prioridad:** Identifica rápidamente lo urgente y lo importante.
+- **Filtros por Estado:** Encuentra cualquier tarea en milisegundos.`,
+    icon_url: 'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=160&auto=format&fit=crop&q=80',
+    cover_image_url: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=1200&auto=format&fit=crop&q=80',
+    category: 'Productividad',
+    package_name: 'space.protondev.taskboard',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/TaskBoard',
+    status: 'published',
+    created_at: '2026-09-28T03:45:00Z',
+    updated_at: '2026-09-28T03:45:00Z'
+  },
+  {
+    id: 'app-fueltrack',
+    slug: 'fueltrack',
+    name: 'FuelTrack',
+    tagline: 'Control de consumo de combustible, rendimiento km/L y gastos de vehículo',
+    description: `### Monitorea el Gasto Real de Combustible de tu Auto
+**FuelTrack** te permite registrar cada carga en la gasolinera calculando automáticamente el rendimiento por litro (km/L), costo por kilómetro y proyecciones de gasto mensual.
+
+#### Características Clave:
+- **Cálculo de Eficiencia km/L:** Determina el consumo real con solo ingresar odómetro y litros.
+- **Dashboard Estadístico con Gráficos:** Curvas de eficiencia impulsadas por fl_chart.
+- **Historial Completo de Repostajes:** Bitácora detallada con montos, fechas y notas de servicio.
+- **Operación Local:** No requiere datos móviles ni crear cuenta en gasolineras.`,
+    icon_url: 'https://images.unsplash.com/photo-1527018607160-5a33a38a3952?w=160&auto=format&fit=crop&q=80',
+    cover_image_url: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200&auto=format&fit=crop&q=80',
+    category: 'Utilidades',
+    package_name: 'space.protondev.fueltrack',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/FuelTrack',
+    status: 'published',
+    created_at: '2026-09-28T04:00:00Z',
+    updated_at: '2026-09-28T04:00:00Z'
+  },
+  {
+    id: 'app-turnoapp',
+    slug: 'turnoapp',
+    name: 'TurnoApp',
+    tagline: 'Agenda de citas, reservas y recordatorios WhatsApp para profesionales',
+    description: `### Tu Agenda de Clientes Sin Choques de Horario
+**TurnoApp** organiza la agenda de barberías, salones de estética, consultorios y profesionales independientes con control anti-solapamiento y recordatorios por WhatsApp a un clic.
+
+#### Características Clave:
+- **Calendario Semanal Interactivo:** Vista fluida de citas y horarios programados.
+- **Algoritmo Anti-Solapamiento:** Detecta conflictos de horario antes de guardar.
+- **Recordatorios por WhatsApp:** Plantilla de mensaje con hora y servicio lista para enviar.
+- **Gestión de Tarifas:** Configura catálogo de servicios con precio y duración.`,
+    icon_url: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=160&auto=format&fit=crop&q=80',
+    cover_image_url: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1200&auto=format&fit=crop&q=80',
+    category: 'Negocios',
+    package_name: 'space.protondev.turnoapp',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/TurnoApp',
+    status: 'published',
+    created_at: '2026-09-28T04:15:00Z',
+    updated_at: '2026-09-28T04:15:00Z'
+  },
+  {
+    id: 'app-localmarket',
+    slug: 'localmarket',
+    name: 'LocalMarket',
+    tagline: 'Catálogo de productos y toma de pedidos con checkout directo a WhatsApp',
+    description: `### Vende por Catálogo y Recibe Pedidos Listos por WhatsApp
+**LocalMarket** permite a restaurantes, cafeterías y tiendas de barrio exhibir sus productos, sumar artículos al carrito y enviar pedidos estructurados al WhatsApp del negocio.
+
+#### Características Clave:
+- **Catálogo Organizado por Categorías:** Comidas, bebidas, postres y acompañamientos.
+- **Carrito de Compras Reactivo:** Cantidades, precios unitarios y cálculo de total en vivo.
+- **Generador de Mensaje WhatsApp:** Pedido limpio con desglose, datos de envío y total.
+- **Funcionamiento 100% Offline:** Funciona incluso en zonas con poca cobertura.`,
+    icon_url: 'https://images.unsplash.com/photo-1534723452862-4c874018d66d?w=160&auto=format&fit=crop&q=80',
+    cover_image_url: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&auto=format&fit=crop&q=80',
+    category: 'Negocios',
+    package_name: 'space.protondev.localmarket',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/LocalMarket',
+    status: 'published',
+    created_at: '2026-09-28T04:30:00Z',
+    updated_at: '2026-09-28T04:30:00Z'
+  },
+  {
+    id: 'app-offlinenotes',
+    slug: 'offlinenotes',
+    name: 'OfflineNotes',
+    tagline: 'Bloc de notas privado en Markdown con etiquetas y búsqueda instantánea',
+    description: `### Notas en Markdown con Privacidad Total
+**OfflineNotes** es tu libreta de pensamientos, apuntes de código y listas pendientes en formato Markdown, guardadas exclusivamente en tu móvil sin nube ni rastreadores.
+
+#### Características Clave:
+- **Editor y Visor Markdown:** Renderiza encabezados, negritas, listas y bloques de cita.
+- **Sistema de Etiquetas (#Tags):** Organiza tus notas por temas con filtros dinámicos.
+- **Fijado de Notas Clave:** Mantén tus prioridades siempre arriba en la lista.
+- **Buscador Rápido:** Encuentra cualquier nota por título o fragmento de contenido.`,
+    icon_url: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=160&auto=format&fit=crop&q=80',
+    cover_image_url: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1200&auto=format&fit=crop&q=80',
+    category: 'Productividad',
+    package_name: 'space.protondev.offlinenotes',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/OfflineNotes',
+    status: 'published',
+    created_at: '2026-09-28T04:45:00Z',
+    updated_at: '2026-09-28T04:45:00Z'
+  },
+  {
+    id: 'app-myfiles',
+    slug: 'myfiles',
+    name: 'MyFiles',
+    tagline: 'Gestor ligero y categorizado de archivos locales para Android',
+    description: `### Explora y Organiza tu Almacenamiento Sin Basura
+**MyFiles** ofrece una interfaz limpia y veloz para clasificar documentos, fotos, audios y videos, o navegar las carpetas del sistema sin anuncios ni permisos sospechosos.
+
+#### Características Clave:
+- **Resumen Visual de Almacenamiento:** Gráfico de espacio ocupado por categoría.
+- **Categorías Automáticas:** Acceso directo a Documentos, Imágenes, Audio y Video.
+- **Explorador de Carpetas Jerárquico:** Navegación tradicional con apertura nativa de archivos.
+- **Ligero y Respetuoso:** Consume menos de 25MB y protege tu información local.`,
+    icon_url: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=160&auto=format&fit=crop&q=80',
+    cover_image_url: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&auto=format&fit=crop&q=80',
+    category: 'Utilidades',
+    package_name: 'space.protondev.myfiles',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/MyFiles',
+    status: 'published',
+    created_at: '2026-09-28T05:00:00Z',
+    updated_at: '2026-09-28T05:00:00Z'
+  },
   {
     id: 'app-flowpdf',
     slug: 'flowpdf',
