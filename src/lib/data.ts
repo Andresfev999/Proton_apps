@@ -2,6 +2,25 @@ import { App, Release, AppScreenshot } from '@/types/database';
 
 export const INITIAL_RELEASES: Release[] = [
   {
+    id: 'rel-swipegallery-100',
+    app_id: 'app-swipegallery',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Lanzamiento Oficial v1.0.0
+- **Modo Swipe & Clean:** Desliza a la derecha para conservar y a la izquierda para eliminar fotos y videos acumulados.
+- **Métricas de Almacenamiento:** Cálculo en tiempo real de espacio en MB/GB liberado.
+- **Soporte de Álbumes:** Filtro por Cámara, WhatsApp, Capturas y Descargas.
+- **Visor con Zoom Táctil:** Interfaz inmersiva a pantalla completa y apertura de videos.`,
+    apk_file_url: '/apps/downloads/swipegallery-v1.0.0.apk',
+    apk_size_bytes: 49062869,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 310,
+    published_at: '2026-09-29T23:55:00Z',
+    created_at: '2026-09-29T23:55:00Z'
+  },
+  {
     id: 'rel-myfiles-102',
     app_id: 'app-myfiles',
     version_name: '1.0.2',
@@ -152,6 +171,24 @@ export const INITIAL_RELEASES: Release[] = [
     created_at: '2026-09-29T21:00:00Z'
   },
   {
+    id: 'rel-pocketcrm-102',
+    app_id: 'app-pocketcrm',
+    version_name: '1.0.2',
+    version_code: 3,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.2
+- **WhatsApp Universal:** Protocolo de mensajería optimizado para compatibilidad con WhatsApp estándar y WhatsApp Business.
+- **Acciones Rápidas Robustas:** Validación de números telefónicos y alertas informativas inmediatas si el teléfono no es válido o no está disponible.
+- **Llamadas Directas Mejoradas:** Integración nativa con la app de llamadas del teléfono en segundo plano.`,
+    apk_file_url: '/apps/downloads/pocketcrm-v1.0.2.apk',
+    apk_size_bytes: 51069794,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 450,
+    published_at: '2026-09-29T23:45:00Z',
+    created_at: '2026-09-29T23:45:00Z'
+  },
+  {
     id: 'rel-pocketcrm-101',
     app_id: 'app-pocketcrm',
     version_name: '1.0.1',
@@ -187,6 +224,24 @@ export const INITIAL_RELEASES: Release[] = [
     download_count: 830,
     published_at: '2026-09-29T21:00:00Z',
     created_at: '2026-09-29T21:00:00Z'
+  },
+  {
+    id: 'rel-scandoc-102',
+    app_id: 'app-scandoc',
+    version_name: '1.0.2',
+    version_code: 3,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.2
+- **Guardar en Descargas del Teléfono:** Botón directo para guardar el documento PDF en la carpeta pública Descargas (/storage/emulated/0/Download).
+- **Acceso Inmediato:** El documento generado ahora es visible y editable desde cualquier explorador de archivos.
+- **Optimización de Exportación:** Compilación PDF con copia de seguridad local.`,
+    apk_file_url: '/apps/downloads/scandoc-v1.0.2.apk',
+    apk_size_bytes: 87303770,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 715,
+    published_at: '2026-09-29T23:40:00Z',
+    created_at: '2026-09-29T23:40:00Z'
   },
   {
     id: 'rel-scandoc-101',
@@ -632,6 +687,30 @@ export const INITIAL_SCREENSHOTS: Record<string, AppScreenshot[]> = {
 };
 
 export const INITIAL_APPS: App[] = [
+  {
+    id: 'app-swipegallery',
+    slug: 'swipegallery',
+    name: 'SwipeGallery',
+    tagline: 'Galería de fotos y videos con limpiador Swipe interactivo estilo Tinder',
+    description: `### Tu Galería Rápida con Limpiador Inteligente por Deslizamiento
+**SwipeGallery** combina una galería fluida y moderna de fotos y videos con un revolucionario limpiador visual tipo tarjeta: desliza a la **derecha** para conservar tus mejores recuerdos y a la **izquierda** para enviar a la papelera fotos duplicadas, borrosas o innecesarias.
+
+#### Características Clave:
+- **Limpiador Swipe & Clean:** Revisa cientos de fotos en minutos con gestos intuitivos y físicas suaves.
+- **Contador de Espacio en Tiempo Real:** Visualiza exactamente cuántos Megabytes o Gigabytes vas a liberar antes de confirmar.
+- **Explorador por Álbumes:** Limpieza granular por carpetas (Cámara, Descargas, WhatsApp, Capturas de pantalla).
+- **Visor Multimedia Completo:** Zoom táctil interactivo, reproductor de video, detalles del archivo y compartir nativo.
+- **100% Privado y Local:** Tus fotos nunca salen de tu dispositivo ni se suben a la nube.`,
+    icon_url: '/apps/icons/swipegallery.png',
+    cover_image_url: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1200&auto=format&fit=crop&q=80',
+    category: 'Fotografía',
+    package_name: 'space.protondev.swipe_gallery',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/SwipeGallery',
+    status: 'published',
+    created_at: '2026-09-29T23:55:00Z',
+    updated_at: '2026-09-29T23:55:00Z'
+  },
   {
     id: 'app-stockmini',
     slug: 'stockmini',
