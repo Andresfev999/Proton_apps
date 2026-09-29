@@ -2,6 +2,246 @@ import { App, Release, AppScreenshot } from '@/types/database';
 
 export const INITIAL_RELEASES: Release[] = [
   {
+    id: 'rel-myfiles-101',
+    app_id: 'app-myfiles',
+    version_name: '1.0.1',
+    version_code: 2,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.1
+- **Ícono Oficial HD:** Nuevo launcher icon adaptativo de alta resolución.
+- **Verificador de Actualizaciones:** Nuevo botón en Ajustes para verificar versiones en la nube.
+- **Corrección de Errores:** Resuelto error en interpolación de caracteres y rutas.
+- **Base de Datos Limpia:** Inicio 100% libre de datos residuales.`,
+    apk_file_url: '/apps/downloads/myfiles-v1.0.1.apk',
+    apk_size_bytes: 46734653,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 640,
+    published_at: '2026-09-29T21:00:00Z',
+    created_at: '2026-09-29T21:00:00Z'
+  },
+  {
+    id: 'rel-passwordbox-101',
+    app_id: 'app-passwordbox',
+    version_name: '1.0.1',
+    version_code: 2,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.1
+- **Configuración Inicial Fluida:** Ya no solicita contraseñas por defecto; pide configurar tu clave maestra o biometría al iniciar.
+- **Ícono Oficial HD:** Nuevo launcher icon adaptativo de alta resolución.
+- **Verificador de Actualizaciones:** Nuevo botón en Ajustes para verificar versiones.
+- **Base de Datos Limpia:** Arranque sin claves de prueba preinsertadas.`,
+    apk_file_url: '/apps/downloads/passwordbox-v1.0.1.apk',
+    apk_size_bytes: 52250204,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 1150,
+    published_at: '2026-09-29T21:00:00Z',
+    created_at: '2026-09-29T21:00:00Z'
+  },
+  {
+    id: 'rel-offlinenotes-101',
+    app_id: 'app-offlinenotes',
+    version_name: '1.0.1',
+    version_code: 2,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.1
+- **Filtro de Etiquetas Mejorado:** Deselección dinámica de tags tocando de nuevo el chip para volver a 'Todos'.
+- **Fijar Notas:** Soporte para destacar notas prioritarias en la parte superior.
+- **Ícono Oficial HD:** Nuevo launcher icon adaptativo de alta resolución.
+- **Verificador de Actualizaciones:** Comprobación directa de nuevas versiones desde Ajustes.`,
+    apk_file_url: '/apps/downloads/offlinenotes-v1.0.1.apk',
+    apk_size_bytes: 50946326,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 910,
+    published_at: '2026-09-29T21:00:00Z',
+    created_at: '2026-09-29T21:00:00Z'
+  },
+  {
+    id: 'rel-stockmini-101',
+    app_id: 'app-stockmini',
+    version_name: '1.0.1',
+    version_code: 2,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.1
+- **Acciones Rápidas de Stock:** Botones +1 / -1 directos en el listado para entradas y salidas express.
+- **Ícono Oficial HD:** Nuevo launcher icon adaptativo de alta resolución.
+- **Verificador de Actualizaciones:** Nuevo botón en Ajustes para verificar versiones.
+- **Base de Datos Limpia:** Arranque 100% libre de productos de prueba.`,
+    apk_file_url: '/apps/downloads/stockmini-v1.0.1.apk',
+    apk_size_bytes: 67900000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 540,
+    published_at: '2026-09-29T21:00:00Z',
+    created_at: '2026-09-29T21:00:00Z'
+  },
+  {
+    id: 'rel-cotipro-101',
+    app_id: 'app-cotipro',
+    version_name: '1.0.1',
+    version_code: 2,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.1
+- **Duplicar Cotizaciones:** Clonación con un solo toque manteniendo ítems y calculando nuevo consecutivo.
+- **Ciclo de Estados:** Selector rápido de estado (Borrador, Enviada, Aprobada, Rechazada).
+- **Ícono Oficial HD:** Nuevo launcher icon adaptativo de alta resolución.
+- **Verificador de Actualizaciones:** Botón en Ajustes para validar nuevas versiones.`,
+    apk_file_url: '/apps/downloads/cotipro-v1.0.1.apk',
+    apk_size_bytes: 54726733,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 495,
+    published_at: '2026-09-29T21:00:00Z',
+    created_at: '2026-09-29T21:00:00Z'
+  },
+  {
+    id: 'rel-turnoapp-101',
+    app_id: 'app-turnoapp',
+    version_name: '1.0.1',
+    version_code: 2,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.1
+- **Ícono Oficial HD:** Nuevo launcher icon adaptativo de alta resolución.
+- **Verificador de Actualizaciones:** Nuevo botón en Ajustes para verificar versiones.
+- **Base de Datos Limpia:** Arranque 100% libre de turnos ficticios.`,
+    apk_file_url: '/apps/downloads/turnoapp-v1.0.1.apk',
+    apk_size_bytes: 51328588,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 475,
+    published_at: '2026-09-29T21:00:00Z',
+    created_at: '2026-09-29T21:00:00Z'
+  },
+  {
+    id: 'rel-localmarket-101',
+    app_id: 'app-localmarket',
+    version_name: '1.0.1',
+    version_code: 2,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.1
+- **Ícono Oficial HD:** Nuevo launcher icon adaptativo de alta resolución.
+- **Verificador de Actualizaciones:** Nuevo botón en Ajustes para verificar versiones.
+- **Base de Datos Limpia:** Arranque 100% libre de artículos de prueba.`,
+    apk_file_url: '/apps/downloads/localmarket-v1.0.1.apk',
+    apk_size_bytes: 48800000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 525,
+    published_at: '2026-09-29T21:00:00Z',
+    created_at: '2026-09-29T21:00:00Z'
+  },
+  {
+    id: 'rel-pocketcrm-101',
+    app_id: 'app-pocketcrm',
+    version_name: '1.0.1',
+    version_code: 2,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.1
+- **Acciones Directas:** Llamada telefónica y WhatsApp directo con un toque desde la ficha del prospecto.
+- **Ícono Oficial HD:** Nuevo launcher icon adaptativo de alta resolución.
+- **Verificador de Actualizaciones:** Nuevo botón en Ajustes para verificar versiones.
+- **Base de Datos Limpia:** Arranque 100% libre de contactos demo.`,
+    apk_file_url: '/apps/downloads/pocketcrm-v1.0.1.apk',
+    apk_size_bytes: 51600000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 425,
+    published_at: '2026-09-29T21:00:00Z',
+    created_at: '2026-09-29T21:00:00Z'
+  },
+  {
+    id: 'rel-qrvault-101',
+    app_id: 'app-qrvault',
+    version_name: '1.0.1',
+    version_code: 2,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.1
+- **Copia Rápida:** Botón directo al portapapeles desde el historial de escaneos.
+- **Ícono Oficial HD:** Nuevo launcher icon adaptativo de alta resolución.
+- **Verificador de Actualizaciones:** Nuevo botón en Ajustes para verificar versiones.`,
+    apk_file_url: '/apps/downloads/qrvault-v1.0.1.apk',
+    apk_size_bytes: 68100000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 830,
+    published_at: '2026-09-29T21:00:00Z',
+    created_at: '2026-09-29T21:00:00Z'
+  },
+  {
+    id: 'rel-scandoc-101',
+    app_id: 'app-scandoc',
+    version_name: '1.0.1',
+    version_code: 2,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.1
+- **Reordenamiento de Páginas:** Capacidad de reorganizar páginas escaneadas antes de generar el PDF.
+- **Ícono Oficial HD:** Nuevo launcher icon adaptativo de alta resolución.
+- **Verificador de Actualizaciones:** Nuevo botón en Ajustes para verificar versiones.`,
+    apk_file_url: '/apps/downloads/scandoc-v1.0.1.apk',
+    apk_size_bytes: 88200000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 690,
+    published_at: '2026-09-29T21:00:00Z',
+    created_at: '2026-09-29T21:00:00Z'
+  },
+  {
+    id: 'rel-habitflow-101',
+    app_id: 'app-habitflow',
+    version_name: '1.0.1',
+    version_code: 2,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.1
+- **Ícono Oficial HD:** Nuevo launcher icon adaptativo de alta resolución.
+- **Verificador de Actualizaciones:** Nuevo botón en Ajustes para verificar versiones.
+- **Base de Datos Limpia:** Arranque 100% libre de hábitos demo.`,
+    apk_file_url: '/apps/downloads/habitflow-v1.0.1.apk',
+    apk_size_bytes: 50100000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 960,
+    published_at: '2026-09-29T21:00:00Z',
+    created_at: '2026-09-29T21:00:00Z'
+  },
+  {
+    id: 'rel-fueltrack-101',
+    app_id: 'app-fueltrack',
+    version_name: '1.0.1',
+    version_code: 2,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.1
+- **Ícono Oficial HD:** Nuevo launcher icon adaptativo de alta resolución.
+- **Verificador de Actualizaciones:** Nuevo botón en Ajustes para verificar versiones.
+- **Base de Datos Limpia:** Arranque 100% libre de recargas demo.`,
+    apk_file_url: '/apps/downloads/fueltrack-v1.0.1.apk',
+    apk_size_bytes: 50800000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 610,
+    published_at: '2026-09-29T21:00:00Z',
+    created_at: '2026-09-29T21:00:00Z'
+  },
+  {
+    id: 'rel-taskboard-101',
+    app_id: 'app-taskboard',
+    version_name: '1.0.1',
+    version_code: 2,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.1
+- **Ícono Oficial HD:** Nuevo launcher icon adaptativo de alta resolución.
+- **Verificador de Actualizaciones:** Nuevo botón en Ajustes para verificar versiones.
+- **Base de Datos Limpia:** Arranque 100% libre de tareas ficticias.`,
+    apk_file_url: '/apps/downloads/taskboard-v1.0.1.apk',
+    apk_size_bytes: 50700000,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 750,
+    published_at: '2026-09-29T21:00:00Z',
+    created_at: '2026-09-29T21:00:00Z'
+  },
+  {
     id: 'rel-stockmini-100',
     app_id: 'app-stockmini',
     version_name: '1.0.0',
