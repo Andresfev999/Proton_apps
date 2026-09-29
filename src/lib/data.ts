@@ -2,6 +2,25 @@ import { App, Release, AppScreenshot } from '@/types/database';
 
 export const INITIAL_RELEASES: Release[] = [
   {
+    id: 'rel-myfiles-102',
+    app_id: 'app-myfiles',
+    version_name: '1.0.2',
+    version_code: 3,
+    platform: 'android',
+    changelog: `### Novedades en v1.0.2
+- **Acceso a Almacenamiento Real:** Lectura nativa y completa de la memoria interna del teléfono (/storage/emulated/0, Descargas, DCIM, Documentos, Música y Videos).
+- **Estadísticas Nativa del Teléfono:** Medición en tiempo real del almacenamiento total, usado y libre del dispositivo mediante StatFs.
+- **Navegador de Archivos Renovado:** Barra de accesos directos (Descargas, DCIM, Documentos, etc.) e íconos identificativos por tipo de archivo.
+- **Gestión de Permisos:** Solicitud transparente de permisos de almacenamiento en Android 11+.`,
+    apk_file_url: '/apps/downloads/myfiles-v1.0.2.apk',
+    apk_size_bytes: 47400877,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 675,
+    published_at: '2026-09-29T22:30:00Z',
+    created_at: '2026-09-29T22:30:00Z'
+  },
+  {
     id: 'rel-myfiles-101',
     app_id: 'app-myfiles',
     version_name: '1.0.1',
