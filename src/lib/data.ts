@@ -2,6 +2,25 @@ import { App, Release, AppScreenshot } from '@/types/database';
 
 export const INITIAL_RELEASES: Release[] = [
   {
+    id: 'rel-swipegallery-101',
+    app_id: 'app-swipegallery',
+    version_name: '1.0.1',
+    version_code: 2,
+    platform: 'android',
+    changelog: `### Novedades v1.0.1
+- **Miniaturas de Video Nativas:** Generación instantánea de fotogramas y miniaturas para todos los videos en la galería y el modo Swipe.
+- **Nuevo Icono Oficial:** Icono de aplicación moderno integrado en el instalador y la tienda.
+- **Visor Multimedia Mejorado:** Vista previa cinemática para videos con botón de reproducción directa.
+- **Rendimiento Optimizado:** Carga de álbumes fluida y caché de miniaturas en memoria.`,
+    apk_file_url: '/apps/downloads/swipegallery-v1.0.1.apk',
+    apk_size_bytes: 49159149,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 380,
+    published_at: '2026-09-30T00:15:00Z',
+    created_at: '2026-09-30T00:15:00Z'
+  },
+  {
     id: 'rel-swipegallery-100',
     app_id: 'app-swipegallery',
     version_name: '1.0.0',
