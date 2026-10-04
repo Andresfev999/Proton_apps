@@ -30,7 +30,8 @@ import {
   Cpu,
   Activity,
   Terminal,
-  CheckCircle2
+  CheckCircle2,
+  Play
 } from 'lucide-react';
 
 const CATEGORIES: ('Todas' | AppCategory)[] = [
@@ -281,13 +282,23 @@ export default function HomePage() {
                       </button>
                     </div>
 
-                    <Link
-                      href={`/apps/${flagshipApp.slug}`}
-                      className="inline-flex items-center gap-2 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors group/link"
-                    >
-                      <span>Ver cómo te ayuda y todos sus beneficios</span>
-                      <ArrowUpRight className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
-                    </Link>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <Link
+                        href={`/apps/${flagshipApp.slug}#video-showcase`}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-950/50 hover:bg-cyan-900/60 border border-cyan-500/30 text-cyan-300 text-xs font-semibold transition-all hover:scale-105"
+                      >
+                        <Play className="w-3 h-3 text-cyan-400 fill-cyan-400" />
+                        <span>Ver Video Showcase 🎬</span>
+                      </Link>
+
+                      <Link
+                        href={`/apps/${flagshipApp.slug}`}
+                        className="inline-flex items-center gap-2 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors group/link"
+                      >
+                        <span>Ver cómo te ayuda y todos sus beneficios</span>
+                        <ArrowUpRight className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>

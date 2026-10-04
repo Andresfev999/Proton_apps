@@ -1079,6 +1079,7 @@ Desarrollada nativamente en **Flutter**, ofrece rendimiento fluido y soporte mul
     package_name: 'com.finup.fin_up',
     platforms: ['android'],
     github_url: 'https://github.com/Andresfev999/FinUP-App.git',
+    video_url: '/apps/finup/finup_showcase.mp4',
     status: 'published',
     created_at: '2026-09-25T16:00:00Z',
     updated_at: '2026-09-25T17:49:00Z'

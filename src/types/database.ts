@@ -42,6 +42,7 @@ export interface App {
   play_store_url?: string;
   app_store_url?: string;
   github_url?: string;
+  video_url?: string;
   status: AppStatus;
   created_at: string;
   updated_at: string;

@@ -52,12 +52,15 @@ export async function getApps(): Promise<App[]> {
             .eq('app_id', app.id)
             .order('display_order', { ascending: true });
 
+          const existingMem = memoryMap.get(app.slug);
           // Supabase sobreescribe o complementa
           memoryMap.set(app.slug, {
+            ...existingMem,
             ...app,
-            latest_release: rels?.[0] || memoryMap.get(app.slug)?.latest_release,
+            video_url: app.video_url || existingMem?.video_url,
+            latest_release: rels?.[0] || existingMem?.latest_release,
             screenshots: (screens && screens.length > 0) ? screens : (memoryScreenshots[app.id] || []),
-            total_downloads: totalDownloads > 0 ? totalDownloads : (memoryMap.get(app.slug)?.total_downloads || 0)
+            total_downloads: totalDownloads > 0 ? totalDownloads : (existingMem?.total_downloads || 0)
           } as App);
         }
       }
@@ -95,6 +98,7 @@ export async function getAppBySlug(slug: string): Promise<App | null> {
 
         return {
           ...appData,
+          video_url: appData.video_url || memoryApps.find((a) => a.slug === slug)?.video_url,
           releases: rels || [],
           latest_release: rels?.[0] || undefined,
           screenshots: screens || [],

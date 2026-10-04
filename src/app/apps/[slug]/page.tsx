@@ -47,7 +47,8 @@ import {
   X,
   Maximize2,
   Copy,
-  Info
+  Info,
+  Play
 } from 'lucide-react';
 
 export default function AppDetailPage() {
@@ -285,6 +286,16 @@ export default function AppDetailPage() {
                   <QrCode className="w-4 h-4 text-cyan-400" />
                   <span>Escanear QR con tu Celular</span>
                 </button>
+
+                {app.video_url && (
+                  <a
+                    href="#video-showcase"
+                    className="px-5 py-3 rounded-full font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 bg-slate-900/80 hover:bg-slate-800 text-slate-200 border border-slate-700/60 shadow-lg hover:border-cyan-500/40 transition-all cursor-pointer active:scale-95"
+                  >
+                    <Play className="w-3.5 h-3.5 text-cyan-400 fill-cyan-400" />
+                    <span>Ver Video Showcase</span>
+                  </a>
+                )}
               </div>
 
               {/* Security Sello & Antivirus Verification Bar */}
@@ -461,6 +472,43 @@ export default function AppDetailPage() {
             ))}
           </div>
         </section>
+
+        {/* VIDEO SHOWCASE OFICIAL */}
+        {app.video_url && (
+          <section id="video-showcase" className="space-y-6 scroll-mt-24">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-cyan-400 font-bold bg-cyan-950/60 border border-cyan-500/30 px-3 py-1 rounded-full inline-flex items-center gap-1.5 mb-2">
+                  <Play className="w-3 h-3 text-cyan-400 fill-cyan-400" />
+                  Video Showcase Oficial • 1080p
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                  Mira a {app.name} en Acción
+                </h2>
+              </div>
+              <p className="text-xs font-mono text-slate-400 max-w-md">
+                Recorrido cinemático completo: Dashboard en tiempo real, asesor IA con Gemini y control inteligente de deudas y presupuestos.
+              </p>
+            </div>
+
+            <div className="double-bezel-outer overflow-hidden shadow-2xl shadow-cyan-950/30">
+              <div className="double-bezel-inner p-3 sm:p-5 bg-gradient-to-b from-slate-900/90 to-slate-950/95">
+                <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-black border border-white/10 shadow-2xl">
+                  <video
+                    controls
+                    preload="metadata"
+                    playsInline
+                    poster="/apps/finup/finup_feature_graphic.svg"
+                    className="w-full h-full object-contain bg-black"
+                    src={app.video_url}
+                  >
+                    Tu navegador no soporta la reproducción de video HTML5.
+                  </video>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* 4. GALERÍA VISUAL: PANTALLAS REALES DE LA APLICACIÓN */}
         {app.screenshots && app.screenshots.length > 0 && (
