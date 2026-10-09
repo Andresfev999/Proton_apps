@@ -2,6 +2,26 @@ import { App, Release, AppScreenshot } from '@/types/database';
 
 export const INITIAL_RELEASES: Release[] = [
   {
+    id: 'rel-swipegallery-103',
+    app_id: 'app-swipegallery',
+    version_name: '1.0.3',
+    version_code: 4,
+    platform: 'android',
+    changelog: `### Novedades v1.0.3
+- **🔒 Bóveda Multimedia Oculta (Secret Vault):** Guarda fotos y videos privados protegidos bajo un PIN de seguridad de 4 dígitos. Los archivos se ocultan de la galería pública y de otras aplicaciones.
+- **🎬 Miniaturas de Video Infalibles:** Extracción de fotogramas nativa de alto rendimiento con decodificación directa en hardware compatible con Scoped Storage de Android 10/11/12/13/14+.
+- **⚡ Smart Clean Hub:** Limpieza inteligente de videos pesados y detección automática de capturas de pantalla antiguas (>30 días).
+- **📅 Modo Mes a Mes:** Revisa y limpia tu galería por meses con barra de progreso y estado de verificación.
+- **🎥 Reproducción In-App & Háptica:** Auto-play silenciado en tarjetas de Swipe y vibración sensorial en cada gesto.`,
+    apk_file_url: '/apps/downloads/swipegallery-v1.0.3.apk',
+    apk_size_bytes: 50433092,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 510,
+    published_at: '2026-10-09T04:30:00Z',
+    created_at: '2026-10-09T04:30:00Z'
+  },
+  {
     id: 'rel-swipegallery-101',
     app_id: 'app-swipegallery',
     version_name: '1.0.1',
