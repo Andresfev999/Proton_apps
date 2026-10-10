@@ -15,7 +15,7 @@ export function QrCodeModal({ isOpen, onClose, app, release }: { isOpen: boolean
     let cancelled = false;
     const target = `${window.location.origin}${BASE_PATH}${appHref(app.slug)}`;
     setUrl(target); setQrDataUrl(''); setMessage('');
-    QRCode.toDataURL(target, { width: 320, margin: 2, color: { dark: '#080b14', light: '#ffffff' } })
+    QRCode.toDataURL(target, { width: 320, margin: 2, color: { dark: '#090e1a', light: '#ffffff' } })
       .then(data => { if (!cancelled) setQrDataUrl(data); })
       .catch(() => { if (!cancelled) setMessage('No pudimos generar el QR. Puedes copiar el enlace.'); });
     return () => { cancelled = true; };

@@ -13,7 +13,7 @@ export function Navbar() {
     window.addEventListener('keydown', close);
     return () => window.removeEventListener('keydown', close);
   }, [open]);
-  return <header className="sticky top-0 z-40 border-b border-white/[.07] bg-[#080b14]/90 backdrop-blur-xl">
+  return <header className="sticky top-0 z-40 border-b border-white/[.07] bg-[#090e1a]/90 backdrop-blur-xl">
     <div className="site-container flex h-20 items-center justify-between gap-4">
       <Link href="/" aria-label="Proton Apps, inicio" onClick={() => setOpen(false)}><ProtonAppsLogo size={36} showText animated={false} /></Link>
       <nav aria-label="Navegación principal" className="hidden md:flex items-center gap-7">{links.map(link => <Link key={link.href} href={link.href} className="text-sm text-slate-400 hover:text-white transition-colors">{link.label}</Link>)}<Link href="/#catalogo" className="secondary-button">Ver catálogo <ArrowUpRight size={16} aria-hidden="true" /></Link></nav>

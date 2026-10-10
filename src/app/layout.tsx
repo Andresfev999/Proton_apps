@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://protondev.space/apps' },
   openGraph: { title: 'Proton Apps', description: 'Pequeñas apps. Grandes posibilidades. Descubre tu próxima app Android.', url: 'https://protondev.space/apps', siteName: 'Proton Apps', locale: 'es_CO', type: 'website' },
 };
-export const viewport: Viewport = { themeColor: '#080b14', colorScheme: 'dark' };
+export const viewport: Viewport = { themeColor: '#090e1a', colorScheme: 'dark' };
 
 export default function RootLayout({
   children,
