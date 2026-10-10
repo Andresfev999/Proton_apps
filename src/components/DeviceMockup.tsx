@@ -32,7 +32,7 @@ export function DeviceMockup({ appName, screenshots }: DeviceMockupProps) {
       <div className="p-1 rounded-[52px] bg-gradient-to-b from-white/15 via-white/5 to-white/10 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.9)]">
         
         {/* Smartphone Chassis Frame */}
-        <div className="relative w-[280px] sm:w-[320px] h-[580px] sm:h-[650px] bg-[#05070D] rounded-[48px] p-2.5 shadow-2xl border-2 border-white/10 group">
+        <div className="relative w-[230px] sm:w-[250px] h-[470px] sm:h-[510px] bg-[#05070D] rounded-[38px] p-2 shadow-2xl border-2 border-white/10 group">
           
           {/* Hardware side buttons */}
           <div className="absolute -left-[6px] top-28 w-[3px] h-10 bg-slate-600 rounded-l" />
@@ -75,6 +75,8 @@ export function DeviceMockup({ appName, screenshots }: DeviceMockupProps) {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={currentScreenshot.image_url}
+                      width={500}
+                      height={1050}
                       alt={currentScreenshot.caption || `${appName} captura ${currentIndex + 1}`}
                       className="w-full h-full object-cover object-top"
                     />

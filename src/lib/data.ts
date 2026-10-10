@@ -2,6 +2,159 @@ import { App, Release, AppScreenshot } from '@/types/database';
 
 export const INITIAL_RELEASES: Release[] = [
   {
+    id: 'rel-crosspro-100',
+    app_id: 'app-crosspro',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Lanzamiento Oficial v1.0.0
+- **Modo Crucigramas Temáticos:** Docenas de crucigramas interactivos con pistas horizontales y verticales integradas.
+- **Detector y Validador en Tiempo Real:** Detección automática de celdas resueltas y retroalimentación háptica.
+- **Sistema de Pistas Inteligentes:** Revela letras o palabras cuando te encuentres bloqueado.
+- **100% Offline-First:** Juega en cualquier lugar sin necesidad de conexión a internet.`,
+    apk_file_url: '/apps/downloads/crosspro-v1.0.0.apk',
+    apk_size_bytes: 48247736,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 140,
+    published_at: '2026-10-09T05:00:00Z',
+    created_at: '2026-10-09T05:00:00Z'
+  },
+  {
+    id: 'rel-barberpoint-100',
+    app_id: 'app-barberpoint',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Lanzamiento Oficial v1.0.0
+- **Agenda y Reserva en Tiempo Real:** Selección de fecha, horarios disponibles y barbero preferido.
+- **Catálogo de Servicios & Precios:** Cortes clásicos, degradados fade, perfilado de barba y tratamientos capilares.
+- **Historial y Confirmación de Citas:** Gestión de estados (Pendiente, Confirmada, Completada).
+- **Diseño Ergonómico Dark/Gold:** Interfaz premium con temática barber shop y navegación intuitiva.`,
+    apk_file_url: '/apps/downloads/barberpoint-v1.0.0.apk',
+    apk_size_bytes: 51502104,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 165,
+    published_at: '2026-10-09T05:00:00Z',
+    created_at: '2026-10-09T05:00:00Z'
+  },
+  {
+    id: 'rel-pacepulse-100',
+    app_id: 'app-pacepulse',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Lanzamiento Oficial v1.0.0
+- **Rastreo GPS & Lienzo Táctico:** Visualización de ruta en tiempo real con trazado de recorrido animado.
+- **Métricas de Rendimiento:** Ritmo actual (pace min/km), distancia recorrida, tiempo transcurrido y calorías quemadas.
+- **Splits por Kilómetro:** Desglose detallado del ritmo promedio por cada kilómetro completado.
+- **Modo Táctico Neón:** Interfaz atlética oscura optimizada para visibilidad bajo luz solar y bajo consumo de batería.`,
+    apk_file_url: '/apps/downloads/pacepulse-v1.0.0.apk',
+    apk_size_bytes: 48117032,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 220,
+    published_at: '2026-10-09T05:00:00Z',
+    created_at: '2026-10-09T05:00:00Z'
+  },
+  {
+    id: 'rel-speednova-100',
+    app_id: 'app-speednova',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Lanzamiento Oficial v1.0.0
+- **Velocímetro Reactivo Neón:** Medición en vivo de velocidad de descarga y subida con tacómetro cyberpunk animado.
+- **Latencia & Jitter en Tiempo Real:** Prueba precisa de Ping (ms) y estabilidad de conexión contra servidores globales.
+- **Historial Completo de Tests:** Registro detallado de mediciones por fecha, tipo de red (Wi-Fi/Móvil) y calidad de señal.
+- **Análisis de Rendimiento:** Diagnóstico para streaming 4K, gaming online y videollamadas.`,
+    apk_file_url: '/apps/downloads/speednova-v1.0.0.apk',
+    apk_size_bytes: 47677936,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 340,
+    published_at: '2026-10-09T05:00:00Z',
+    created_at: '2026-10-09T05:00:00Z'
+  },
+  {
+    id: 'rel-mediagrab-100',
+    app_id: 'app-mediagrab',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Lanzamiento Oficial v1.0.0
+- **Descargas Multi-Calidad HD:** Detección de enlaces y descarga en resoluciones 1080p, 720p, 480p o audio MP3.
+- **Cola y Gestor de Tareas:** Pausa, reanudación y monitoreo del progreso de descarga en segundo plano.
+- **Biblioteca Multimedia Integrada:** Reproducción y previsualización de archivos descargados directamente desde la app.
+- **Navegador y Capturador Rápido:** Pega enlaces directamente desde el portapapeles o comparte desde cualquier navegador.`,
+    apk_file_url: '/apps/downloads/mediagrab-v1.0.0.apk',
+    apk_size_bytes: 50731304,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 295,
+    published_at: '2026-10-09T05:00:00Z',
+    created_at: '2026-10-09T05:00:00Z'
+  },
+  {
+    id: 'rel-fitpulse-100',
+    app_id: 'app-fitpulse',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Lanzamiento Oficial v1.0.0
+- **Entrenamientos Personalizados:** Rutinas divididas por grupos musculares (Pecho, Espalda, Piernas, Core, Cardio).
+- **Temporizador Guiado de Series & Descanso:** Avisos sonoros y hápticos durante el entrenamiento activo.
+- **Registro de Métricas & Peso:** Gráfica interactiva de evolución de peso y calculadora de macronutrientes.
+- **Diseño Dark Athletic:** Experiencia deportiva inmersiva con seguimiento de récords personales.`,
+    apk_file_url: '/apps/downloads/fitpulse-v1.0.0.apk',
+    apk_size_bytes: 48251956,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 195,
+    published_at: '2026-10-09T05:00:00Z',
+    created_at: '2026-10-09T05:00:00Z'
+  },
+  {
+    id: 'rel-chefcraft-100',
+    app_id: 'app-chefcraft',
+    version_name: '1.0.0',
+    version_code: 1,
+    platform: 'android',
+    changelog: `### Lanzamiento Oficial v1.0.0
+- **Recetario Gourmet Inteligente:** Cientos de recetas con filtros por dificultad, tiempo y tipo de dieta.
+- **Modo Cocina Paso a Paso:** Pantalla guiada a pantalla completa con temporizador integrado para no quemar nada.
+- **Lista de Compras Interactiva:** Añade ingredientes de cualquier receta con un solo toque y márcalos en el súper.
+- **100% Offline-First:** Guarda tus recetas favoritas y consúltalas en la cocina sin necesidad de Wi-Fi.`,
+    apk_file_url: '/apps/downloads/chefcraft-v1.0.0.apk',
+    apk_size_bytes: 48405888,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 180,
+    published_at: '2026-10-09T05:00:00Z',
+    created_at: '2026-10-09T05:00:00Z'
+  },
+  {
+    id: 'rel-swipegallery-104',
+    app_id: 'app-swipegallery',
+    version_name: '1.0.4',
+    version_code: 5,
+    platform: 'android',
+    changelog: `### Novedades v1.0.4 (Hotfix & Bóveda Mejorada)
+- **🔒 Bóveda Multimedia Blindada & Multi-Selección:** Corrección definitiva en el guardado de contenidos en la bóveda privada. Ahora puedes seleccionar múltiples fotos y videos a la vez desde la galería principal o importarlos en lote directamente dentro de la bóveda.
+- **👉 Visor con Desplazamiento Horizontal (Swipe Gallery):** Abre cualquier foto o video y desliza suavemente hacia los lados para explorar toda tu galería sin tener que salir y volver a entrar.
+- **🎬 Miniaturas de Video Instantáneas:** Detección de video y previsualización de fotogramas fluida en la cuadrícula de medios.
+- **⚡ Rendimiento Optimizado:** Respuesta táctil inmediata y persistencia atómica segura.`,
+    apk_file_url: '/apps/downloads/swipegallery-v1.0.4.apk',
+    apk_size_bytes: 50613328,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 580,
+    sha256_hash: '36d184c93f06ae158ab2a33c968e4f376c78eb3ef564387ff7b2333dc45a0998',
+    published_at: '2026-10-09T09:55:00Z',
+    created_at: '2026-10-09T09:55:00Z'
+  },
+  {
     id: 'rel-swipegallery-103',
     app_id: 'app-swipegallery',
     version_name: '1.0.3',
@@ -726,6 +879,174 @@ export const INITIAL_SCREENSHOTS: Record<string, AppScreenshot[]> = {
 };
 
 export const INITIAL_APPS: App[] = [
+  {
+    id: 'app-crosspro',
+    slug: 'crosspro',
+    name: 'CrossPro',
+    tagline: 'Crucigramas y rompecabezas de palabras interactivos con pistas inteligentes',
+    description: `### El Desafío Definitivo de Palabras y Crucigramas 🧩
+**CrossPro** es un juego interactivo de palabras cruzadas diseñado para ejercitar tu agilidad mental y ampliar tu vocabulario con un diseño visual moderno y descansado para la vista.
+
+#### Características Clave:
+- **Cuadrículas Dinámicas & Adaptativas:** Tableros organizados por dificultad desde principiante hasta experto.
+- **Pistas Horizontales y Verticales:** Navegación instantánea entre definiciones con un toque en la celda correspondiente.
+- **Sistema de Pistas de Asistencia:** Revela letras o palabras completas cuando te encuentres bloqueado.
+- **Validación Automática & Efectos Hápticos:** Reconocimiento al completar palabras con sutil respuesta sensorial.
+- **100% Offline:** Juega en cualquier momento y lugar sin necesidad de datos móviles ni Wi-Fi.`,
+    icon_url: '/apps/icons/crosspro.png',
+    cover_image_url: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?w=1200&auto=format&fit=crop&q=80',
+    category: 'Juegos',
+    package_name: 'space.protondev.crosspro',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/CrossPro',
+    status: 'published',
+    created_at: '2026-10-09T05:00:00Z',
+    updated_at: '2026-10-09T05:00:00Z'
+  },
+  {
+    id: 'app-barberpoint',
+    slug: 'barberpoint',
+    name: 'BarberPoint',
+    tagline: 'Reserva de citas para barberías y estudios de corte con agenda en vivo',
+    description: `### Tu Barbería de Confianza al Alcance de tus Manos 💈✂️
+**BarberPoint** conecta a clientes con barberos profesionales y estilistas, permitiendo reservar turnos en tiempo real, seleccionar servicios personalizados y recibir confirmaciones al instante.
+
+#### Características Clave:
+- **Reserva en 3 Pasos:** Selecciona el servicio deseado, tu barbero favorito y el horario disponible en la agenda.
+- **Catálogo de Servicios & Precios:** Cortes de tendencia (Fade, Taper, Clásico), perfilado de barba con toalla caliente y tintes.
+- **Gestión de Citas:** Visualiza tus reservas activas, cancela o reprograma con total facilidad.
+- **Diseño Luxury Dark & Gold:** Interfaz oscura elegante con acabados dorados y experiencia de usuario premium.
+- **100% Local-First:** Tus citas y preferencias se guardan de forma segura y privada en tu dispositivo.`,
+    icon_url: '/apps/icons/barberpoint.png',
+    cover_image_url: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&auto=format&fit=crop&q=80',
+    category: 'Estilo de Vida',
+    package_name: 'space.protondev.barberpoint',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/BarberPoint',
+    status: 'published',
+    created_at: '2026-10-09T05:00:00Z',
+    updated_at: '2026-10-09T05:00:00Z'
+  },
+  {
+    id: 'app-pacepulse',
+    slug: 'pacepulse',
+    name: 'PacePulse',
+    tagline: 'Rastreador GPS táctico para runners con mapa en vivo y métricas de ritmo',
+    description: `### Potencia tus Carreras con Precisión Quirúrgica 🏃‍♂️⚡
+**PacePulse** es el monitor GPS para corredores y atletas que buscan optimizar su ritmo de carrera (pace), registrar sus rutas en tiempo real y analizar su rendimiento en cada sesión de entrenamiento.
+
+#### Características Clave:
+- **Lienzo Táctico de Ruta:** Dibuja y sigue tu recorrido sobre un mapa de alto contraste con GPS de alta precisión.
+- **Métricas Clave al Instante:** Ritmo actual (min/km), velocidad media, distancia total acumulada y calorías quemadas.
+- **Análisis de Splits por Kilómetro:** Compara tu rendimiento kilómetro a kilómetro para mantener una cadencia constante.
+- **Estética Cyber-Athletic:** Interfaz deportiva con acentos fluorescentes de alta visibilidad diurna y nocturna.
+- **Privacidad Total:** Tus datos de geolocalización se procesan localmente sin telemetría intrusiva.`,
+    icon_url: '/apps/icons/pacepulse.png',
+    cover_image_url: 'https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=1200&auto=format&fit=crop&q=80',
+    category: 'Salud y Bienestar',
+    package_name: 'space.protondev.pacepulse',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/PacePulse',
+    status: 'published',
+    created_at: '2026-10-09T05:00:00Z',
+    updated_at: '2026-10-09T05:00:00Z'
+  },
+  {
+    id: 'app-speednova',
+    slug: 'speednova',
+    name: 'SpeedNova',
+    tagline: 'Test de velocidad de internet cyberpunk con tacómetro reactivo y diagnóstico de red',
+    description: `### Mide la Velocidad Real de tu Conexión en Segundos 🚀🌐
+**SpeedNova** es un velocímetro de conectividad de inspiración Cyberpunk que evalúa la velocidad de descarga, subida, latencia (ping) y jitter de tu red Wi-Fi o datos móviles 4G/5G con precisión científica.
+
+#### Características Clave:
+- **Tacómetro Reactivo Neón:** Animaciones fluidas a 60fps con escala logarítmica y efectos de glow electromagnético.
+- **Diagnóstico Integral:** Medición detallada de velocidad de descarga, subida, Ping (ms) y estabilidad de conexión.
+- **Historial Completo de Pruebas:** Guarda tus mediciones anteriores categorizadas por Wi-Fi o datos móviles.
+- **Indicadores de Idoneidad:** Evalúa al instante si tu conexión es óptima para streaming 4K, juegos competitivos o videollamadas.
+- **Sin Publicidad Invasiva:** Experiencia limpia, directa y con consumo mínimo de recursos.`,
+    icon_url: '/apps/icons/speednova.png',
+    cover_image_url: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200&auto=format&fit=crop&q=80',
+    category: 'Utilidades',
+    package_name: 'space.protondev.speednova',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/SpeedNova',
+    status: 'published',
+    created_at: '2026-10-09T05:00:00Z',
+    updated_at: '2026-10-09T05:00:00Z'
+  },
+  {
+    id: 'app-mediagrab',
+    slug: 'mediagrab',
+    name: 'MediaGrab',
+    tagline: 'Descargador y organizador multimedia HD con selector de resolución y audio',
+    description: `### Tus Videos y Audios Favoritos Guardados con Calidad Máxima 🎬📥
+**MediaGrab** es un gestor de descargas multimedia universal que te permite obtener contenido en alta definición o extraer pistas de audio directamente a la memoria de tu dispositivo.
+
+#### Características Clave:
+- **Selector de Calidad Inteligente:** Elige entre 1080p Full HD, 720p HD, 480p o audio de alta fidelidad MP3.
+- **Gestor de Tareas & Cola de Descargas:** Pausa, reanuda o prioriza descargas con barras de progreso detalladas.
+- **Reproductor Multimedia Incorporado:** Visualiza videos o escucha pistas descargadas sin salir de la app.
+- **Detección Rápida desde Portapapeles:** Copia un enlace y MediaGrab lo detectará automáticamente listo para descargar.
+- **Almacenamiento Local Ordenado:** Organiza automáticamente tus descargas en carpetas específicas de fácil acceso.`,
+    icon_url: '/apps/icons/mediagrab.png',
+    cover_image_url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&auto=format&fit=crop&q=80',
+    category: 'Multimedia',
+    package_name: 'space.protondev.mediagrab',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/MediaGrab',
+    status: 'published',
+    created_at: '2026-10-09T05:00:00Z',
+    updated_at: '2026-10-09T05:00:00Z'
+  },
+  {
+    id: 'app-fitpulse',
+    slug: 'fitpulse',
+    name: 'FitPulse',
+    tagline: 'Entrenador físico personal, temporizadores de intervalos y registro de progreso',
+    description: `### Construye tu Mejor Versión con Rutinas Guiadas 💪🏋️
+**FitPulse** es tu compañero de gimnasio y acondicionamiento físico diario, diseñado para ayudarte a llevar el registro de tus series, descansos, repeticiones y evolución corporal.
+
+#### Características Clave:
+- **Planes de Entrenamiento por Grupo Muscular:** Pecho, Espalda, Piernas, Brazos, Core y rutinas HIIT.
+- **Cronómetro de Series & Descansos:** Avisos acústicos y vibración háptica para no perder la concentración entre repeticiones.
+- **Control de Peso & Medidas:** Gráfica interactiva de evolución corporal y calculadora integrada de macronutrientes.
+- **Interfaz Dark Ergonomic:** Diseño deportivo de alto contraste pensado para usar con una sola mano en el gimnasio.
+- **100% Offline:** Todo tu historial de levantamientos y récords personales se almacenan localmente.`,
+    icon_url: '/apps/icons/fitpulse.png',
+    cover_image_url: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1200&auto=format&fit=crop&q=80',
+    category: 'Salud y Bienestar',
+    package_name: 'space.protondev.fitpulse',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/FitPulse',
+    status: 'published',
+    created_at: '2026-10-09T05:00:00Z',
+    updated_at: '2026-10-09T05:00:00Z'
+  },
+  {
+    id: 'app-chefcraft',
+    slug: 'chefcraft',
+    name: 'ChefCraft',
+    tagline: 'Recetario gourmet inteligente, modo cocina guiado y lista interactiva de compras',
+    description: `### Domina la Cocina Gourmet con Asistencia Paso a Paso 👨‍🍳🍳
+**ChefCraft** transforma la preparación de tus comidas diarias y recetas gourmet en una experiencia placentera y guiada, evitando errores y organizando tus compras de supermercado.
+
+#### Características Clave:
+- **Catálogo Gourmet con Filtros:** Filtra por tiempo de preparación, nivel de dificultad, tipo de cocina o ingredientes disponibles.
+- **Modo Cocina Inmersivo:** Pantalla a pantalla completa de gran legibilidad con temporizador incorporado para cada etapa.
+- **Lista de Compras Inteligente:** Agrega ingredientes de cualquier receta con un solo toque y márcalos conforme compras.
+- **Ficha Nutricional y Porciones:** Ajuste dinámico de cantidades según el número de comensales.
+- **100% Offline-First:** Consulta tus recetas y cocina sin necesidad de conexión a internet.`,
+    icon_url: '/apps/icons/chefcraft.png',
+    cover_image_url: 'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=1200&auto=format&fit=crop&q=80',
+    category: 'Estilo de Vida',
+    package_name: 'space.protondev.chefcraft',
+    platforms: ['android'],
+    github_url: 'https://github.com/Andresfev999/ChefCraft',
+    status: 'published',
+    created_at: '2026-10-09T05:00:00Z',
+    updated_at: '2026-10-09T05:00:00Z'
+  },
   {
     id: 'app-swipegallery',
     slug: 'swipegallery',

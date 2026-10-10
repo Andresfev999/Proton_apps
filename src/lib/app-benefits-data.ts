@@ -171,7 +171,7 @@ export const APP_BENEFITS_CATALOG: Record<string, AppBenefitsProfile> = {
     heroBadge: 'Salud Financiera & Ahorro Inteligente',
     heroTitle: 'Toma el control de tu dinero y haz que tus ahorros crezcan sin estrés',
     heroSubtitle: 'Deja de preguntarte a dónde se fue tu sueldo al final del mes. FinUp te ayuda a eliminar gastos hormiga, liquidar deudas con un plan claro y tomar mejores decisiones con asesoría inteligente personalizada.',
-    trustPills: ['100% Libre de Publicidad', 'Tus Datos se Quedan en tu Teléfono', 'Sin Suscripciones Ocultas', 'Funciona Sin Internet'],
+    trustPills: ['Control de gastos', 'Presupuestos personales', 'Metas de ahorro', 'Asesoría con IA'],
     problemTitle: '¿Por qué ahorrar o controlar gastos suele ser tan frustrante?',
     problemDescription: 'La mayoría de personas no tienen problemas de ingresos, sino de visibilidad. Las hojas de cálculo son aburridas y complicadas, mientras que las apps de los bancos solo te muestran lo que ya gastaste, pero nunca te enseñan cómo mejorar tu bolsillo.',
     beforeVsAfter: {
@@ -185,7 +185,7 @@ export const APP_BENEFITS_CATALOG: Record<string, AppBenefitsProfile> = {
       afterTitle: 'Tu vida con FinUp en tu celular',
       afterItems: [
         'Claridad total: sabes exactamente cuánto puedes gastar cada día.',
-        'Ahorro automático del 15% al 25% desde el primer mes.',
+        'Metas de ahorro que puedes seguir y ajustar a tu ritmo.',
         'Plan anti-deudas motivador con mapa de progreso visual.',
         'Consejos claros y directos de tu asesor inteligente cada semana.'
       ]
@@ -194,7 +194,7 @@ export const APP_BENEFITS_CATALOG: Record<string, AppBenefitsProfile> = {
       {
         title: 'Tu Asesor Financiero Personal con IA',
         description: 'Un asistente inteligente analiza tus movimientos y te da consejos en palabras humanas: te dice qué recortar y cómo alcanzar tus metas más rápido.',
-        result: 'Ahorro promedio del 20% sin sacrificios extremos',
+        result: 'Identifica oportunidades para ajustar tu presupuesto',
         icon: 'Sparkles'
       },
       {
@@ -211,8 +211,8 @@ export const APP_BENEFITS_CATALOG: Record<string, AppBenefitsProfile> = {
       },
       {
         title: 'Máxima Privacidad: Tu Dinero es Tuyo',
-        description: 'A diferencia de otras aplicaciones, no vendemos tus datos a bancos ni aseguradoras. Tu información permanece cifrada y protegida en tu móvil.',
-        result: 'Cero spam bancario y confidencialidad total',
+        description: 'Consulta las opciones de respaldo y los servicios conectados antes de compartir tus movimientos con funciones de sincronización o inteligencia artificial.',
+        result: 'Conoce cómo se utiliza tu información',
         icon: 'ShieldCheck'
       },
       {
@@ -231,7 +231,7 @@ export const APP_BENEFITS_CATALOG: Record<string, AppBenefitsProfile> = {
     dailyWorkflow: [
       {
         stepNumber: '01',
-        title: 'Descarga e Instala en 15 Segundos',
+        title: 'Descarga e instala en tu Android',
         description: 'Descarga el APK directo o escanea el QR con tu cámara. No requiere crear cuentas complejas ni trámites bancarios.',
         timeCommitment: '15 segundos'
       },
@@ -280,7 +280,7 @@ export const APP_BENEFITS_CATALOG: Record<string, AppBenefitsProfile> = {
       },
       {
         question: '¿Puedo usar la aplicación sin conexión a internet?',
-        answer: 'Sí. FinUp guarda tus movimientos localmente en tu teléfono, por lo que puedes registrar tus gastos en cualquier lugar sin depender de señal o datos móviles.'
+        answer: 'Las funciones de sincronización con Supabase y asesoría con Gemini requieren conexión a internet. Consulta dentro de la app qué funciones están disponibles sin conexión.'
       }
     ],
     ctaHeadline: 'Comienza a transformar tus finanzas hoy mismo',
@@ -711,9 +711,9 @@ export function getAppBenefits(slug: string, app?: App | null): AppBenefitsProfi
   return {
     slug,
     heroBadge: `${category} • Solución Diseñada para Ti`,
-    heroTitle: `${name}: La forma más fácil de ${tagline.toLowerCase()}`,
-    heroSubtitle: `Diseñado especialmente para resolver tus necesidades cotidianas de ${category.toLowerCase()} sin complicaciones técnicas, sin anuncios invasivos y con la máxima rapidez.`,
-    trustPills: ['Instalación Inmediata', '100% Libre de Publicidad', 'Privacidad Garantizada', 'Sin Fricción'],
+    heroTitle: tagline,
+    heroSubtitle: `Explora ${name}, consulta sus capturas y revisa los requisitos de instalación antes de descargarla.`,
+    trustPills: ['Aplicación Android', 'Descarga directa', 'Consulta sus versiones'],
     problemTitle: `¿Por qué necesitas una herramienta como ${name}?`,
     problemDescription: `Las opciones tradicionales suelen ser lentas, complicadas o llenas de publicidad molesta. ${name} fue creada para darte exactamente lo que necesitas en segundos, con una experiencia limpia y confiable.`,
     beforeVsAfter: {
@@ -793,7 +793,7 @@ export function getAppBenefits(slug: string, app?: App | null): AppBenefitsProfi
     faqs: [
       {
         question: `¿Cómo instalo ${name} en mi dispositivo Android?`,
-        answer: 'Solo presiona el botón "Descargar APK", abre el archivo descargado en tus notificaciones y confirma la instalación. Es 100% seguro y directo.'
+        answer: 'Pulsa Descargar APK y abre el archivo cuando termine la descarga. Si Android solicita un permiso para instalar desde esa fuente, revísalo antes de continuar. La guía de instalación explica los pasos.'
       },
       {
         question: '¿Tiene costo usar la aplicación?',
@@ -801,7 +801,7 @@ export function getAppBenefits(slug: string, app?: App | null): AppBenefitsProfi
       },
       {
         question: '¿Es compatible con mi teléfono?',
-        answer: 'La aplicación es compatible con prácticamente todos los teléfonos Android modernos (Android 8.0 en adelante).'
+        answer: `Comprueba el requisito de la versión disponible: ${app?.latest_release?.min_os_version || 'consulta la ficha de la aplicación'}. Los archivos APK no se instalan en iPhone.`
       }
     ],
     ctaHeadline: `Comienza a usar ${name} hoy mismo`,

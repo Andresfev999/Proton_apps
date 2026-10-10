@@ -127,7 +127,7 @@ export function ChangelogTimeline({ releases, appName }: ChangelogTimelineProps)
                   </div>
 
                   <a
-                    href={`/api/v1/download/${release.id}`}
+                    href={`/apps/api/v1/download/${release.id}`}
                     onClick={handleDownload}
                     className="pl-4 pr-1.5 py-1.5 rounded-full bg-indigo-600/30 hover:bg-indigo-600/60 text-indigo-200 hover:text-white border border-indigo-500/30 text-xs font-semibold flex items-center gap-2.5 transition-all group/btn cursor-pointer"
                   >
