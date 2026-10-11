@@ -28,13 +28,15 @@ import {
   Boxes
 } from 'lucide-react';
 
+import { isSupabaseConfigured, supabase } from '@/lib/supabase';
+
 export default function DeveloperPortalPage() {
-  const [developer, setDeveloper] = useState<{ email: string; name: string } | null>(null);
+  const [developer, setDeveloper] = useState<{ email: string; name: string; avatarUrl?: string } | null>(null);
   const [activeTab, setActiveTab] = useState<'my-apps' | 'new-app' | 'new-release' | 'api-docs'>('my-apps');
   const [apps, setApps] = useState<App[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Restore developer session from localStorage if available
+  // Restore developer session from localStorage or Supabase Google OAuth
   useEffect(() => {
     try {
       const saved = localStorage.getItem('proton_dev_session');
@@ -43,6 +45,38 @@ export default function DeveloperPortalPage() {
       }
     } catch (e) {
       console.warn('Error reading dev session:', e);
+    }
+
+    if (isSupabaseConfigured && supabase) {
+      supabase.auth.getSession().then(({ data: { session } }) => {
+        if (session?.user) {
+          const user = session.user;
+          const devData = {
+            email: user.email || 'developer@google.com',
+            name: user.user_metadata?.full_name || user.user_metadata?.name || user.email?.split('@')[0] || 'Desarrollador',
+            avatarUrl: user.user_metadata?.avatar_url || user.user_metadata?.picture
+          };
+          setDeveloper(devData);
+          localStorage.setItem('proton_dev_session', JSON.stringify(devData));
+        }
+      });
+
+      const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+        if (session?.user) {
+          const user = session.user;
+          const devData = {
+            email: user.email || 'developer@google.com',
+            name: user.user_metadata?.full_name || user.user_metadata?.name || user.email?.split('@')[0] || 'Desarrollador',
+            avatarUrl: user.user_metadata?.avatar_url || user.user_metadata?.picture
+          };
+          setDeveloper(devData);
+          localStorage.setItem('proton_dev_session', JSON.stringify(devData));
+        }
+      });
+
+      return () => {
+        subscription.unsubscribe();
+      };
     }
   }, []);
 
@@ -67,7 +101,7 @@ export default function DeveloperPortalPage() {
     }
   }, [developer]);
 
-  const handleLoginSuccess = (devData: { email: string; name: string }) => {
+  const handleLoginSuccess = (devData: { email: string; name: string; avatarUrl?: string }) => {
     setDeveloper(devData);
     try {
       localStorage.setItem('proton_dev_session', JSON.stringify(devData));
@@ -76,10 +110,13 @@ export default function DeveloperPortalPage() {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     setDeveloper(null);
     try {
       localStorage.removeItem('proton_dev_session');
+      if (isSupabaseConfigured && supabase) {
+        await supabase.auth.signOut();
+      }
     } catch (e) {
       console.warn('Error removing dev session:', e);
     }
@@ -95,25 +132,33 @@ export default function DeveloperPortalPage() {
       <main className="flex-1 py-10 sm:py-14">
         <div className="site-container">
           {!developer ? (
-            /* Login Screen */
+            /* Google Login Screen */
             <div className="py-6 sm:py-10">
               <DeveloperLoginForm onSuccess={handleLoginSuccess} />
             </div>
           ) : (
             /* Developer Console Dashboard */
             <div className="space-y-8">
-              {/* Header with Developer Info */}
+              {/* Header with Developer Info & Google Avatar */}
               <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-emerald-100 border border-emerald-200 flex items-center justify-center text-emerald-700 font-bold text-xl shadow-xs">
-                    {developer.name.slice(0, 2).toUpperCase()}
-                  </div>
+                  {developer.avatarUrl ? (
+                    <img
+                      src={developer.avatarUrl}
+                      alt={developer.name}
+                      className="w-14 h-14 rounded-2xl object-cover border border-slate-200 shadow-xs shrink-0"
+                    />
+                  ) : (
+                    <div className="w-14 h-14 rounded-2xl bg-emerald-100 border border-emerald-200 flex items-center justify-center text-emerald-700 font-bold text-xl shadow-xs shrink-0">
+                      {developer.name.slice(0, 2).toUpperCase()}
+                    </div>
+                  )}
                   <div>
                     <div className="flex items-center gap-2">
                       <h1 className="text-2xl font-bold text-slate-900">{developer.name}</h1>
                       <span className="px-2 py-0.5 text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full flex items-center gap-1">
                         <CheckCircle2 size={12} />
-                        Verificado
+                        Cuenta Google Verificada
                       </span>
                     </div>
                     <p className="text-xs text-slate-500 mt-0.5 font-mono">{developer.email}</p>
@@ -135,7 +180,7 @@ export default function DeveloperPortalPage() {
                     className="px-3.5 py-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium flex items-center gap-1.5 transition-colors"
                   >
                     <LogOut size={14} />
-                    <span>Salir</span>
+                    <span>Cerrar Sesión</span>
                   </button>
                 </div>
               </div>
