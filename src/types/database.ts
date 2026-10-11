@@ -1,4 +1,4 @@
-export type AppStatus = 'published' | 'beta' | 'archived';
+export type AppStatus = 'published' | 'pending' | 'rejected' | 'beta' | 'archived';
 export type AppPlatform = 'android' | 'ios' | 'web';
 export type AppCategory = 'Productividad' | 'Seguridad' | 'Utilidades' | 'Finanzas' | 'Comunicación' | 'Desarrollo' | 'Negocios' | 'Fotografía' | 'Juegos' | 'Estilo de Vida' | 'Salud y Bienestar' | 'Multimedia';
 
@@ -44,6 +44,10 @@ export interface App {
   github_url?: string;
   video_url?: string;
   status: AppStatus;
+  developer_email?: string;
+  developer_name?: string;
+  submission_notes?: string;
+  review_notes?: string;
   created_at: string;
   updated_at: string;
   // Relaciones cargadas opcionalmente

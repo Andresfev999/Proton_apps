@@ -6,9 +6,10 @@ import { AppCategory, AppPlatform } from '@/types/database';
 
 interface AdminAppFormProps {
   onSuccess: () => void;
+  developer?: { email: string; name: string } | null;
 }
 
-export function AdminAppForm({ onSuccess }: AdminAppFormProps) {
+export function AdminAppForm({ onSuccess, developer }: AdminAppFormProps) {
   const [name, setName] = useState('');
   const [slug, setSlug] = useState('');
   const [tagline, setTagline] = useState('');
@@ -34,6 +35,8 @@ export function AdminAppForm({ onSuccess }: AdminAppFormProps) {
     setLoading(true);
     setMessage(null);
 
+    const isAdmin = developer?.email?.toLowerCase().trim() === 'andresfev999@gmail.com';
+
     try {
       const res = await fetch('/apps/api/v1/apps', {
         method: 'POST',
@@ -50,21 +53,27 @@ export function AdminAppForm({ onSuccess }: AdminAppFormProps) {
           play_store_url: playStoreUrl || undefined,
           app_store_url: appStoreUrl || undefined,
           github_url: githubUrl || undefined,
-          status: 'published'
+          status: isAdmin ? 'published' : 'pending',
+          developer_email: developer?.email,
+          developer_name: developer?.name
         })
       });
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Error al registrar la app');
 
-      setMessage({ type: 'success', text: `¡Aplicación "${name}" registrada exitosamente en la tienda!` });
+      const successText = isAdmin
+        ? `¡Aplicación "${name}" publicada inmediatamente por el administrador!`
+        : `¡Aplicación "${name}" enviada para revisión! El administrador (andresfev999@gmail.com) la evaluará antes de publicarla.`;
+
+      setMessage({ type: 'success', text: successText });
       setName('');
       setSlug('');
       setTagline('');
       setDescription('');
       setIconUrl('');
       setPackageName('');
-      setTimeout(() => onSuccess(), 1500);
+      setTimeout(() => onSuccess(), 2000);
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : 'Error inesperado';
       setMessage({ type: 'error', text: errorMessage });

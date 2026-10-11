@@ -29,7 +29,10 @@ export async function POST(request: NextRequest) {
       play_store_url,
       app_store_url,
       github_url,
-      status
+      status,
+      developer_email,
+      developer_name,
+      submission_notes
     } = body;
 
     if (!slug || !name || !tagline || !description || !icon_url || !package_name) {
@@ -38,6 +41,12 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    const ADMIN_EMAIL = 'andresfev999@gmail.com';
+    const isOwner = developer_email && developer_email.toLowerCase().trim() === ADMIN_EMAIL;
+    // Si la sube el admin (Andrés), se aprueba de inmediato.
+    // Si la sube otro desarrollador, queda en estado 'pending' (Pendiente de Aprobación).
+    const resolvedStatus = isOwner ? (status || 'published') : 'pending';
 
     const newApp = await addApp({
       slug: slug.toLowerCase().trim().replace(/[^a-z0-9-]/g, '-'),
@@ -52,12 +61,50 @@ export async function POST(request: NextRequest) {
       play_store_url: play_store_url || undefined,
       app_store_url: app_store_url || undefined,
       github_url: github_url || undefined,
-      status: status || 'published'
+      status: resolvedStatus,
+      developer_email: developer_email || undefined,
+      developer_name: developer_name || undefined,
+      submission_notes: submission_notes || undefined
     });
 
     return NextResponse.json({ app: newApp }, { status: 201 });
   } catch (error) {
     console.error('Error creando app:', error);
     return NextResponse.json({ error: 'Error al registrar la aplicación' }, { status: 500 });
+  }
+}
+
+export async function PATCH(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const { id, slug, status, review_notes, admin_email } = body;
+
+    const ADMIN_EMAIL = 'andresfev999@gmail.com';
+    if (!admin_email || admin_email.toLowerCase().trim() !== ADMIN_EMAIL) {
+      return NextResponse.json(
+        { error: 'Acceso denegado. Solo el administrador (andresfev999@gmail.com) puede cambiar el estado de las aplicaciones.' },
+        { status: 403 }
+      );
+    }
+
+    const targetId = id || slug;
+    if (!targetId || !status) {
+      return NextResponse.json(
+        { error: 'Faltan parámetros requeridos (id o slug, y status son obligatorios)' },
+        { status: 400 }
+      );
+    }
+
+    const { updateAppStatus } = await import('@/lib/store');
+    const updated = await updateAppStatus(targetId, status, review_notes);
+
+    if (!updated) {
+      return NextResponse.json({ error: 'Aplicación no encontrada' }, { status: 404 });
+    }
+
+    return NextResponse.json({ success: true, app: updated });
+  } catch (error) {
+    console.error('Error actualizando estado de la app:', error);
+    return NextResponse.json({ error: 'Error interno del servidor' }, { status: 500 });
   }
 }

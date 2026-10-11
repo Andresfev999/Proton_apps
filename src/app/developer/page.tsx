@@ -32,9 +32,14 @@ import { isSupabaseConfigured, supabase } from '@/lib/supabase';
 
 export default function DeveloperPortalPage() {
   const [developer, setDeveloper] = useState<{ email: string; name: string; avatarUrl?: string } | null>(null);
-  const [activeTab, setActiveTab] = useState<'my-apps' | 'new-app' | 'new-release' | 'api-docs'>('my-apps');
+  const [activeTab, setActiveTab] = useState<'my-apps' | 'pending-approvals' | 'new-app' | 'new-release' | 'api-docs'>('my-apps');
   const [apps, setApps] = useState<App[]>([]);
   const [loading, setLoading] = useState(true);
+  const [actionLoading, setActionLoading] = useState<string | null>(null);
+  const [statusMessage, setStatusMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+  const ADMIN_EMAIL = 'andresfev999@gmail.com';
+  const isAdmin = developer?.email?.toLowerCase().trim() === ADMIN_EMAIL;
 
   // Restore developer session from localStorage or Supabase Google OAuth
   useEffect(() => {
@@ -122,6 +127,45 @@ export default function DeveloperPortalPage() {
     }
   };
 
+  const handleModerateApp = async (appId: string, slug: string, newStatus: 'published' | 'rejected') => {
+    if (!developer?.email || !isAdmin) return;
+    setActionLoading(appId);
+    setStatusMessage(null);
+
+    try {
+      const res = await fetch('/apps/api/v1/apps', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: appId,
+          slug,
+          status: newStatus,
+          admin_email: developer.email,
+          review_notes: newStatus === 'published' ? 'Aprobada por el Administrador' : 'Rechazada tras revisión técnica'
+        })
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Error al procesar la aprobación');
+
+      setStatusMessage({
+        type: 'success',
+        text: `La aplicación ha sido ${newStatus === 'published' ? 'APROBADA y ahora está pública en la tienda' : 'RECHAZADA'}.`
+      });
+
+      await loadApps();
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'Error inesperado';
+      setStatusMessage({ type: 'error', text: msg });
+    } finally {
+      setActionLoading(null);
+    }
+  };
+
+  const pendingApps = apps.filter((a) => a.status === 'pending');
+  const publishedApps = apps.filter((a) => a.status === 'published' || a.status === 'beta');
+  const myApps = isAdmin ? apps : apps.filter((a) => a.developer_email === developer?.email);
+
   const totalDownloads = apps.reduce((acc, a) => acc + (a.total_downloads || 0), 0);
   const totalApkSizeBytes = apps.reduce((acc, a) => acc + (a.latest_release?.apk_size_bytes || 28000000), 0);
 
@@ -156,13 +200,22 @@ export default function DeveloperPortalPage() {
                   <div>
                     <div className="flex items-center gap-2">
                       <h1 className="text-2xl font-bold text-slate-900">{developer.name}</h1>
-                      <span className="px-2 py-0.5 text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full flex items-center gap-1">
-                        <CheckCircle2 size={12} />
-                        Cuenta Google Verificada
-                      </span>
+                      {isAdmin ? (
+                        <span className="px-2.5 py-0.5 text-[10px] font-bold text-amber-800 bg-amber-100 border border-amber-300 rounded-full flex items-center gap-1 shadow-2xs">
+                          <Shield size={12} className="text-amber-700" />
+                          Administrador Principal (Owner)
+                        </span>
+                      ) : (
+                        <span className="px-2 py-0.5 text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full flex items-center gap-1">
+                          <CheckCircle2 size={12} />
+                          Cuenta Google Verificada
+                        </span>
+                      )}
                     </div>
                     <p className="text-xs text-slate-500 mt-0.5 font-mono">{developer.email}</p>
-                    <p className="text-xs text-slate-600 mt-1">Consola de Desarrollador Oficial · Proton Apps Play Store</p>
+                    <p className="text-xs text-slate-600 mt-1">
+                      {isAdmin ? 'Control de Moderación y Publicación Global · Proton Apps' : 'Consola de Desarrollador Oficial · Proton Apps Play Store'}
+                    </p>
                   </div>
                 </div>
 
@@ -185,15 +238,36 @@ export default function DeveloperPortalPage() {
                 </div>
               </div>
 
+              {/* Status Message Alert */}
+              {statusMessage && (
+                <div className={`p-4 rounded-2xl text-xs flex items-center gap-2.5 shadow-2xs ${
+                  statusMessage.type === 'success'
+                    ? 'bg-emerald-50 border border-emerald-200 text-emerald-800'
+                    : 'bg-rose-50 border border-rose-200 text-rose-800'
+                }`}>
+                  <CheckCircle2 size={16} className={statusMessage.type === 'success' ? 'text-emerald-600 shrink-0' : 'text-rose-600 shrink-0'} />
+                  <span className="font-medium">{statusMessage.text}</span>
+                </div>
+              )}
+
               {/* Metrics Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
                   <div className="flex items-center justify-between text-slate-500 mb-2">
-                    <span className="text-xs font-medium">Apps Publicadas</span>
+                    <span className="text-xs font-medium">Apps Públicas</span>
                     <Smartphone size={16} className="text-emerald-600" />
                   </div>
-                  <div className="text-2xl font-bold text-slate-900">{apps.length}</div>
-                  <p className="text-[11px] text-emerald-600 mt-1 font-medium">100% disponibles en catálogo</p>
+                  <div className="text-2xl font-bold text-slate-900">{publishedApps.length}</div>
+                  <p className="text-[11px] text-emerald-600 mt-1 font-medium">En tienda activa</p>
+                </div>
+
+                <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
+                  <div className="flex items-center justify-between text-slate-500 mb-2">
+                    <span className="text-xs font-medium">Por Aprobar</span>
+                    <Shield size={16} className={pendingApps.length > 0 ? 'text-amber-600 animate-pulse' : 'text-slate-400'} />
+                  </div>
+                  <div className={`text-2xl font-bold ${pendingApps.length > 0 ? 'text-amber-600' : 'text-slate-900'}`}>{pendingApps.length}</div>
+                  <p className="text-[11px] text-amber-600 mt-1 font-medium">Requieren tu visto bueno</p>
                 </div>
 
                 <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
@@ -202,22 +276,13 @@ export default function DeveloperPortalPage() {
                     <Download size={16} className="text-blue-600" />
                   </div>
                   <div className="text-2xl font-bold text-slate-900">{totalDownloads.toLocaleString()}</div>
-                  <p className="text-[11px] text-blue-600 mt-1 font-medium">Tráfico verificado OTA</p>
-                </div>
-
-                <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
-                  <div className="flex items-center justify-between text-slate-500 mb-2">
-                    <span className="text-xs font-medium">Canal de Distribución</span>
-                    <TrendingUp size={16} className="text-indigo-600" />
-                  </div>
-                  <div className="text-2xl font-bold text-slate-900">Direct APK</div>
-                  <p className="text-[11px] text-slate-500 mt-1">Sin restricciones de terceros</p>
+                  <p className="text-[11px] text-blue-600 mt-1 font-medium">Tráfico OTA</p>
                 </div>
 
                 <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
                   <div className="flex items-center justify-between text-slate-500 mb-2">
                     <span className="text-xs font-medium">Almacenamiento APK</span>
-                    <Boxes size={16} className="text-amber-600" />
+                    <Boxes size={16} className="text-indigo-600" />
                   </div>
                   <div className="text-2xl font-bold text-slate-900">{formatBytes(totalApkSizeBytes)}</div>
                   <p className="text-[11px] text-slate-500 mt-1">VPS Fast Storage CDN</p>
@@ -236,8 +301,26 @@ export default function DeveloperPortalPage() {
                   }`}
                 >
                   <Layers size={15} />
-                  <span>Mis Aplicaciones ({apps.length})</span>
+                  <span>Mis Aplicaciones ({myApps.length})</span>
                 </button>
+
+                {isAdmin && (
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab('pending-approvals')}
+                    className={`px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap ${
+                      activeTab === 'pending-approvals'
+                        ? 'bg-amber-600 text-white shadow-xs'
+                        : 'text-amber-800 bg-amber-50 hover:bg-amber-100 border border-amber-200'
+                    }`}
+                  >
+                    <Shield size={15} />
+                    <span>Aprobaciones Pendientes ({pendingApps.length})</span>
+                    {pendingApps.length > 0 && (
+                      <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping" />
+                    )}
+                  </button>
+                )}
 
                 <button
                   type="button"
@@ -374,17 +457,132 @@ export default function DeveloperPortalPage() {
                 </div>
               )}
 
-              {/* Tab 2: New App */}
+              {/* Tab 2: Pending Approvals (Exclusivo Administrador andresfev999@gmail.com) */}
+              {activeTab === 'pending-approvals' && isAdmin && (
+                <div className="bg-white rounded-3xl border border-slate-200/80 shadow-xs overflow-hidden">
+                  <div className="p-6 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-amber-50/40">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <Shield className="w-5 h-5 text-amber-700" />
+                        <h2 className="text-lg font-bold text-slate-900">Módulo de Moderación y Aprobación de Apps</h2>
+                      </div>
+                      <p className="text-xs text-slate-600 mt-0.5">
+                        Como administrador general, revisa las apps que otros desarrolladores han subido. Solo las apps que apruebes serán visibles y descargables en la tienda pública.
+                      </p>
+                    </div>
+
+                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300 self-start sm:self-auto">
+                      {pendingApps.length} {pendingApps.length === 1 ? 'pendiente' : 'pendientes'}
+                    </span>
+                  </div>
+
+                  {pendingApps.length === 0 ? (
+                    <div className="p-12 text-center text-slate-500">
+                      <CheckCircle2 size={40} className="mx-auto text-emerald-500 mb-3" />
+                      <p className="font-bold text-sm text-slate-800">¡Bandeja de moderación limpia!</p>
+                      <p className="text-xs text-slate-500 mt-1">
+                        No hay aplicaciones pendientes de revisión en este momento. Todas las solicitudes recibidas han sido procesadas.
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="divide-y divide-slate-100">
+                      {pendingApps.map((app) => (
+                        <div key={app.id} className="p-6 hover:bg-slate-50/60 transition-colors">
+                          <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
+                            {/* App Info */}
+                            <div className="flex items-start gap-4 min-w-0 flex-1">
+                              <img
+                                src={app.icon_url}
+                                alt={app.name}
+                                className="w-16 h-16 rounded-2xl object-cover border border-slate-200 shadow-xs shrink-0"
+                              />
+                              <div className="min-w-0 space-y-1.5 flex-1">
+                                <div className="flex flex-wrap items-center gap-2">
+                                  <h3 className="text-lg font-bold text-slate-900">{app.name}</h3>
+                                  <span className="px-2.5 py-0.5 text-[10px] font-semibold text-slate-600 bg-slate-100 rounded-full">
+                                    {app.category}
+                                  </span>
+                                  <span className="px-2.5 py-0.5 text-[10px] font-bold text-amber-800 bg-amber-100 rounded-full border border-amber-300 flex items-center gap-1">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse" />
+                                    Pendiente de Aprobación
+                                  </span>
+                                </div>
+
+                                <p className="text-xs text-slate-700 font-medium">{app.tagline}</p>
+                                <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">{app.description}</p>
+
+                                <div className="pt-2 flex flex-wrap items-center gap-4 text-xs text-slate-500 font-mono">
+                                  <div className="flex items-center gap-1">
+                                    <span className="text-slate-400">Package:</span>
+                                    <span className="text-slate-700 font-bold">{app.package_name}</span>
+                                  </div>
+                                  <div className="flex items-center gap-1">
+                                    <span className="text-slate-400">Slug:</span>
+                                    <span className="text-slate-700">/apps/{app.slug}</span>
+                                  </div>
+                                  {app.developer_email && (
+                                    <div className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 border border-slate-200">
+                                      <span className="text-slate-400 font-sans">Desarrollador:</span>
+                                      <span className="text-emerald-700 font-bold font-sans">
+                                        {app.developer_name ? `${app.developer_name} (${app.developer_email})` : app.developer_email}
+                                      </span>
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Action Buttons for Admin */}
+                            <div className="flex flex-row lg:flex-col items-center gap-2.5 shrink-0 self-end lg:self-center">
+                              <button
+                                type="button"
+                                disabled={actionLoading === app.id}
+                                onClick={() => handleModerateApp(app.id, app.slug, 'published')}
+                                className="w-full px-5 py-2.5 rounded-full bg-[#01875f] hover:bg-[#017250] text-white text-xs font-bold shadow-xs hover:shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                              >
+                                {actionLoading === app.id ? (
+                                  <span className="inline-block h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                ) : (
+                                  <>
+                                    <CheckCircle2 size={15} />
+                                    <span>Aprobar y Publicar en Tienda</span>
+                                  </>
+                                )}
+                              </button>
+
+                              <button
+                                type="button"
+                                disabled={actionLoading === app.id}
+                                onClick={() => handleModerateApp(app.id, app.slug, 'rejected')}
+                                className="w-full px-4 py-2.5 rounded-full bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-semibold transition-colors flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50"
+                              >
+                                <span>Rechazar Solicitud</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Tab 3: New App */}
               {activeTab === 'new-app' && (
                 <div className="bg-white rounded-3xl border border-slate-200/80 shadow-xs p-6 sm:p-8">
                   <div className="mb-6 pb-4 border-b border-slate-100">
                     <h2 className="text-lg font-bold text-slate-900">Registrar Nueva Aplicación en la Tienda</h2>
-                    <p className="text-xs text-slate-500 mt-0.5">Completa los metadatos para publicar la app en el catálogo oficial de Proton Apps.</p>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      {isAdmin
+                        ? 'Como administrador, las aplicaciones que registres quedarán publicadas de forma inmediata.'
+                        : 'Tu aplicación entrará en cola de revisión para ser aprobada por el administrador (andresfev999@gmail.com) antes de salir pública.'}
+                    </p>
                   </div>
                   <AdminAppForm
+                    developer={developer}
                     onSuccess={() => {
                       loadApps();
-                      setActiveTab('my-apps');
+                      setActiveTab(isAdmin ? 'my-apps' : 'my-apps');
                     }}
                   />
                 </div>

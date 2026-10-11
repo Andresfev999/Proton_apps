@@ -277,3 +277,59 @@ export async function addRelease(releaseInput: Omit<Release, 'id' | 'download_co
   memoryReleases.unshift(newRelease);
   return newRelease;
 }
+
+export async function updateAppStatus(
+  appIdOrSlug: string,
+  newStatus: App['status'],
+  reviewNotes?: string
+): Promise<App | null> {
+  const now = new Date().toISOString();
+
+  if (isSupabaseConfigured && supabase) {
+    try {
+      const { data, error } = await supabase
+        .from('apps')
+        .update({
+          status: newStatus,
+          review_notes: reviewNotes || null,
+          updated_at: now
+        })
+        .or(`id.eq.${appIdOrSlug},slug.eq.${appIdOrSlug}`)
+        .select()
+        .single();
+      if (!error && data) return data as App;
+    } catch (err) {
+      console.warn('Error actualizando estado en Supabase, aplicando en memoria:', err);
+    }
+  }
+
+  const appIndex = memoryApps.findIndex((a) => a.id === appIdOrSlug || a.slug === appIdOrSlug);
+  if (appIndex !== -1) {
+    memoryApps[appIndex] = {
+      ...memoryApps[appIndex],
+      status: newStatus,
+      review_notes: reviewNotes !== undefined ? reviewNotes : memoryApps[appIndex].review_notes,
+      updated_at: now
+    };
+    return memoryApps[appIndex];
+  }
+
+  return null;
+}
+
+export async function deleteApp(appIdOrSlug: string): Promise<boolean> {
+  if (isSupabaseConfigured && supabase) {
+    try {
+      await supabase
+        .from('apps')
+        .delete()
+        .or(`id.eq.${appIdOrSlug},slug.eq.${appIdOrSlug}`);
+    } catch (err) {
+      console.warn('Error eliminando app de Supabase:', err);
+    }
+  }
+
+  const prevLen = memoryApps.length;
+  memoryApps = memoryApps.filter((a) => a.id !== appIdOrSlug && a.slug !== appIdOrSlug);
+  return memoryApps.length < prevLen;
+}
