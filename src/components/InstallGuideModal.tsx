@@ -1,30 +1,117 @@
 'use client';
+
 import { useState } from 'react';
-import { Download, Copy } from 'lucide-react';
+import { Download, Copy, Check, ShieldAlert } from 'lucide-react';
 import { Modal } from './Modal';
 
-export function InstallGuideModal({ isOpen, onClose, appName = 'la aplicación', apkSize, sha256Hash, downloadUrl }: {
-  isOpen: boolean; onClose: () => void; appName?: string; apkSize?: string; sha256Hash?: string; downloadUrl?: string;
+export function InstallGuideModal({
+  isOpen,
+  onClose,
+  appName = 'la aplicación',
+  apkSize,
+  sha256Hash,
+  downloadUrl,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  appName?: string;
+  apkSize?: string;
+  sha256Hash?: string;
+  downloadUrl?: string;
 }) {
   const [message, setMessage] = useState('');
   if (!isOpen) return null;
+
   const validHash = sha256Hash && /^[a-f0-9]{64}$/i.test(sha256Hash);
+
   const copy = async () => {
-    try { await navigator.clipboard.writeText(sha256Hash!); setMessage('Hash copiado'); }
-    catch { setMessage('No se pudo copiar. Selecciona el hash para copiarlo manualmente.'); }
+    try {
+      await navigator.clipboard.writeText(sha256Hash!);
+      setMessage('Hash copiado al portapapeles');
+    } catch {
+      setMessage('No se pudo copiar. Selecciona el hash manualmente.');
+    }
   };
-  return <Modal title={`Cómo instalar ${appName}`} onClose={onClose} wide>
-    <p className="text-sm text-slate-400 leading-relaxed">Estas aplicaciones se distribuyen como archivos APK para Android{apkSize ? ` (${apkSize})` : ''}. No se pueden instalar en iPhone.</p>
-    <ol className="space-y-5 my-7">
-      {[
-        ['Descarga el APK', 'Usa el botón de descarga de esta web y espera a que termine. Comprueba que el nombre del archivo corresponde a la app que elegiste.'],
-        ['Abre el archivo descargado', 'Busca el APK en las notificaciones de descarga o en la carpeta Descargas de tu teléfono.'],
-        ['Autoriza esta instalación', 'Si Android lo solicita, permite la instalación desde el navegador o gestor de archivos que estás usando. Después pulsa Instalar. Puedes retirar ese permiso al terminar.']
-      ].map(([title, text], index) => <li key={title} className="flex gap-4"><span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-indigo-500/15 text-indigo-300 font-semibold">{index + 1}</span><div><h3 className="font-medium text-white mb-1">{title}</h3><p className="text-sm text-slate-400 leading-relaxed">{text}</p></div></li>)}
-    </ol>
-    <p className="rounded-xl border border-amber-400/20 bg-amber-400/5 p-4 text-sm leading-relaxed text-amber-200">Si tu navegador o Play Protect identifica una amenaza concreta, detén la instalación. No desactives las protecciones del teléfono para continuar.</p>
-    {validHash && <div className="mt-5 rounded-xl border border-white/10 p-4"><p className="text-sm font-medium text-slate-200">Huella del archivo (SHA-256)</p><p className="mt-1 text-xs text-slate-400">Sirve para comparar la integridad del APK; no equivale a un análisis antivirus.</p><code className="mt-3 block break-all text-xs text-slate-300 select-all">{sha256Hash}</code><button type="button" onClick={copy} className="secondary-button mt-3"><Copy size={15} aria-hidden="true" /> Copiar hash</button></div>}
-    <p role="status" className="text-xs text-slate-300 mt-3">{message}</p>
-    <div className="mt-6 flex flex-wrap gap-3">{downloadUrl && <a href={downloadUrl} className="primary-button"><Download size={17} aria-hidden="true" /> Descargar APK</a>}<button type="button" onClick={onClose} className="secondary-button">Entendido</button></div>
-  </Modal>;
+
+  return (
+    <Modal title={`Guía de instalación: ${appName}`} onClose={onClose} wide>
+      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+        Las aplicaciones se descargan como archivos binarios APK oficiales para Android{apkSize ? ` (${apkSize})` : ''}.
+      </p>
+
+      <ol className="space-y-4 my-6">
+        {[
+          [
+            'Descarga el archivo APK',
+            'Haz clic en el botón de descarga. Tu navegador comenzará a descargar el archivo oficial firmado.',
+          ],
+          [
+            'Abre la descarga finalizada',
+            'Toca la notificación de "Descarga completa" o ingresa a tu carpeta de Descargas en el teléfono.',
+          ],
+          [
+            'Autoriza la instalación en Android',
+            'Si es la primera vez que instalas fuera de Google Play, permite la instalación para este navegador y pulsa Instalar.',
+          ],
+        ].map(([title, text], index) => (
+          <li key={title} className="flex gap-3.5 items-start">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-800 text-xs font-bold font-mono">
+              0{index + 1}
+            </span>
+            <div>
+              <h3 className="font-bold text-sm text-slate-900 mb-0.5">{title}</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">{text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <div className="rounded-2xl border border-amber-200 bg-amber-50/70 p-4 text-xs leading-relaxed text-amber-900 flex items-start gap-2.5">
+        <ShieldAlert size={17} className="text-amber-700 shrink-0 mt-0.5" />
+        <span>
+          Recomendación de seguridad: Descarga únicamente archivos desde el dominio oficial{' '}
+          <strong className="text-amber-950 font-semibold">protondev.space</strong> para garantizar la autenticidad e integridad del código.
+        </span>
+      </div>
+
+      {validHash && (
+        <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+          <p className="text-xs font-bold text-slate-800">Firma de Integridad (SHA-256)</p>
+          <p className="mt-0.5 text-[11px] text-slate-500">
+            Comprueba que el archivo descargado coincide exactamente con el código emitido.
+          </p>
+          <code className="mt-2 block break-all text-[11px] text-slate-700 bg-white p-2 rounded-lg border border-slate-200 select-all font-mono">
+            {sha256Hash}
+          </code>
+          <button
+            type="button"
+            onClick={copy}
+            className="mt-2.5 px-3 py-1.5 rounded-full border border-slate-300 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+          >
+            {message ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
+            <span>{message || 'Copiar hash SHA-256'}</span>
+          </button>
+        </div>
+      )}
+
+      <div className="mt-6 flex flex-wrap gap-2.5 justify-end">
+        {downloadUrl && (
+          <a
+            href={downloadUrl}
+            className="py-2.5 px-5 rounded-full bg-[#01875f] hover:bg-[#017250] text-white text-xs font-semibold shadow-xs transition-all inline-flex items-center gap-1.5"
+          >
+            <Download size={15} />
+            <span>Descargar APK</span>
+          </a>
+        )}
+        <button
+          type="button"
+          onClick={onClose}
+          className="py-2.5 px-5 rounded-full border border-slate-300 bg-white hover:bg-slate-100 text-xs font-semibold text-slate-700 transition-colors"
+        >
+          Cerrar
+        </button>
+      </div>
+    </Modal>
+  );
 }

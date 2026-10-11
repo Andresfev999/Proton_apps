@@ -21,7 +21,7 @@ export function Modal({ title, onClose, children, wide = false }: { title: strin
       className={`proton-dialog ${wide ? 'proton-dialog-wide' : ''}`}>
       <div className="p-6 sm:p-8">
         <div className="flex items-start justify-between gap-4 mb-6">
-          <h2 className="text-xl font-semibold text-white tracking-tight">{title}</h2>
+          <h2 className="text-xl font-bold text-slate-900 tracking-tight">{title}</h2>
           <button type="button" onClick={onClose} aria-label="Cerrar ventana" className="icon-button shrink-0"><X size={19} aria-hidden="true" /></button>
         </div>
         {children}

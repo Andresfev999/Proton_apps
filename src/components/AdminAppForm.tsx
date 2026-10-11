@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { PlusCircle, Check, AlertCircle } from 'lucide-react';
+import { PlusCircle, Check, AlertCircle, Sparkles } from 'lucide-react';
 import { AppCategory, AppPlatform } from '@/types/database';
 
 interface AdminAppFormProps {
@@ -57,7 +57,7 @@ export function AdminAppForm({ onSuccess }: AdminAppFormProps) {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Error al registrar la app');
 
-      setMessage({ type: 'success', text: `¡Aplicación "${name}" registrada exitosamente!` });
+      setMessage({ type: 'success', text: `¡Aplicación "${name}" registrada exitosamente en la tienda!` });
       setName('');
       setSlug('');
       setTagline('');
@@ -74,136 +74,138 @@ export function AdminAppForm({ onSuccess }: AdminAppFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-5">
       {message && (
-        <div className={`p-4 rounded-xl text-xs flex items-center gap-2 ${
-          message.type === 'success' ? 'bg-emerald-950/80 border border-emerald-500/40 text-emerald-300' : 'bg-rose-950/80 border border-rose-500/40 text-rose-300'
+        <div className={`p-4 rounded-xl text-sm flex items-center gap-2.5 ${
+          message.type === 'success' 
+            ? 'bg-emerald-50 border border-emerald-200 text-emerald-800' 
+            : 'bg-rose-50 border border-rose-200 text-rose-800'
         }`}>
-          {message.type === 'success' ? <Check className="w-4 h-4" /> : <AlertCircle className="w-4 h-4" />}
+          {message.type === 'success' ? <Check className="w-5 h-5 text-emerald-600 shrink-0" /> : <AlertCircle className="w-5 h-5 text-rose-600 shrink-0" />}
           <span>{message.text}</span>
         </div>
       )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-semibold text-slate-300 mb-1">Nombre de la App *</label>
+          <label className="block text-xs font-semibold text-slate-700 mb-1.5">Nombre de la Aplicación *</label>
           <input
             type="text"
             required
             value={name}
             onChange={(e) => handleNameChange(e.target.value)}
-            placeholder="ej: Task Pulse"
-            className="w-full bg-slate-900 border border-white/10 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-indigo-500"
+            placeholder="ej: FitPulse Trainer"
+            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#01875f]/20 focus:border-[#01875f] transition-all"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-slate-300 mb-1">Slug URL Único *</label>
+          <label className="block text-xs font-semibold text-slate-700 mb-1.5">Slug URL Único *</label>
           <input
             type="text"
             required
             value={slug}
             onChange={(e) => setSlug(e.target.value)}
-            placeholder="ej: task-pulse"
-            className="w-full bg-slate-900 border border-white/10 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-indigo-500 font-mono"
+            placeholder="ej: fitpulse-trainer"
+            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#01875f]/20 focus:border-[#01875f] font-mono transition-all"
           />
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-semibold text-slate-300 mb-1">Package Name *</label>
+          <label className="block text-xs font-semibold text-slate-700 mb-1.5">Package Name (Identificador Android) *</label>
           <input
             type="text"
             required
             value={packageName}
             onChange={(e) => setPackageName(e.target.value)}
-            placeholder="ej: com.proton.taskpulse"
-            className="w-full bg-slate-900 border border-white/10 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-indigo-500 font-mono"
+            placeholder="ej: com.proton.fitpulse"
+            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#01875f]/20 focus:border-[#01875f] font-mono transition-all"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-slate-300 mb-1">Categoría</label>
+          <label className="block text-xs font-semibold text-slate-700 mb-1.5">Categoría en la Tienda</label>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value as AppCategory)}
-            className="w-full bg-slate-900 border border-white/10 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-indigo-500"
+            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#01875f]/20 focus:border-[#01875f] transition-all cursor-pointer"
           >
             <option value="Productividad">Productividad</option>
-            <option value="Seguridad">Seguridad</option>
-            <option value="Utilidades">Utilidades</option>
-            <option value="Finanzas">Finanzas</option>
-            <option value="Comunicación">Comunicación</option>
-            <option value="Desarrollo">Desarrollo</option>
+            <option value="Seguridad">Seguridad & Privacidad</option>
+            <option value="Utilidades">Herramientas & Utilidades</option>
+            <option value="Finanzas">Finanzas & Negocios</option>
+            <option value="Comunicación">Multimedia & Video</option>
+            <option value="Desarrollo">Salud & Deporte</option>
           </select>
         </div>
       </div>
 
       <div>
-        <label className="block text-xs font-semibold text-slate-300 mb-1">Tagline (1 Línea) *</label>
+        <label className="block text-xs font-semibold text-slate-700 mb-1.5">Tagline o Subtítulo Resumen (1 línea) *</label>
         <input
           type="text"
           required
           value={tagline}
           onChange={(e) => setTagline(e.target.value)}
-          placeholder="ej: Gestor ágil de micro-hábitos con sincronización biométrica"
-          className="w-full bg-slate-900 border border-white/10 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-indigo-500"
+          placeholder="ej: Monitoreo cardíaco y rutinas de alta intensidad guiadas"
+          className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#01875f]/20 focus:border-[#01875f] transition-all"
         />
       </div>
 
       <div>
-        <label className="block text-xs font-semibold text-slate-300 mb-1">Descripción Completa (Markdown) *</label>
+        <label className="block text-xs font-semibold text-slate-700 mb-1.5">Descripción Completa (Características y Novedades) *</label>
         <textarea
           rows={3}
           required
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          placeholder="Escribe la descripción completa en formato Markdown..."
-          className="w-full bg-slate-900 border border-white/10 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-indigo-500"
+          placeholder="Describe las funcionalidades clave que enamorarán a los usuarios..."
+          className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#01875f]/20 focus:border-[#01875f] transition-all"
         />
       </div>
 
       <div>
-        <label className="block text-xs font-semibold text-slate-300 mb-1">URL del Icono</label>
+        <label className="block text-xs font-semibold text-slate-700 mb-1.5">URL del Icono (PNG / JPG 512x512)</label>
         <input
           type="url"
           value={iconUrl}
           onChange={(e) => setIconUrl(e.target.value)}
-          placeholder="https://images.unsplash.com/..."
-          className="w-full bg-slate-900 border border-white/10 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-indigo-500"
+          placeholder="https://images.unsplash.com/... o enlace de icono público"
+          className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#01875f]/20 focus:border-[#01875f] transition-all"
         />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <div>
-          <label className="block text-xs font-semibold text-slate-300 mb-1">Google Play URL</label>
+          <label className="block text-xs font-semibold text-slate-700 mb-1.5">Google Play URL (Opcional)</label>
           <input
             type="url"
             value={playStoreUrl}
             onChange={(e) => setPlayStoreUrl(e.target.value)}
             placeholder="https://play.google.com/..."
-            className="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none"
+            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#01875f]/20 focus:border-[#01875f]"
           />
         </div>
         <div>
-          <label className="block text-xs font-semibold text-slate-300 mb-1">App Store URL</label>
+          <label className="block text-xs font-semibold text-slate-700 mb-1.5">App Store URL (Opcional)</label>
           <input
             type="url"
             value={appStoreUrl}
             onChange={(e) => setAppStoreUrl(e.target.value)}
             placeholder="https://apps.apple.com/..."
-            className="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none"
+            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#01875f]/20 focus:border-[#01875f]"
           />
         </div>
         <div>
-          <label className="block text-xs font-semibold text-slate-300 mb-1">GitHub Repo URL</label>
+          <label className="block text-xs font-semibold text-slate-700 mb-1.5">GitHub Repo URL (Opcional)</label>
           <input
             type="url"
             value={githubUrl}
             onChange={(e) => setGithubUrl(e.target.value)}
             placeholder="https://github.com/..."
-            className="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none"
+            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#01875f]/20 focus:border-[#01875f]"
           />
         </div>
       </div>
@@ -212,10 +214,10 @@ export function AdminAppForm({ onSuccess }: AdminAppFormProps) {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 transition-all cursor-pointer"
+          className="w-full py-3 rounded-full bg-[#01875f] hover:bg-[#017250] disabled:opacity-50 text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-xs transition-all cursor-pointer"
         >
           <PlusCircle className="w-4 h-4" />
-          <span>{loading ? 'Guardando en catálogo...' : 'Publicar Nueva Aplicación'}</span>
+          <span>{loading ? 'Publicando en la tienda...' : 'Publicar Aplicación en la Tienda'}</span>
         </button>
       </div>
     </form>

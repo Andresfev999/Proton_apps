@@ -26,13 +26,13 @@ export function QrCodeModal({ isOpen, onClose, app, release }: { isOpen: boolean
     catch { setMessage('No pudimos copiarlo. Selecciona el enlace de abajo para copiarlo manualmente.'); }
   };
   return <Modal title={`Abre ${app.name} en tu Android`} onClose={onClose}>
-    <p className="text-sm leading-relaxed text-slate-400">Escanea este código con la cámara de tu teléfono. Verás la ficha de la app y podrás descargarla allí.</p>
-    <div className="mx-auto my-6 flex h-64 w-64 max-w-full items-center justify-center rounded-2xl bg-white p-3">
-      {qrDataUrl ? <img src={qrDataUrl} alt={`Código QR para abrir ${app.name}`} width={240} height={240} /> : <span className="text-sm text-slate-600">{message || 'Generando código…'}</span>}
+    <p className="text-xs sm:text-sm leading-relaxed text-slate-600">Escanea este código con la cámara de tu teléfono Android para abrir la ficha directa y descargar el APK.</p>
+    <div className="mx-auto my-5 flex h-60 w-60 max-w-full items-center justify-center rounded-2xl bg-white border border-slate-200 shadow-2xs p-3">
+      {qrDataUrl ? <img src={qrDataUrl} alt={`Código QR para abrir ${app.name}`} width={230} height={230} /> : <span className="text-xs text-slate-500">{message || 'Generando código QR…'}</span>}
     </div>
-    <p className="flex items-center justify-center gap-2 text-xs text-slate-400"><Smartphone size={16} aria-hidden="true" /> Android{release ? ` · Versión ${release.version_name}` : ''}</p>
-    <input readOnly value={url} aria-label="Enlace a la aplicación" className="field mt-5 text-xs" onFocus={event => event.target.select()} />
-    <button type="button" onClick={copy} className="primary-button mt-4 w-full">{message === 'Enlace copiado' ? <Check size={17} aria-hidden="true" /> : <Copy size={17} aria-hidden="true" />} Copiar enlace</button>
-    <p role="status" className="mt-3 text-center text-xs text-slate-300 min-h-4">{message}</p>
+    <p className="flex items-center justify-center gap-1.5 text-xs text-slate-500 font-medium"><Smartphone size={15} aria-hidden="true" /> Android{release ? ` · Versión ${release.version_name}` : ''}</p>
+    <input readOnly value={url} aria-label="Enlace a la aplicación" className="field mt-4 text-xs font-mono" onFocus={event => event.target.select()} />
+    <button type="button" onClick={copy} className="primary-button mt-3 w-full">{message === 'Enlace copiado' ? <Check size={16} aria-hidden="true" /> : <Copy size={16} aria-hidden="true" />} Copiar enlace</button>
+    <p role="status" className="mt-2 text-center text-xs text-emerald-700 font-medium min-h-4">{message}</p>
   </Modal>;
 }

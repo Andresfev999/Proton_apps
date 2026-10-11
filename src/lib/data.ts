@@ -59,6 +59,27 @@ export const INITIAL_RELEASES: Release[] = [
     created_at: '2026-10-09T05:00:00Z'
   },
   {
+    id: 'rel-speednova-101',
+    app_id: 'app-speednova',
+    version_name: '1.0.1',
+    version_code: 2,
+    platform: 'android',
+    changelog: `### Novedades v1.0.1 (Cyber Telemetry & Super Animations)
+- **⚡ Tacómetro Cyberpunk Reactor:** Renderizado CustomPainter optimizado por GPU con aura pulsante reactiva, divisiones de escala y aguja futurista de alta precisión.
+- **📈 Curva de Rendimiento en Vivo:** Gráfica de telemetría de paquetes con curvas Bézier suaves que trazan el flujo de velocidad en tiempo real.
+- **🛡️ Modal de Diagnóstico Detallado & Calificación:** Calificación integral (A+ Gigabit, A Pro Fiber, B Óptimo) con validación para Gaming Competitivo, Streaming 4K y Videollamadas.
+- **🌌 Fondo Cyberpunk Ambiental:** Esferas de luz difusa y gradientes neón animados en toda la interfaz sin impacto en el rendimiento.
+- **📳 Retroalimentación Háptica Hábil:** Micro-vibraciones táctiles en cada transición de fase de prueba.`,
+    apk_file_url: '/apps/downloads/speednova-v1.0.1.apk',
+    apk_size_bytes: 48367204,
+    min_os_version: 'Android 8.0 (API 26)',
+    is_critical: false,
+    download_count: 420,
+    sha256_hash: '010899c6ade5a4f706c78ad6a29b88e506aba7eb99ba1c174f6a6c18b1e97592',
+    published_at: '2026-10-11T20:30:00Z',
+    created_at: '2026-10-11T20:30:00Z'
+  },
+  {
     id: 'rel-speednova-100',
     app_id: 'app-speednova',
     version_name: '1.0.0',

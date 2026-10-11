@@ -1,16 +1,81 @@
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ShieldCheck, Heart } from 'lucide-react';
 import ProtonAppsLogo from './ProtonAppsLogo';
 
 export function Footer() {
-  return <footer className="mt-20 border-t border-white/[.07] bg-[#080b14]">
-    <div className="site-container py-12">
-      <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
-        <div><Link href="/" aria-label="Proton Apps, inicio"><ProtonAppsLogo size={34} showText animated={false} /></Link><p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-400">Aplicaciones Android para organizar tu día, cuidar tu dinero y hacer más con tu teléfono.</p><p className="mt-4 text-xs text-slate-500">Distribución directa · Archivos APK para Android</p></div>
-        <nav aria-label="Recursos"><h2 className="text-sm font-semibold text-slate-200 mb-4">Descubre</h2><div className="flex flex-col items-start gap-3 text-sm text-slate-400"><Link href="/#catalogo" className="hover:text-white">Catálogo de apps</Link><Link href="/#instalacion" className="hover:text-white">Guía de instalación</Link><Link href="/#preguntas" className="hover:text-white">Preguntas frecuentes</Link><Link href="/developers" className="hover:text-white flex items-center gap-1">Para desarrolladores <ArrowUpRight size={13} aria-hidden="true" /></Link></div></nav>
-        <nav aria-label="Información legal"><h2 className="text-sm font-semibold text-slate-200 mb-4">Información</h2><div className="flex flex-col items-start gap-3 text-sm text-slate-400"><Link href="/privacy" className="hover:text-white">Privacidad</Link><Link href="/terms" className="hover:text-white">Términos de uso</Link><a href="https://protondev.space" className="hover:text-white">Proton Dev</a></div></nav>
+  return (
+    <footer className="border-t border-slate-200/80 bg-white">
+      <div className="site-container py-12">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
+          <div>
+            <Link href="/" aria-label="Proton Apps, inicio">
+              <ProtonAppsLogo size={36} showText animated={false} />
+            </Link>
+            <p className="mt-3.5 max-w-sm text-xs leading-relaxed text-slate-500">
+              Tienda y catálogo de aplicaciones Android independientes. Distribución directa, verificación de integridad SHA-256 y privacidad total.
+            </p>
+            <div className="mt-4 flex items-center gap-2 text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full px-3 py-1 w-fit">
+              <ShieldCheck size={14} />
+              <span>Distribución APK Oficial y Segura</span>
+            </div>
+          </div>
+
+          <nav aria-label="Explorar">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-3.5">
+              Explorar Tienda
+            </h2>
+            <div className="flex flex-col items-start gap-2.5 text-xs text-slate-600">
+              <Link href="/#catalogo" className="hover:text-[#01875f] transition-colors">
+                Catálogo de Apps
+              </Link>
+              <Link href="/#instalacion" className="hover:text-[#01875f] transition-colors">
+                Guía de Instalación APK
+              </Link>
+              <Link href="/#preguntas" className="hover:text-[#01875f] transition-colors">
+                Preguntas Frecuentes
+              </Link>
+              <Link href="/developer" className="hover:text-[#01875f] font-semibold text-emerald-700 flex items-center gap-1 transition-colors">
+                Consola Desarrollador <ArrowUpRight size={13} aria-hidden="true" />
+              </Link>
+            </div>
+          </nav>
+
+          <nav aria-label="Legal e Información">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-3.5">
+              Información & Legal
+            </h2>
+            <div className="flex flex-col items-start gap-2.5 text-xs text-slate-600">
+              <Link href="/privacy" className="hover:text-[#01875f] transition-colors">
+                Privacidad y Datos
+              </Link>
+              <Link href="/terms" className="hover:text-[#01875f] transition-colors">
+                Términos de Servicio
+              </Link>
+              <a
+                href="https://protondev.space"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-[#01875f] flex items-center gap-1 transition-colors"
+              >
+                Proton Dev Space <ArrowUpRight size={13} aria-hidden="true" />
+              </a>
+            </div>
+          </nav>
+        </div>
+
+        <div className="mt-10 border-t border-slate-100 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+          <p>© {new Date().getFullYear()} Proton Apps Store · Todos los derechos reservados.</p>
+          <div className="flex items-center gap-4">
+            <Link href="/developer" className="hover:text-slate-600 transition-colors font-medium">
+              Subir tu App
+            </Link>
+            <span>·</span>
+            <Link href="/admin" className="hover:text-slate-600 transition-colors">
+              Panel Administrativo
+            </Link>
+          </div>
+        </div>
       </div>
-      <div className="mt-10 border-t border-white/[.07] pt-6 flex flex-wrap justify-between gap-3 text-xs text-slate-500"><p>© {new Date().getFullYear()} Proton Apps. Hecho para tu día a día.</p><Link href="/admin" className="hover:text-slate-300">Administración</Link></div>
-    </div>
-  </footer>;
+    </footer>
+  );
 }

@@ -15,12 +15,20 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://protondev.space'),
-  title: { default: 'Proton Apps — aplicaciones Android para tu día a día', template: '%s | Proton Apps' },
-  description: 'Descubre aplicaciones Android para tus finanzas, productividad y negocio. Explora sus capturas y descarga el APK directamente en tu teléfono.',
+  title: { default: 'Proton Apps — Tu tienda de aplicaciones Android', template: '%s | Proton Apps' },
+  description: 'Descubre aplicaciones Android para tus finanzas, productividad y entretenimiento. Explora capturas y descarga archivos APK oficiales directamente en tu teléfono.',
   alternates: { canonical: 'https://protondev.space/apps' },
-  openGraph: { title: 'Proton Apps', description: 'Pequeñas apps. Grandes posibilidades. Descubre tu próxima app Android.', url: 'https://protondev.space/apps', siteName: 'Proton Apps', locale: 'es_CO', type: 'website' },
+  openGraph: {
+    title: 'Proton Apps - Tienda Oficial de Aplicaciones Android',
+    description: 'Catálogo oficial de aplicaciones Android verificadas, utilidades y herramientas de alta productividad.',
+    url: 'https://protondev.space/apps',
+    siteName: 'Proton Apps',
+    locale: 'es_CO',
+    type: 'website'
+  },
 };
-export const viewport: Viewport = { themeColor: '#090e1a', colorScheme: 'dark' };
+
+export const viewport: Viewport = { themeColor: '#ffffff', colorScheme: 'light' };
 
 export default function RootLayout({
   children,
@@ -30,9 +38,9 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#080b11] text-slate-100">
+      <body className="min-h-full flex flex-col bg-[#f8fafc] text-slate-900 selection:bg-emerald-100 selection:text-emerald-800">
         <a href="#main-content" className="skip-link">Saltar al contenido</a>
         <MotionProvider>{children}</MotionProvider>
       </body>

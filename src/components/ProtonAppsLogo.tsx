@@ -291,13 +291,13 @@ export default function ProtonAppsLogo({
         <div className="flex items-center gap-2">
           <div className="flex items-baseline gap-1.5">
             <span
-              className="font-black tracking-tight text-white"
+              className="font-black tracking-tight text-slate-900"
               style={{ fontSize: `${size * 0.44}px` }}
             >
               Proton
             </span>
             <span
-              className="font-black tracking-tight bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent"
+              className="font-black tracking-tight bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-600 bg-clip-text text-transparent"
               style={{ fontSize: `${size * 0.44}px` }}
             >
               Apps
@@ -305,8 +305,8 @@ export default function ProtonAppsLogo({
           </div>
 
           {showHubBadge && (
-            <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold tracking-widest text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 rounded-full">
-              HUB
+            <span className="px-2 py-0.5 text-[10px] font-mono font-bold tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full">
+              PLAY
             </span>
           )}
         </div>

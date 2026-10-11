@@ -13,15 +13,15 @@ export default function TermsPage() {
   const lastUpdated = "25 de Septiembre de 2026";
 
   return (
-    <div className="min-h-screen bg-[#04060a] text-slate-100 selection:bg-indigo-500 selection:text-white flex flex-col">
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col">
       <Navbar />
 
-      <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 w-full space-y-12">
+      <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 w-full space-y-10">
         {/* Breadcrumb */}
         <div>
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-xs font-mono font-medium text-slate-400 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-slate-800 transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Volver al Inicio</span>
