@@ -17,7 +17,7 @@ export function DeveloperLoginForm({ onSuccess }: DeveloperLoginFormProps) {
   const [showManualGoogle, setShowManualGoogle] = useState(false);
 
   const googleBtnContainerRef = useRef<HTMLDivElement>(null);
-  const clientId = '298873483033-ep8m7i5vhg29adgc3h8ltc6tgf1jhetv.apps.googleusercontent.com';
+  const clientId = '933091535145-seo4vfqktoo9tphtev747bvgo15o5va1.apps.googleusercontent.com';
 
   // 1. Cargar Google Identity Services SDK oficial
   useEffect(() => {
